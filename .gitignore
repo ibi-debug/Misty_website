@@ -4,3 +4,6 @@ node_modules/
 .env
 .env.local
 .netlify
+
+# Assessment is deployed separately (quiz.mistylavertu.com)
+Misty-Assessment/
