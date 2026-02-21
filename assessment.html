@@ -28,7 +28,7 @@ nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transfo
 nav a:hover { color: var(--gold); }
 .nav-cta { display: inline-block; padding: 0.5rem 1.15rem; border-radius: 50px; color: var(--bg-dark); background: var(--gold); font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
 .nav-cta:hover { background: var(--text-main); color: var(--bg-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
-.mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; }
+.mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; background: none; border: none; padding: 0; font: inherit; }
 
 .internal-hero { position: relative; min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10rem 5% 4rem; text-align: center; overflow: hidden; }
 .internal-hero::before { content: ''; position: absolute; top: 30%; left: 50%; transform: translateX(-50%); width: 50vw; height: 50vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, rgba(232, 180, 184, 0.15) 0%, transparent 70%); z-index: -1; pointer-events: none; }
@@ -51,7 +51,7 @@ nav a:hover { color: var(--gold); }
 
 footer { background: #000; padding: 4rem 5% 2rem; text-align: center; }
 .footer-bottom { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; max-width: 1200px; margin: 0 auto; }
-@media (max-width: 768px) { nav ul, .nav-cta { display: none; } .mobile-menu-btn { display: block; } .footer-bottom { flex-direction: column; gap: 1rem; } }
+@media (max-width: 768px) { header { flex-wrap: wrap; align-items: center; } header .logo { order: 0; } header .mobile-menu-btn { order: 1; display: block; margin-left: auto; } nav ul, .nav-cta { display: none; } header.mobile-menu-open nav { display: block; width: 100%; order: 2; padding: 1rem 0 0; border-top: 1px solid var(--glass-border); margin-top: 0.5rem; } header.mobile-menu-open nav ul { display: flex; flex-direction: column; gap: 1rem; } header.mobile-menu-open .nav-cta { display: inline-block; width: 100%; text-align: center; margin-top: 1rem; order: 3; } .footer-bottom { flex-direction: column; gap: 1rem; } }
 </style>
 </head>
 <body>
@@ -66,7 +66,7 @@ footer { background: #000; padding: 4rem 5% 2rem; text-align: center; }
     </ul>
   </nav>
   <a href="work-with-misty.html" class="nav-cta">Work With Me</a>
-  <div class="mobile-menu-btn">☰</div>
+  <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
 </header>
 
 <section class="internal-hero">
@@ -104,6 +104,7 @@ footer { background: #000; padding: 4rem 5% 2rem; text-align: center; }
 <script>
   gsap.registerPlugin(ScrollTrigger);
   gsap.utils.toArray('.gs-up').forEach(el => { gsap.from(el, { y: 40, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" } }); });
+  (function() { var btn = document.getElementById('mobile-menu-btn'); var header = document.querySelector('header'); if (btn && header) { btn.addEventListener('click', function() { header.classList.toggle('mobile-menu-open'); btn.setAttribute('aria-expanded', header.classList.contains('mobile-menu-open')); btn.textContent = header.classList.contains('mobile-menu-open') ? '✕' : '☰'; }); header.querySelectorAll('nav a').forEach(function(a) { a.addEventListener('click', function() { header.classList.remove('mobile-menu-open'); if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.textContent = '☰'; } }); }); } })();
 </script>
 </body>
 </html>

@@ -29,7 +29,7 @@ header { position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 5%; disp
 nav ul { display: flex; gap: 3rem; } nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); } nav a:hover { color: var(--gold); }
 .nav-cta { display: inline-block; padding: 0.5rem 1.15rem; border-radius: 50px; color: var(--bg-dark); background: var(--gold); font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
 .nav-cta:hover { background: var(--text-main); color: var(--bg-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
-.mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; }
+.mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; background: none; border: none; padding: 0; font: inherit; }
 
 /* --- CINEMATIC INTERNAL HERO --- */
 .internal-hero { position: relative; min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10rem 5% 4rem; text-align: center; overflow: hidden; }
@@ -82,7 +82,7 @@ footer { background: #000; padding: 4rem 5% 2rem; text-align: center; }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) { .ecosystem-grid { grid-template-columns: 1fr; gap: 2rem; } .radial-grid { grid-template-columns: 1fr; gap: 4rem; } .feature-list.left .feature-item { flex-direction: row; text-align: left; } .radial-center { width: 100%; max-width: 400px; margin: 0 auto; order: -1; } .bento-grid { grid-template-columns: 1fr; } }
-@media (max-width: 768px) { nav ul, .nav-cta { display: none; } .mobile-menu-btn { display: block; } .bento-card { padding: 2rem; } .eco-visuals { min-height: 400px; } .footer-bottom { flex-direction: column; gap: 1rem; } }
+@media (max-width: 768px) { header { flex-wrap: wrap; align-items: center; } header .logo { order: 0; } header .mobile-menu-btn { order: 1; display: block; margin-left: auto; } nav ul, .nav-cta { display: none; } header.mobile-menu-open nav { display: block; width: 100%; order: 2; padding: 1rem 0 0; border-top: 1px solid var(--glass-border); margin-top: 0.5rem; } header.mobile-menu-open nav ul { display: flex; flex-direction: column; gap: 1rem; } header.mobile-menu-open .nav-cta { display: inline-block; width: 100%; text-align: center; margin-top: 1rem; order: 3; } .bento-card { padding: 2rem; } .eco-visuals { min-height: 400px; } .footer-bottom { flex-direction: column; gap: 1rem; } }
 </style>
 </head>
 <body>
@@ -97,7 +97,7 @@ footer { background: #000; padding: 4rem 5% 2rem; text-align: center; }
     </ul>
   </nav>
   <a href="work-with-misty.html" class="nav-cta">Work With Me</a>
-  <div class="mobile-menu-btn">☰</div>
+  <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
 </header>
 
 <section class="internal-hero">
@@ -208,6 +208,7 @@ footer { background: #000; padding: 4rem 5% 2rem; text-align: center; }
 <script>
   gsap.registerPlugin(ScrollTrigger);
   gsap.utils.toArray('.gs-up').forEach(el => { gsap.from(el, { y: 40, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" } }); });
+  (function() { var btn = document.getElementById('mobile-menu-btn'); var header = document.querySelector('header'); if (btn && header) { btn.addEventListener('click', function() { header.classList.toggle('mobile-menu-open'); btn.setAttribute('aria-expanded', header.classList.contains('mobile-menu-open')); btn.textContent = header.classList.contains('mobile-menu-open') ? '✕' : '☰'; }); header.querySelectorAll('nav a').forEach(function(a) { a.addEventListener('click', function() { header.classList.remove('mobile-menu-open'); if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.textContent = '☰'; } }); }); } })();
 </script>
 </body>
 </html>
