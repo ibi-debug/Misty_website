@@ -1,0 +1,34 @@
+# Misty Lavertu – main website
+# Deploy: connect this repo to Netlify; publish directory = root
+
+[build]
+  publish = "."
+  # No build command – static HTML/CSS/JS
+
+# Optional: pretty URLs (e.g. /about instead of /about.html)
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/say-yes"
+  to = "/say-yes.html"
+  status = 200
+
+[[redirects]]
+  from = "/nueva"
+  to = "/nueva.html"
+  status = 200
+
+[[redirects]]
+  from = "/work-with-misty"
+  to = "/work-with-misty.html"
+  status = 200
+
+[[redirects]]
+  from = "/assessment"
+  to = "/assessment.html"
+  status = 200
+
+# SPA-style fallback not needed – multi-page static site
