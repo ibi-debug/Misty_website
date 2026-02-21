@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Misty Lavertu | Strategic Luxury Leadership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* --- 1. CORE VARIABLES --- */
+:root {
+  --bg-dark: #030303;
+  --bg-card: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --gold: #E8B4B8;
+  --gold-glow: rgba(232, 180, 184, 0.2);
+  --burgundy: #4A0E17;
+  --text-main: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.6);
+  
+  --font-heading: 'Playfair Display', serif;
+  --font-accent: 'Cinzel', serif;
+  --font-body: 'Manrope', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+  background-color: var(--bg-dark); color: var(--text-main); 
+  font-family: var(--font-body); overflow-x: hidden; line-height: 1.6; 
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+ul { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* --- 2. GLASS NAVBAR --- */
+header {
+  position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 5%;
+  display: flex; justify-content: space-between; align-items: center; z-index: 100;
+  background: rgba(3, 3, 3, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.logo { font-family: var(--font-accent); font-size: 1.25rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+nav ul { display: flex; gap: 3rem; }
+nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+nav a:hover { color: var(--gold); }
+.nav-cta { display: inline-block; padding: 0.5rem 1.15rem; border-radius: 50px; color: var(--bg-dark); background: var(--gold); font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
+.nav-cta:hover { background: var(--text-main); color: var(--bg-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+.mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; }
+
+/* --- 3. CINEMATIC HERO --- */
+.hero {
+  position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 8rem 5% 0; text-align: center; overflow: hidden;
+}
+/* Glowing Orbs */
+.hero::before {
+  content: ''; position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+  width: 60vw; height: 60vw; max-width: 800px; max-height: 800px;
+  background: radial-gradient(circle, var(--gold-glow) 0%, transparent 60%);
+  z-index: -1; pointer-events: none;
+}
+.hero-subtitle { font-family: var(--font-accent); font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 1rem; }
+.hero-title { font-family: var(--font-heading); font-size: clamp(3.5rem, 8vw, 8rem); line-height: 1; margin-bottom: 1.5rem; font-weight: 400; text-transform: uppercase; }
+.hero-title span { display: block; }
+.hero-desc { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-muted); max-width: 600px; margin: 0 auto 3rem; }
+
+/* Floating Image */
+.hero-image-wrapper { position: relative; width: 100%; max-width: 700px; margin: 0 auto; z-index: 2; display: flex; justify-content: center; }
+.hero-image { width: 100%; max-height: 75vh; object-fit: contain; object-position: bottom; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.8)); }
+
+/* --- 4. DIAGONAL MARQUEE --- */
+.marquee-wrapper { position: relative; z-index: 10; margin-top: -60px; transform: rotate(-2deg) scale(1.05); }
+.marquee { background: linear-gradient(90deg, #2a080d, var(--burgundy), #2a080d); padding: 1.5rem 0; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden; white-space: nowrap; display: flex; }
+.marquee-content { display: flex; animation: marqueeScroll 25s linear infinite; }
+.marquee-item { font-family: var(--font-accent); font-size: 1.2rem; font-weight: 600; color: var(--text-main); text-transform: uppercase; letter-spacing: 3px; padding: 0 3rem; display: flex; align-items: center; gap: 3rem; }
+.marquee-item::after { content: '✦'; color: var(--gold); font-size: 0.8rem; }
+@keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* --- 5. BENTO BOX: BRAND PILLARS (Reference 00:01) --- */
+.section-padding { padding: 8rem 5%; position: relative; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.sec-tag { font-family: var(--font-accent); font-size: 0.8rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem; display: inline-block; }
+.sec-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.1; }
+
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+.bento-card {
+  background: var(--bg-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px; padding: 3rem;
+  transition: all 0.4s ease; display: flex; flex-direction: column; justify-content: center;
+}
+.bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 30px rgba(232, 180, 184, 0.05); }
+.bento-card h3 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem; }
+.bento-card p { font-size: 0.95rem; color: var(--text-muted); }
+/* Highlighted Center Card */
+.bento-card.highlight { background: linear-gradient(135deg, var(--gold), #B87B80); border: none; color: var(--bg-dark); text-align: center; position: relative; overflow: hidden; }
+.bento-card.highlight h3 { color: var(--bg-dark); font-size: 3.5rem; font-family: var(--font-body); font-weight: 700; margin-bottom: 0; }
+.bento-card.highlight p { color: rgba(0,0,0,0.8); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+/* --- 6. SPLIT LAYOUT: ECOSYSTEM (Reference 00:03) --- */
+.ecosystem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; align-items: center; }
+.eco-visuals { position: relative; min-height: 580px; display: flex; justify-content: center; align-items: center; }
+/* Floating Glass Cards */
+.floating-card { position: absolute; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.8); transition: transform 0.5s ease; }
+.fc-1 { width: 70%; max-width: 420px; aspect-ratio: 2/3; z-index: 2; left: 15%; animation: float 6s ease-in-out infinite; }
+@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
+
+.eco-content h3 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-main); }
+.eco-content p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem; }
+.cta-btn-solid { display: inline-block; background: var(--gold); color: var(--bg-dark); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
+.cta-btn-solid:hover { background: var(--text-main); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+
+/* --- 7. RADIAL FEATURES: NUEVA (Reference 00:04) --- */
+.radial-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; max-width: 1200px; margin: 0 auto; align-items: center; }
+.feature-list { display: flex; flex-direction: column; gap: 3rem; }
+.feature-item { display: flex; align-items: flex-start; gap: 1.5rem; }
+.feature-list.left .feature-item { flex-direction: row-reverse; text-align: right; }
+.f-icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(232, 180, 184, 0.15); display: flex; justify-content: center; align-items: center; color: var(--gold); font-size: 1.5rem; flex-shrink: 0; }
+.f-text h4 { font-family: var(--font-accent); font-size: 1rem; letter-spacing: 1px; margin-bottom: 0.5rem; color: var(--text-main); }
+.f-text p { font-size: 0.9rem; color: var(--text-muted); }
+
+.radial-center { width: 350px; height: 450px; position: relative; border-radius: 30px; overflow: hidden; padding: 1rem; background: var(--bg-card); box-shadow: 0 0 100px rgba(232, 180, 184, 0.12); display: flex; align-items: center; justify-content: center; }
+.radial-center img { width: 100%; height: 100%; object-fit: contain; object-position: center; border-radius: 20px; }
+
+/* --- 8. FOOTER --- */
+footer { background: #000; padding: 6rem 5% 2rem; text-align: center; }
+.footer-title { font-family: var(--font-heading); font-size: clamp(3rem, 6vw, 6rem); font-style: italic; color: var(--text-main); margin-bottom: 2rem; }
+.footer-bottom { margin-top: 4rem; padding-top: 2rem; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+/* --- 9. RESPONSIVE DESIGN (Flawless Mobile) --- */
+@media (max-width: 1024px) {
+  .bento-grid { grid-template-columns: 1fr 1fr; }
+  .bento-card:last-child { grid-column: span 2; }
+  .ecosystem-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .radial-grid { grid-template-columns: 1fr; gap: 4rem; }
+  .feature-list.left .feature-item { flex-direction: row; text-align: left; }
+  .radial-center { width: 100%; max-width: 400px; margin: 0 auto; order: -1; }
+}
+@media (max-width: 768px) {
+  nav ul, .nav-cta { display: none; }
+  .mobile-menu-btn { display: block; }
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-card:last-child { grid-column: span 1; }
+  .bento-card { padding: 2rem; }
+  .hero { padding-top: 10rem; }
+  .eco-visuals { min-height: 420px; }
+  .footer-bottom { flex-direction: column; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="index.html">Misty Lavertu</a></div>
+  <nav>
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="say-yes.html">The Movement</a></li>
+      <li><a href="nueva.html">Nueva HQ</a></li>
+    </ul>
+  </nav>
+  <a href="work-with-misty.html" class="nav-cta">Work With Me</a>
+  <div class="mobile-menu-btn">☰</div>
+</header>
+
+<section class="hero">
+  <span class="hero-subtitle gs-up">The High-Performance Strategist</span>
+  <h1 class="hero-title gs-up">Misty Lavertu</h1>
+  <p class="hero-desc gs-up">You don't have to be broken to want more. I help values-driven leaders build businesses and lives they trust.</p>
+  
+  <div class="hero-image-wrapper gs-up" style="animation-delay: 0.2s;">
+    <img src="Aestetics/photo_2026-01-12_15-31-36.png" alt="Misty Lavertu" class="hero-image" fetchpriority="high" decoding="async">
+  </div>
+</section>
+
+<div class="marquee-wrapper">
+  <div class="marquee">
+    <div class="marquee-content">
+      <div class="marquee-item">Say YES. No Regrets. No Limits.</div>
+      <div class="marquee-item">Courage Over Perfection</div>
+      <div class="marquee-item">Alignment Over Hustle</div>
+      <div class="marquee-item">Legacy Over Limits</div>
+      <div class="marquee-item">Say YES. No Regrets. No Limits.</div>
+      <div class="marquee-item">Courage Over Perfection</div>
+      <div class="marquee-item">Alignment Over Hustle</div>
+      <div class="marquee-item">Legacy Over Limits</div>
+    </div>
+  </div>
+</div>
+
+<section id="about" class="section-padding">
+  <div class="section-header gs-up">
+    <span class="sec-tag">The Foundation</span>
+    <h2 class="sec-title">Brand Pillars</h2>
+  </div>
+  
+  <div class="bento-grid">
+    <div class="bento-card gs-up">
+      <h3>Courage Over Perfection</h3>
+      <p>Action creates clarity. Success belongs to those who move—not those who wait.</p>
+    </div>
+    
+    <div class="bento-card highlight gs-up">
+      <h3>1,000+</h3>
+      <p>Lives Impacted</p>
+    </div>
+    
+    <div class="bento-card gs-up">
+      <h3>Alignment Over Hustle</h3>
+      <p>Peace and power can coexist. When you align energy and intention, results are inevitable.</p>
+    </div>
+    
+    <div class="bento-card gs-up">
+      <h3>Leadership Through Integrity</h3>
+      <p>Substance over hype. Leadership is earned through consistency, character, and conviction.</p>
+    </div>
+    
+    <div class="bento-card gs-up">
+      <h3>Legacy Over Limits</h3>
+      <p>True success isn't about income—it is about impact that lasts generations.</p>
+    </div>
+    
+    <div class="bento-card gs-up">
+      <h3>Community Through Connection</h3>
+      <p>Collaboration is currency. Together, we elevate and create more than any one voice could alone.</p>
+    </div>
+  </div>
+</section>
+
+<section id="movement" class="section-padding" style="background: rgba(255,255,255,0.01);">
+  <div class="ecosystem-grid">
+    <div class="eco-visuals gs-up">
+      <div class="floating-card fc-1">
+        <img src="Aestetics/477f8286-b933-4874-b86d-2208807188dd.png" alt="Say Yes Movement — Misty Lavertu" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit: contain; object-position: center;">
+      </div>
+    </div>
+    
+    <div class="eco-content gs-up">
+      <span class="sec-tag">01 / Ecosystem</span>
+      <h3>The Say YES Movement</h3>
+      <p>The heartbeat of Misty's philosophy. This movement inspires millions to take bold action, silence doubt, and design extraordinary lives. Women are often taught to shrink or wait until they are "ready." Not here. The bold YES is the spark that transforms uncertainty into possibility.</p>
+      <ul style="margin-bottom: 2.5rem;">
+        <li style="margin-bottom: 0.5rem; color: var(--gold);">✦ Say Yes and figure it out later.</li>
+        <li style="margin-bottom: 0.5rem; color: var(--gold);">✦ Courage before clarity. Action before perfection.</li>
+        <li style="margin-bottom: 0.5rem; color: var(--gold);">✦ Because excellence starts with one bold YES.</li>
+      </ul>
+      <a href="say-yes.html" class="cta-btn-solid">Join The Movement</a>
+      <p style="margin-top: 1rem; font-size: 0.9rem;"><a href="assessment.html" style="color: var(--gold);">Take the 2-minute Decision Code assessment →</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="nueva" class="section-padding">
+  <div class="section-header gs-up">
+    <span class="sec-tag">02 / Ecosystem</span>
+    <h2 class="sec-title">Nueva | Impact HQ</h2>
+    <p style="color: var(--text-muted); max-width: 600px; margin: 1rem auto 0;">A movement within a movement—cultivating culture, integrity, and community. It's where wellness meets wealth and women rise together to lead with impact.</p>
+  </div>
+  
+  <div class="radial-grid">
+    <div class="feature-list left gs-up">
+      <div class="feature-item">
+        <div class="f-icon">✧</div>
+        <div class="f-text">
+          <h4>Nueva Travel</h4>
+          <p>Turn one vacation budget into two. Global access to wholesale rates on hotels, resorts, and vacation experiences.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="radial-center gs-up">
+      <img src="Aestetics/b513d970-225f-4d50-8d2c-c326b5700505.png" alt="Nueva Leadership" loading="lazy" decoding="async">
+    </div>
+    
+    <div class="feature-list right gs-up">
+      <div class="feature-item">
+        <div class="f-icon">✧</div>
+        <div class="f-text">
+          <h4>Nueva Body (Peptides)</h4>
+          <p>Simplified, science-backed wellness. Daily peptides supporting skin elasticity, joint health, and recovery.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="f-icon">✧</div>
+        <div class="f-text">
+          <h4>Nueva Nitro</h4>
+          <p>Fuel for focused leadership. Clean, steady energy that sustains your purpose without the crash.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <h2 class="footer-title gs-up">Because excellence starts<br>with one bold YES.</h2>
+  <a href="work-with-misty.html" class="cta-btn-solid gs-up">Map Your Path</a>
+  
+  <div class="footer-bottom">
+    <p>© 2026 Misty Lavertu. All Rights Reserved.</p>
+    <p>Strategic Luxury Leadership</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Simple, robust fade-up animation for elements as they enter the viewport
+  gsap.utils.toArray('.gs-up').forEach(el => {
+    gsap.from(el, {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  });
+</script>
+</body>
+</html>
