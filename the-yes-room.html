@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The YES Room | Misty Lavertu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-dark: #030303; --bg-card: rgba(255, 255, 255, 0.02); --glass-border: rgba(255, 255, 255, 0.06);
+  --gold: #E8B4B8; --gold-glow: rgba(232, 180, 184, 0.2); --burgundy: #4A0E17;
+  --text-main: #ffffff; --text-muted: rgba(255, 255, 255, 0.6);
+  --font-heading: 'Playfair Display', serif; --font-accent: 'Cinzel', serif; --font-body: 'Manrope', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+ul { list-style: none; } img { max-width: 100%; height: auto; display: block; }
+
+header { position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(3, 3, 3, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.logo { font-family: var(--font-accent); font-size: 1.25rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+nav ul { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+nav a:hover { color: var(--gold); }
+.nav-cta { display: inline-block; padding: 0.5rem 1.15rem; border-radius: 50px; color: var(--bg-dark); background: var(--gold); font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
+.nav-cta:hover { background: var(--text-main); color: var(--bg-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+.mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; background: none; border: none; padding: 0; font: inherit; }
+
+.room-hero { position: relative; min-height: min(88svh, 760px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8rem 5% 4rem; text-align: center; overflow: hidden; }
+.room-hero::before { content: ''; position: absolute; top: 22%; left: 50%; transform: translateX(-50%); width: min(72vw, 720px); height: min(72vw, 720px); background: radial-gradient(circle, rgba(232, 180, 184, 0.14) 0%, transparent 62%); z-index: -1; pointer-events: none; }
+.room-hero .hero-subtitle { font-family: var(--font-accent); font-size: clamp(0.8rem, 1.8vw, 1rem); color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 1.25rem; }
+.room-hero .hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 4.5vw, 3.35rem);
+  line-height: 1.15;
+  margin-bottom: 1.35rem;
+  font-weight: 400;
+  font-style: italic;
+  max-width: min(38rem, 94vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.08em;
+}
+.room-hero .hero-title-line {
+  display: block;
+  text-align: center;
+}
+@media (min-width: 420px) {
+  .room-hero .hero-title-line { white-space: nowrap; }
+}
+.room-hero .hero-desc { font-size: clamp(0.95rem, 1.85vw, 1.1rem); color: var(--text-muted); max-width: 36rem; margin: 0 auto 2rem; line-height: 1.65; }
+
+.room-main { max-width: 56rem; margin: 0 auto; padding: 0 5%; }
+.section-padding { padding: 4rem 0; position: relative; }
+.section-padding.room-hero-follow { padding-top: 2.5rem; }
+.sec-tag { font-family: var(--font-accent); font-size: 0.8rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem; display: inline-block; }
+.sec-title { font-family: var(--font-heading); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.2; }
+
+.promise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 0 auto; }
+.promise-card { background: var(--bg-card); backdrop-filter: blur(16px); border-radius: 20px; padding: 1.75rem 1.5rem; transition: border-color 0.25s ease, box-shadow 0.25s ease; border: 1px solid transparent; }
+.promise-card:hover { border-color: rgba(232, 180, 184, 0.12); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
+.promise-card .p-number { font-family: var(--font-accent); font-size: 0.68rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 0.65rem; display: block; }
+.promise-card h3 { font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-main); margin-bottom: 0.5rem; font-weight: 400; }
+.promise-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
+.room-intro-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: start;
+}
+.room-intro-bit .sec-tag { margin-bottom: 0.65rem; }
+.room-intro-bit .room-lead { color: var(--text-muted); font-size: 0.98rem; line-height: 1.65; margin: 0; text-align: left; }
+.room-intro-divider { width: 1px; min-height: 4rem; background: linear-gradient(to bottom, transparent, var(--glass-border), transparent); align-self: stretch; }
+.room-section-label { text-align: center; margin-bottom: 2rem; }
+.room-section-label .sec-tag { margin-bottom: 0.5rem; }
+.room-section-label .sec-title { margin: 0; }
+.room-section-label .room-sub { color: var(--text-muted); max-width: 32rem; margin: 0.75rem auto 0; font-size: 0.95rem; line-height: 1.55; }
+
+.room-who-block { text-align: center; max-width: 38rem; margin: 0 auto; }
+.room-who-block h3 { font-family: var(--font-heading); font-size: clamp(1.5rem, 3vw, 1.85rem); font-weight: 400; margin: 0.5rem 0 1rem; color: var(--text-main); }
+.room-who-block p { color: var(--text-muted); font-size: 1rem; line-height: 1.65; margin: 0 0 1rem; }
+.room-who-block p:last-child { margin-bottom: 0; }
+
+.room-host-card {
+  max-width: 26rem;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  text-align: center;
+}
+.room-host-card-img {
+  line-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+/* Feather bottom into card — no blur overlay, just a soft opacity mask */
+.room-host-card-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: top;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, rgba(0, 0, 0, 0.45) 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, rgba(0, 0, 0, 0.45) 92%, transparent 100%);
+}
+.room-host-card-copy { padding: 1.75rem 1.5rem 2rem; }
+.room-host-card-copy .sec-tag { margin-bottom: 0.5rem; }
+.room-host-card-copy h3 { font-family: var(--font-heading); font-size: 1.65rem; font-weight: 400; margin: 0 0 1rem; color: var(--text-main); }
+.room-host-card-copy p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; margin: 0 0 1rem; text-align: left; }
+.room-host-card-copy p:last-of-type { margin-bottom: 0; }
+.room-host-card-copy a { display: inline-block; margin-top: 1.15rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; }
+
+.room-reg-panel {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: clamp(2rem, 5vw, 2.75rem);
+  text-align: center;
+}
+.room-reg-panel .sec-tag { margin-bottom: 0.5rem; }
+.room-reg-panel h3 { font-family: var(--font-heading); font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 400; margin: 0 0 0.75rem; color: var(--text-main); }
+.room-reg-panel > p { color: var(--text-muted); font-size: 0.95rem; margin: 0 auto 1.5rem; max-width: 28rem; }
+.reg-box {
+  max-width: 100%;
+  margin: 0 auto 1.75rem;
+  padding: 1.75rem;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+}
+.reg-box p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.92rem; }
+.reg-box p:last-child { margin-bottom: 0; }
+
+.cta-btn-solid { display: inline-block; background: var(--gold); color: var(--bg-dark); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
+.cta-btn-solid:hover { background: var(--text-main); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+.cta-btn-outline { display: inline-block; padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; color: var(--gold); border: 1px solid var(--gold); }
+.cta-btn-outline:hover { background: var(--gold); color: var(--bg-dark); transform: translateY(-2px); }
+
+footer { background: #000; padding: 3rem 5% 2rem; text-align: center; }
+.footer-bottom { margin-top: 0; padding-top: 2rem; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 720px) {
+  .room-intro-panel { grid-template-columns: 1fr; }
+  .room-intro-divider { width: 100%; height: 1px; min-height: 0; background: var(--glass-border); }
+  .room-intro-bit .room-lead { text-align: center; }
+}
+@media (max-width: 768px) {
+  header { flex-wrap: wrap; align-items: center; }
+  header .logo { order: 0; }
+  header .mobile-menu-btn { order: 1; display: block; margin-left: auto; }
+  nav { display: none !important; }
+  .nav-cta { display: none; }
+  header.mobile-menu-open nav { display: block !important; width: 100%; order: 2; padding: 1rem 0 0; border-top: 1px solid var(--glass-border); margin-top: 0.5rem; }
+  header.mobile-menu-open nav ul { display: flex; flex-direction: column; gap: 1rem; }
+  header.mobile-menu-open .nav-cta { display: inline-block; width: 100%; text-align: center; margin-top: 1rem; order: 3; }
+  .promise-card { padding: 1.5rem 1.35rem; }
+  .footer-bottom { flex-direction: column; gap: 1rem; }
+  .room-host-card-copy p { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="index.html">Misty Lavertu</a></div>
+  <nav>
+    <ul>
+      <li><a href="decision-led-leadership.html">Leadership</a></li>
+      <li><a href="say-yes.html">Movement</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <a href="the-decision-code.html" class="nav-cta">Take The Decision Code</a>
+  <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+</header>
+
+<!-- Section 1: Hero invitation -->
+<section class="room-hero">
+  <span class="hero-subtitle gs-up">The YES Room</span>
+  <h1 class="hero-title gs-up">
+    <span class="hero-title-line">A lifetime of leadership.</span>
+    <span class="hero-title-line">One room. One moment.</span>
+  </h1>
+  <p class="hero-desc gs-up">Live masterclass — decades of work in one room. For leaders done waiting and ready to decide.</p>
+  <p style="margin-top: 1.5rem;"><a href="mailto:hello@mistylavertu.com?subject=YES%20Room%20registration" class="cta-btn-solid">Step Inside The YES Room</a></p>
+</section>
+
+<main class="room-main">
+
+<section class="section-padding room-hero-follow">
+  <div class="room-intro-panel gs-up">
+    <div class="room-intro-bit">
+      <span class="sec-tag">What this is</span>
+      <p class="room-lead">A live public invitation — not a webinar. Leadership, courage, decisive movement. Decision Drag named; shift from hesitation to real.</p>
+    </div>
+    <div class="room-intro-divider" aria-hidden="true"></div>
+    <div class="room-intro-bit">
+      <span class="sec-tag">Why it matters</span>
+      <p class="room-lead">Strategy isn’t the missing piece — the moment that closes knowing-to-moving is. Cleaner decisions, less overwhelm, movement when it counts.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding">
+  <div class="room-section-label gs-up">
+    <span class="sec-tag">In the room</span>
+    <h2 class="sec-title">What you’ll walk away with</h2>
+    <p class="room-sub">Four outcomes from one live masterclass.</p>
+  </div>
+  <div class="promise-grid">
+    <div class="promise-card gs-up"><span class="p-number">01</span><h3>Clarity</h3><p>A clear understanding of what has been keeping you stuck</p></div>
+    <div class="promise-card gs-up"><span class="p-number">02</span><h3>Decision Drag</h3><p>A sharper lens on Decision Drag and how it operates</p></div>
+    <div class="promise-card gs-up"><span class="p-number">03</span><h3>Commitment</h3><p>A new relationship to decision-making and commitment</p></div>
+    <div class="promise-card gs-up"><span class="p-number">04</span><h3>Leadership</h3><p>One clear shift that moves you out of hesitation and into leadership</p></div>
+  </div>
+</section>
+
+<section class="section-padding">
+  <div class="room-who-block gs-up">
+    <span class="sec-tag">Who it’s for</span>
+    <h3>Leaders who already know enough</h3>
+    <p>Ambitious, high-capacity leaders ready for a real shift — not more content.</p>
+    <p>Small business owners, entrepreneurs, corporate teams, network marketing leaders. Women who are done consuming and ready to decide.</p>
+  </div>
+</section>
+
+<section class="section-padding">
+  <div class="room-host-card gs-up">
+    <div class="room-host-card-img">
+      <img src="Aestetics/e2ae0389-e77c-4750-8a7b-ec16e46ee44d.png" alt="Misty Lavertu — your host for The YES Room" loading="lazy" decoding="async">
+    </div>
+    <div class="room-host-card-copy">
+      <span class="sec-tag">About Misty</span>
+      <h3>Your host</h3>
+      <p>Misty Lavertu has spent more than three decades leading, building, and teaching one truth in every room: life changes the moment you decide.</p>
+      <p>The YES Room is the first public invitation into that body of work.</p>
+      <a href="about.html">About Misty →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding" style="padding-bottom: 5rem;">
+  <div class="room-reg-panel gs-up">
+    <span class="sec-tag">Registration</span>
+    <h3>Live details</h3>
+    <p>Add dates, time zone, and link when the room is open.</p>
+    <div class="reg-box">
+      <p><strong>Date</strong> — TBA</p>
+      <p><strong>Time + time zone</strong> — TBA</p>
+      <p><strong>Format</strong> — Zoom registration (replace with your live link when open)</p>
+      <p><strong>Replay</strong> — Note here if a replay is offered.</p>
+      <p>When registration is closed: <a href="the-decision-code.html" style="color: var(--gold);">Take The Decision Code</a> while you wait — or step inside via email when you’re ready.</p>
+    </div>
+    <a href="mailto:hello@mistylavertu.com?subject=YES%20Room%20registration" class="cta-btn-solid">Step Inside The YES Room</a>
+    <p style="margin-top: 1.15rem; font-size: 0.88rem; color: var(--text-muted);">While you wait: <a href="the-decision-code.html" style="color: var(--gold); text-decoration: underline; text-underline-offset: 3px;">Take The Decision Code</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Misty Lavertu. All Rights Reserved.</p>
+    <p>Decision-Led Leadership</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.gs-up').forEach(el => { gsap.from(el, { y: 40, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" } }); });
+  (function() { var btn = document.getElementById('mobile-menu-btn'); var header = document.querySelector('header'); if (btn && header) { btn.addEventListener('click', function() { header.classList.toggle('mobile-menu-open'); btn.setAttribute('aria-expanded', header.classList.contains('mobile-menu-open')); btn.textContent = header.classList.contains('mobile-menu-open') ? '✕' : '☰'; }); var c = header.querySelector('.nav-cta'); if (c) c.addEventListener('click', function() { header.classList.remove('mobile-menu-open'); if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.textContent = '☰'; } }); header.querySelectorAll('nav a').forEach(function(a) { a.addEventListener('click', function() { header.classList.remove('mobile-menu-open'); if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.textContent = '☰'; } }); }); } })();
+</script>
+</body>
+</html>

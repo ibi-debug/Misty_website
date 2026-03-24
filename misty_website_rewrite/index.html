@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Misty Lavertu | Decision-Led Leadership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-dark: #030303;
+  --bg-card: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --gold: #E8B4B8;
+  --gold-glow: rgba(232, 180, 184, 0.2);
+  --burgundy: #4A0E17;
+  --text-main: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --font-heading: 'Playfair Display', serif;
+  --font-accent: 'Cinzel', serif;
+  --font-body: 'Manrope', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+  background-color: var(--bg-dark); color: var(--text-main); 
+  font-family: var(--font-body); overflow-x: hidden; line-height: 1.6; 
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+ul { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* --- GLASS NAVBAR --- */
+header {
+  position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 5%;
+  display: flex; justify-content: space-between; align-items: center; z-index: 100;
+  background: rgba(3, 3, 3, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.logo { font-family: var(--font-accent); font-size: 1.25rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+nav ul { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+nav a:hover { color: var(--gold); }
+.nav-cta { display: inline-block; padding: 0.5rem 1.15rem; border-radius: 50px; color: var(--bg-dark); background: var(--gold); font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
+.nav-cta:hover { background: var(--text-main); color: var(--bg-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+.mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; background: none; border: none; padding: 0; font: inherit; }
+
+/* --- CINEMATIC HERO --- */
+.hero {
+  position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  padding: 7rem 5% 0; text-align: center; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: 15%; left: 50%; transform: translateX(-50%);
+  width: 60vw; height: 60vw; max-width: 800px; max-height: 800px;
+  background: radial-gradient(circle, var(--gold-glow) 0%, transparent 60%);
+  z-index: -1; pointer-events: none;
+}
+.hero-text { position: relative; z-index: 3; margin-bottom: 2rem; }
+.hero-subtitle { font-family: var(--font-accent); font-size: clamp(0.75rem, 1.5vw, 0.95rem); color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.75rem; }
+.hero-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 4.5vw, 4.5rem); line-height: 1.1; margin-bottom: 1rem; font-weight: 400; max-width: 800px; }
+.hero-title span { display: block; }
+.hero-desc { font-size: clamp(0.9rem, 1.5vw, 1.05rem); color: var(--text-muted); max-width: 540px; margin: 0 auto 2rem; }
+.hero-image-wrapper { position: relative; width: 100%; max-width: 800px; margin: 0 auto; z-index: 2; display: flex; justify-content: center; flex-shrink: 0; }
+.hero-image { width: 100%; max-height: 80vh; object-fit: contain; object-position: bottom; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.9)); }
+.cta-btn-solid { display: inline-block; background: var(--gold); color: var(--bg-dark); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
+.cta-btn-solid:hover { background: var(--text-main); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+.cta-btn-outline { display: inline-block; padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; color: var(--gold); border: 1px solid var(--gold); margin-left: 0.75rem; }
+.cta-btn-outline:hover { background: rgba(232, 180, 184, 0.1); transform: translateY(-2px); }
+.hero-ctas { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.5rem 0; }
+
+/* --- WHY IT MATTERS / COSTS --- */
+.cost-list { max-width: 640px; margin: 0 auto; color: var(--text-muted); font-size: 1.05rem; }
+.cost-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.85rem; }
+.cost-list li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); }
+
+/* --- THE SHIFT --- */
+.shift-block { max-width: 720px; margin: 0 auto; text-align: center; }
+.shift-block p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.25rem; }
+
+/* --- PATH LADDER --- */
+.path-ladder { display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch; gap: 1rem; max-width: 1100px; margin: 0 auto; }
+.path-step-card { flex: 1; min-width: 200px; max-width: 260px; background: var(--bg-card); border-radius: 20px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s; }
+.path-step-card:hover { box-shadow: inset 0 0 30px rgba(232, 180, 184, 0.06); }
+.path-step-card .ps-num { font-family: var(--font-accent); font-size: 0.7rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
+.path-step-card h3 { font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-main); }
+.path-step-card p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem; }
+.path-step-card a { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+.path-arrow { display: flex; align-items: center; color: var(--gold); font-size: 1.25rem; padding: 0 0.25rem; }
+@media (max-width: 900px) { .path-ladder { flex-direction: column; align-items: center; } .path-arrow { transform: rotate(90deg); padding: 0.5rem 0; } .path-step-card { max-width: 100%; width: 100%; } }
+
+/* --- PRINCIPLES GRID --- */
+.principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; max-width: 1000px; margin: 0 auto; }
+.principle-card { background: var(--bg-card); border-radius: 20px; padding: 1.75rem; }
+.principle-card h4 { font-family: var(--font-heading); font-size: 1.15rem; color: var(--gold); margin-bottom: 0.5rem; }
+.principle-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+/* --- DIAGONAL MARQUEE --- */
+.marquee-wrapper { position: relative; z-index: 10; margin-top: -60px; transform: rotate(-2deg) scale(1.05); }
+.marquee { background: linear-gradient(90deg, #2a080d, var(--burgundy), #2a080d); padding: 1.5rem 0; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden; white-space: nowrap; display: flex; }
+.marquee-content { display: flex; animation: marqueeScroll 25s linear infinite; }
+.marquee-item { font-family: var(--font-accent); font-size: 1.2rem; font-weight: 600; color: var(--text-main); text-transform: uppercase; letter-spacing: 3px; padding: 0 3rem; display: flex; align-items: center; gap: 3rem; }
+.marquee-item::after { content: '✦'; color: var(--gold); font-size: 0.8rem; }
+@keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* --- SECTIONS --- */
+.section-padding { padding: 8rem 5%; position: relative; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.sec-tag { font-family: var(--font-accent); font-size: 0.8rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem; display: inline-block; }
+.sec-title { font-family: var(--font-heading); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.2; }
+
+/* --- THE GAP: DECISION DRAG --- */
+.drag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+.drag-card {
+  background: var(--bg-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px; padding: 3rem; transition: all 0.4s ease;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.drag-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 30px rgba(232, 180, 184, 0.05); }
+.drag-card .drag-icon { font-size: 2rem; margin-bottom: 1.5rem; }
+.drag-card h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem; }
+.drag-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+/* --- THE TRUTH --- */
+.truth-section { text-align: center; max-width: 900px; margin: 0 auto; }
+.truth-statement { font-family: var(--font-heading); font-size: clamp(1.4rem, 2.5vw, 2rem); font-style: italic; line-height: 1.3; margin-bottom: 0; color: var(--gold); }
+
+/* --- SOCIAL PROOF --- */
+.proof-bar { display: flex; justify-content: center; gap: 5rem; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
+.proof-item { text-align: center; }
+.proof-number { display: block; font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); color: var(--gold); font-weight: 400; margin-bottom: 0.25rem; }
+.proof-label { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
+
+/* --- SPLIT LAYOUT: MOVEMENT --- */
+.ecosystem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; align-items: center; }
+.eco-visuals { position: relative; min-height: 580px; display: flex; justify-content: center; align-items: center; }
+.floating-card { position: absolute; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.8); transition: transform 0.5s ease; }
+.fc-1 { width: 70%; max-width: 420px; aspect-ratio: 2/3; z-index: 2; animation: float 6s ease-in-out infinite; }
+@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
+.eco-content h3 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-main); }
+.eco-content p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.1rem; }
+
+/* --- ENTRY POINT --- */
+.entry-point { text-align: center; max-width: 800px; margin: 0 auto; }
+.entry-point h2 { font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.1; margin-bottom: 1.5rem; }
+.entry-point p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+.entry-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 900px; margin: 0 auto; }
+.entry-card { background: var(--bg-card); backdrop-filter: blur(16px); border-radius: 24px; padding: 3rem 2.5rem; text-align: center; transition: all 0.4s ease; }
+.entry-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 30px rgba(232, 180, 184, 0.05); }
+.entry-card .entry-label { font-family: var(--font-accent); font-size: 0.75rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem; display: block; }
+.entry-card h3 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--text-main); margin-bottom: 1rem; }
+.entry-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; }
+.entry-card .cta-btn-solid { padding: 0.8rem 2rem; font-size: 0.8rem; width: 100%; }
+
+/* --- APPLICATION LANES --- */
+.lanes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+.lane-item { background: var(--bg-card); backdrop-filter: blur(16px); border-radius: 24px; padding: 3rem 2.5rem; text-align: center; transition: all 0.4s ease; }
+.lane-item:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 30px rgba(232, 180, 184, 0.05); }
+.lane-item .lane-icon { font-size: 2rem; margin-bottom: 1.5rem; }
+.lane-item h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem; }
+.lane-item p { font-size: 0.95rem; color: var(--text-muted); }
+
+/* --- GUIDE SECTION --- */
+.guide-grid { display: grid; grid-template-columns: auto 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; align-items: center; }
+.guide-image { width: 350px; position: relative; border-radius: 30px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+.guide-image img { width: 100%; height: auto; object-fit: contain; }
+.guide-content h3 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--text-main); }
+.guide-content p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+
+/* --- FOOTER --- */
+footer { background: #000; padding: 6rem 5% 2rem; text-align: center; }
+.footer-title { font-family: var(--font-heading); font-size: clamp(1.8rem, 3vw, 2.8rem); font-style: italic; color: var(--text-main); margin-bottom: 1rem; }
+.footer-desc { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2.5rem; }
+.footer-bottom { margin-top: 4rem; padding-top: 2rem; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .drag-grid { grid-template-columns: 1fr; }
+  .ecosystem-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .entry-cards { grid-template-columns: 1fr; }
+  .lanes-grid { grid-template-columns: 1fr; }
+  .guide-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .guide-image { width: 100%; max-width: 400px; margin: 0 auto; }
+}
+@media (max-width: 768px) {
+  header { flex-wrap: wrap; align-items: center; }
+  header .logo { order: 0; }
+  header .mobile-menu-btn { order: 1; display: block; margin-left: auto; }
+  nav ul, .nav-cta { display: none; }
+  header.mobile-menu-open nav { display: block; width: 100%; order: 2; padding: 1rem 0 0; border-top: 1px solid var(--glass-border); margin-top: 0.5rem; }
+  header.mobile-menu-open nav ul { display: flex; flex-direction: column; gap: 1rem; }
+  header.mobile-menu-open .nav-cta { display: inline-block; width: 100%; text-align: center; margin-top: 1rem; order: 3; }
+  .hero { padding-top: 8rem; justify-content: center; }
+  .hero-title { font-size: clamp(2rem, 6vw, 3rem); }
+  .hero-ctas { flex-direction: column; }
+  .cta-btn-outline { margin-left: 0; }
+  .drag-card { padding: 2rem; }
+  .eco-visuals { min-height: 420px; }
+  .footer-bottom { flex-direction: column; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="index.html">Misty Lavertu</a></div>
+  <nav>
+    <ul>
+      <li><a href="decision-led-leadership.html">Leadership</a></li>
+      <li><a href="say-yes.html">Movement</a></li>
+      <li><a href="the-yes-room.html">YES Room</a></li>
+      <li><a href="say-yes-experience.html">Experience</a></li>
+      <li><a href="the-standard.html">The Standard</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <a href="the-decision-code.html" class="nav-cta">Take The Decision Code</a>
+  <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+</header>
+
+<!-- Section 1: Hero (wireframe) -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-subtitle gs-up">Decision-Led Leadership</span>
+    <h1 class="hero-title gs-up">Your life changes<br>the moment you decide.</h1>
+    <p class="hero-desc gs-up">For ambitious, high-capacity leaders across business, teams, and life — ready to move from hesitation into decisive leadership without hype or pressure.</p>
+    <div class="hero-ctas gs-up">
+      <a href="the-decision-code.html" class="cta-btn-solid">Take The Decision Code</a>
+      <a href="decision-led-leadership.html" class="cta-btn-outline">Explore Decision-Led Leadership</a>
+    </div>
+  </div>
+
+  <div class="hero-image-wrapper gs-up">
+    <img src="Aestetics/photo_2026-01-12_15-31-36.png" alt="Misty Lavertu" class="hero-image" fetchpriority="high" decoding="async">
+  </div>
+</section>
+
+<div class="marquee-wrapper">
+  <div class="marquee">
+    <div class="marquee-content">
+      <div class="marquee-item">Say YES. Figure It Out Later.</div>
+      <div class="marquee-item">Standards Over Noise</div>
+      <div class="marquee-item">Decide. Commit. Move.</div>
+      <div class="marquee-item">Transformation Over Motivation</div>
+      <div class="marquee-item">Say YES. Figure It Out Later.</div>
+      <div class="marquee-item">Standards Over Noise</div>
+      <div class="marquee-item">Decide. Commit. Move.</div>
+      <div class="marquee-item">Transformation Over Motivation</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2: The Problem — Decision Drag -->
+<section class="section-padding">
+  <div class="section-header gs-up">
+    <span class="sec-tag">The Problem</span>
+    <h2 class="sec-title">Decision Drag</h2>
+    <p style="color: var(--text-muted); max-width: 640px; margin: 1rem auto 0;">The hesitation between knowing and moving. It shows up as overthinking, pausing, delaying, and keeping decisions open too long — not because you lack capability, but because the pattern is unnamed.</p>
+  </div>
+  <div class="drag-grid">
+    <div class="drag-card gs-up">
+      <div class="drag-icon">↻</div>
+      <h3>Overthinking</h3>
+      <p>You research, weigh options, and wait for the perfect moment — while the same decision circles week after week.</p>
+    </div>
+    <div class="drag-card gs-up">
+      <div class="drag-icon">∞</div>
+      <h3>Open Loops</h3>
+      <p>Decisions stay unfinished. Each one quietly drains focus, energy, and follow-through on what matters most.</p>
+    </div>
+    <div class="drag-card gs-up">
+      <div class="drag-icon">◇</div>
+      <h3>Delayed Movement</h3>
+      <p>You know what you would say yes to. But the move keeps sliding to “later” — and later never gets a date.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Why It Matters -->
+<section class="section-padding" style="background: rgba(255,255,255,0.01);">
+  <div class="section-header gs-up">
+    <span class="sec-tag">Why It Matters</span>
+    <h2 class="sec-title">The Cost of Staying in the Gap</h2>
+    <p style="color: var(--text-muted); max-width: 640px; margin: 1rem auto 0;">This is the section that should make you think: <em>This is exactly what has been happening.</em></p>
+  </div>
+  <ul class="cost-list gs-up">
+    <li>Leaking momentum — energy goes to managing hesitation instead of building</li>
+    <li>Weakened self-trust — you stop believing your own yes</li>
+    <li>Reduced clarity — waiting for clarity before you decide, when commitment creates clarity</li>
+    <li>Inconsistent follow-through — open loops make every next step harder</li>
+    <li>Slower leadership decisions — in business, teams, and life</li>
+  </ul>
+</section>
+
+<!-- Section 4: The Shift — Decision-Led Leadership -->
+<section class="section-padding">
+  <div class="section-header gs-up">
+    <span class="sec-tag">The Shift</span>
+    <h2 class="sec-title">Decision-Led Leadership</h2>
+  </div>
+  <div class="shift-block gs-up">
+    <p>Life changes the moment you decide — and <strong>protect</strong> that decision. Decision-Led Leadership is the practice of making clean commitments, closing the loops that drain you, and leading from commitment instead of hesitation.</p>
+    <p>It is not about waiting until you feel ready. It is about choosing, backing your choice with standards, and letting clarity follow.</p>
+  </div>
+  <div class="principles-grid gs-up" style="margin-top: 3rem;">
+    <div class="principle-card"><h4>Clarity follows commitment</h4><p>You do not need perfect conditions to decide. The decision sharpens what comes next.</p></div>
+    <div class="principle-card"><h4>Open loops are expensive</h4><p>Every unfinished decision taxes your leadership bandwidth.</p></div>
+    <div class="principle-card"><h4>Standards protect momentum</h4><p>What you protect — your word, your yes — is what compounds.</p></div>
+    <div class="principle-card"><h4>Self-trust is built through action</h4><p>Decisive movement, not more information, rebuilds trust with yourself.</p></div>
+  </div>
+</section>
+
+<!-- Section 5: The First Step — The Decision Code (single dominant CTA) -->
+<section class="section-padding" style="background: rgba(255,255,255,0.01);">
+  <div class="entry-point gs-up">
+    <span class="sec-tag">The First Step</span>
+    <h2 class="sec-title" style="font-size: clamp(1.8rem, 3vw, 2.5rem);">The Decision Code</h2>
+    <p style="color: var(--text-muted); max-width: 640px; margin: 0 auto 2rem;">The cleanest entry into this work. Name your Decision State, understand the pattern behind the drag, and see what needs to change — in about two minutes.</p>
+    <a href="the-decision-code.html" class="cta-btn-solid">Take The Decision Code</a>
+  </div>
+</section>
+
+<!-- Section 6: The Movement -->
+<section class="section-padding">
+  <div class="ecosystem-grid">
+    <div class="eco-visuals gs-up">
+      <div class="floating-card fc-1">
+        <img src="Aestetics/477f8286-b933-4874-b86d-2208807188dd.png" alt="The Say YES Movement" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit: contain; object-position: center;">
+      </div>
+    </div>
+    <div class="eco-content gs-up">
+      <span class="sec-tag">The Movement</span>
+      <h3>The Say YES Movement</h3>
+      <p>The philosophy and identity layer of this brand. Say YES is not hype. It is a way of operating rooted in courage, standards, responsibility, and decisive leadership.</p>
+      <p>For ambitious leaders who are done circling and ready to lead with cleaner decisions across business, teams, and life.</p>
+      <a href="say-yes.html" class="cta-btn-solid">Explore The Movement</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7: The Path Forward — ecosystem ladder -->
+<section id="path-forward" class="section-padding" style="background: rgba(255,255,255,0.01);">
+  <div class="section-header gs-up">
+    <span class="sec-tag">The Path Forward</span>
+    <h2 class="sec-title">How the Work Unfolds</h2>
+    <p style="color: var(--text-muted); max-width: 640px; margin: 1rem auto 0;">Short, outcome-focused steps. Start where you are.</p>
+  </div>
+  <div class="path-ladder gs-up">
+    <div class="path-step-card">
+      <span class="ps-num">Start</span>
+      <h3>The Decision Code</h3>
+      <p>See your pattern and Decision State. The evergreen first step.</p>
+      <a href="the-decision-code.html">Take it</a>
+    </div>
+    <span class="path-arrow">→</span>
+    <div class="path-step-card">
+      <span class="ps-num">Live</span>
+      <h3>The YES Room</h3>
+      <p>Live invitation into the philosophy when registration opens.</p>
+      <a href="the-yes-room.html">Learn more</a>
+    </div>
+    <span class="path-arrow">→</span>
+    <div class="path-step-card">
+      <span class="ps-num">Activate</span>
+      <h3>The Say YES Experience</h3>
+      <p>Seven days to decide, commit, and move with support.</p>
+      <a href="say-yes-experience.html">Explore</a>
+    </div>
+    <span class="path-arrow">→</span>
+    <div class="path-step-card">
+      <span class="ps-num">Deepen</span>
+      <h3>The Standard</h3>
+      <p>Signature program for sustained transformation and higher standards.</p>
+      <a href="the-standard.html">Explore</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 8: About Misty (authority, short) -->
+<section class="section-padding">
+  <div class="proof-bar gs-up" style="margin-bottom: 4rem;">
+    <div class="proof-item"><span class="proof-number">30+</span><span class="proof-label">Years Leadership</span></div>
+    <div class="proof-item"><span class="proof-number">1,000+</span><span class="proof-label">Lives Impacted</span></div>
+    <div class="proof-item"><span class="proof-number">Global</span><span class="proof-label">Rooms &amp; Teams Led</span></div>
+  </div>
+  <div class="guide-grid">
+    <div class="guide-image gs-up">
+      <img src="Aestetics/photo_2026-01-12_15-31-41.png" alt="Misty Lavertu" loading="lazy" decoding="async">
+    </div>
+    <div class="guide-content gs-up">
+      <span class="sec-tag">About Misty</span>
+      <h3>The voice behind Decision-Led Leadership</h3>
+      <p>Decades of lived leadership — building people, teams, and organizations. Misty brings structure, standards, and decisive leadership to women ready to stop circling.</p>
+      <p>This is not motivational content dressed up as strategy. It is transformational work built on how life changes the moment you choose.</p>
+      <a href="about.html" class="cta-btn-solid">Read Her Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 9: Final CTA -->
+<footer id="contact">
+  <h2 class="footer-title gs-up">Your next move is one decision away.</h2>
+  <p class="footer-desc gs-up">The evergreen first step: Take The Decision Code.</p>
+  <a href="the-decision-code.html" class="cta-btn-solid gs-up">Take The Decision Code</a>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2026 Misty Lavertu. All Rights Reserved.</p>
+    <p>Decision-Led Leadership</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.gs-up').forEach(el => {
+    gsap.from(el, {
+      y: 40, opacity: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" }
+    });
+  });
+  (function() {
+    var btn = document.getElementById('mobile-menu-btn');
+    var header = document.querySelector('header');
+    if (btn && header) {
+      btn.addEventListener('click', function() {
+        header.classList.toggle('mobile-menu-open');
+        btn.setAttribute('aria-expanded', header.classList.contains('mobile-menu-open'));
+        btn.textContent = header.classList.contains('mobile-menu-open') ? '✕' : '☰';
+      });
+      header.querySelectorAll('nav a').forEach(function(a) {
+        a.addEventListener('click', function() { header.classList.remove('mobile-menu-open'); if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.textContent = '☰'; } });
+      });
+    }
+  })();
+</script>
+</body>
+</html>

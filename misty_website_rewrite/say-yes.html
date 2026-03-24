@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Say YES Movement | Misty Lavertu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-dark: #030303; --bg-card: rgba(255, 255, 255, 0.02); --glass-border: rgba(255, 255, 255, 0.06);
+  --gold: #E8B4B8; --gold-glow: rgba(232, 180, 184, 0.2); --burgundy: #4A0E17;
+  --text-main: #ffffff; --text-muted: rgba(255, 255, 255, 0.6);
+  --font-heading: 'Playfair Display', serif; --font-accent: 'Cinzel', serif; --font-body: 'Manrope', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+ul { list-style: none; } img { max-width: 100%; height: auto; display: block; }
+
+header { position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(3, 3, 3, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.logo { font-family: var(--font-accent); font-size: 1.25rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+nav ul { display: flex; gap: 2.5rem; }
+nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+nav a:hover { color: var(--gold); }
+.nav-cta { display: inline-block; padding: 0.5rem 1.15rem; border-radius: 50px; color: var(--bg-dark); background: var(--gold); font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
+.nav-cta:hover { background: var(--text-main); color: var(--bg-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+.mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; background: none; border: none; padding: 0; font: inherit; }
+
+.internal-hero { position: relative; min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10rem 5% 4rem; text-align: center; overflow: hidden; }
+.internal-hero::before { content: ''; position: absolute; top: 30%; left: 50%; transform: translateX(-50%); width: 50vw; height: 50vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, rgba(232, 180, 184, 0.15) 0%, transparent 70%); z-index: -1; pointer-events: none; }
+.hero-subtitle { font-family: var(--font-accent); font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 1rem; }
+.hero-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.15; margin-bottom: 1.5rem; font-weight: 400; max-width: 1000px; text-transform: uppercase; }
+.hero-desc { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+
+.section-padding { padding: 8rem 5%; position: relative; }
+.ecosystem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; align-items: center; }
+.eco-visuals { position: relative; min-height: 580px; display: flex; justify-content: center; align-items: center; }
+.floating-card { position: absolute; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.8); transition: transform 0.5s ease; }
+.floating-card img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
+.fc-1 { width: 70%; max-width: 400px; aspect-ratio: 2/3; z-index: 2; animation: float 6s ease-in-out infinite; }
+@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
+.eco-content h3 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--text-main); }
+.eco-content p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.1rem; }
+.sec-tag { font-family: var(--font-accent); font-size: 0.8rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem; display: inline-block; }
+
+.section-header { text-align: center; margin-bottom: 4rem; }
+.sec-title { font-family: var(--font-heading); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.2; }
+
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+.bento-card { background: var(--bg-card); backdrop-filter: blur(16px); border-radius: 24px; padding: 3rem; transition: all 0.4s ease; display: flex; flex-direction: column; justify-content: center; }
+.bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 30px rgba(232, 180, 184, 0.05); }
+.bento-card h3 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem; }
+.bento-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+.cta-btn-solid { display: inline-block; background: var(--gold); color: var(--bg-dark); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; border: none; font-family: var(--font-body); cursor: pointer; }
+.cta-btn-solid:hover { background: var(--text-main); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+
+footer { background: #000; padding: 6rem 5% 2rem; text-align: center; }
+.footer-title { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.5rem); font-style: italic; color: var(--text-main); margin-bottom: 2rem; }
+.footer-bottom { margin-top: 4rem; padding-top: 2rem; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 1024px) { .ecosystem-grid { grid-template-columns: 1fr; gap: 2rem; } .bento-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { header { flex-wrap: wrap; align-items: center; } header .logo { order: 0; } header .mobile-menu-btn { order: 1; display: block; margin-left: auto; } nav ul, .nav-cta { display: none; } header.mobile-menu-open nav { display: block; width: 100%; order: 2; padding: 1rem 0 0; border-top: 1px solid var(--glass-border); margin-top: 0.5rem; } header.mobile-menu-open nav ul { display: flex; flex-direction: column; gap: 1rem; } header.mobile-menu-open .nav-cta { display: inline-block; width: 100%; text-align: center; margin-top: 1rem; order: 3; } .bento-card { padding: 2rem; } .eco-visuals { min-height: 420px; } .footer-bottom { flex-direction: column; gap: 1rem; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="index.html">Misty Lavertu</a></div>
+  <nav>
+    <ul>
+      <li><a href="decision-led-leadership.html">Leadership</a></li>
+      <li><a href="say-yes.html" style="color: var(--gold);">Movement</a></li>
+      <li><a href="the-yes-room.html">YES Room</a></li>
+      <li><a href="say-yes-experience.html">Experience</a></li>
+      <li><a href="the-standard.html">The Standard</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <a href="the-decision-code.html" class="nav-cta">Take The Decision Code</a>
+  <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+</header>
+
+<!-- Section 1: Movement statement -->
+<section class="internal-hero">
+  <span class="hero-subtitle gs-up">The Movement</span>
+  <h1 class="hero-title gs-up">Say YES.<br>Figure It Out Later.</h1>
+  <p class="hero-desc gs-up">The philosophy inside Decision-Led Leadership — belonging, identity, and a standard for how ambitious leaders operate when hesitation is no longer acceptable.</p>
+</section>
+
+<!-- Section 2: What Say YES means -->
+<section class="section-padding" style="padding-top: 0;">
+  <div class="ecosystem-grid">
+    <div class="eco-visuals gs-up">
+      <div class="floating-card fc-1">
+        <img src="Aestetics/782ff39f-e89d-42b6-ad2d-db805427d078.png" alt="Say YES Movement" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div class="eco-content gs-up">
+      <span class="sec-tag">What Say YES Means</span>
+      <h3>Not reckless. Not toxic positivity.</h3>
+      <p>Say YES does not mean blind action. It means choosing courage, leadership, and movement when circling and delay are costing you more than an imperfect yes ever could.</p>
+      <p>It is rooted in standards, self-trust, and responsibility. It is transformational, not motivational.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Built on -->
+<section class="section-padding" style="background: rgba(255,255,255,0.01);">
+  <div class="section-header gs-up">
+    <span class="sec-tag">Foundation</span>
+    <h2 class="sec-title">What This Movement Is Built On</h2>
+  </div>
+  <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 1000px;">
+    <div class="bento-card gs-up"><h3>Decisiveness</h3><p>Clean choices over endless deliberation.</p></div>
+    <div class="bento-card gs-up"><h3>Self-trust</h3><p>Rebuilt through protected commitments.</p></div>
+    <div class="bento-card gs-up"><h3>Courage</h3><p>Before the conditions feel perfect.</p></div>
+    <div class="bento-card gs-up"><h3>Standards</h3><p>What you refuse to negotiate anymore.</p></div>
+    <div class="bento-card gs-up"><h3>Responsibility</h3><p>Owning your leadership without excuses.</p></div>
+    <div class="bento-card gs-up"><h3>Transformation</h3><p>Identity-level, not motivational spikes.</p></div>
+    <div class="bento-card gs-up"><h3>Leadership</h3><p>How you show up in every room you lead.</p></div>
+  </div>
+</section>
+
+<!-- Section 4: Who it's for -->
+<section class="section-padding">
+  <div class="section-header gs-up">
+    <span class="sec-tag">How It Relates</span>
+    <h2 class="sec-title">The philosophy inside the category</h2>
+    <p style="color: var(--text-muted); max-width: 640px; margin: 1rem auto 0;">Decision-Led Leadership is the category. The Say YES Movement is the philosophy and identity layer inside it — the standard for how ambitious leaders choose, commit, and move.</p>
+  </div>
+</section>
+
+<!-- Section 5: How to step inside -->
+<section class="section-padding" style="background: rgba(255,255,255,0.01);">
+  <div class="section-header gs-up">
+    <span class="sec-tag">Step Inside</span>
+    <h2 class="sec-title">Doors Into The Movement</h2>
+  </div>
+  <div class="bento-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 900px;">
+    <div class="bento-card gs-up"><h3>The Decision Code</h3><p>Start here — name your Decision State and the pattern behind the drag.</p><a href="the-decision-code.html" class="cta-btn-solid" style="margin-top:1rem;display:inline-block;">Take The Decision Code</a></div>
+    <div class="bento-card gs-up"><h3>The YES Room</h3><p>Live invitation when registration is open.</p><a href="the-yes-room.html" class="cta-btn-solid" style="margin-top:1rem;display:inline-block;background:transparent;color:var(--gold);border:1px solid var(--gold);">Learn More</a></div>
+    <div class="bento-card gs-up"><h3>The Say YES Experience</h3><p>Seven-day activation — decide, commit, move.</p><a href="say-yes-experience.html" class="cta-btn-solid" style="margin-top:1rem;display:inline-block;">Explore</a></div>
+    <div class="bento-card gs-up"><h3>The Standard</h3><p>Signature program for sustained transformation.</p><a href="the-standard.html" class="cta-btn-solid" style="margin-top:1rem;display:inline-block;">Explore</a></div>
+  </div>
+</section>
+
+<!-- Section 6: CTA -->
+<footer>
+  <h2 class="footer-title gs-up">Start with The Decision Code</h2>
+  <a href="the-decision-code.html" class="cta-btn-solid gs-up">Take The Decision Code</a>
+  <p style="margin-top:1.5rem;color:var(--text-muted);font-size:0.95rem;">Or join the current live invitation on <a href="the-yes-room.html" style="color:var(--gold);">The YES Room</a> when doors are open.</p>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Misty Lavertu. All Rights Reserved.</p>
+    <p>Decision-Led Leadership</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.gs-up').forEach(el => { gsap.from(el, { y: 40, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" } }); });
+  (function() { var btn = document.getElementById('mobile-menu-btn'); var header = document.querySelector('header'); if (btn && header) { btn.addEventListener('click', function() { header.classList.toggle('mobile-menu-open'); btn.setAttribute('aria-expanded', header.classList.contains('mobile-menu-open')); btn.textContent = header.classList.contains('mobile-menu-open') ? '✕' : '☰'; }); header.querySelectorAll('nav a').forEach(function(a) { a.addEventListener('click', function() { header.classList.remove('mobile-menu-open'); if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.textContent = '☰'; } }); }); } })();
+</script>
+</body>
+</html>

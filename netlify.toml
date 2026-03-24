@@ -3,9 +3,7 @@
 
 [build]
   publish = "."
-  # No build command – static HTML/CSS/JS
 
-# Optional: pretty URLs (e.g. /about instead of /about.html)
 [[redirects]]
   from = "/about"
   to = "/about.html"
@@ -17,18 +15,52 @@
   status = 200
 
 [[redirects]]
-  from = "/nueva"
-  to = "/nueva.html"
-  status = 200
-
-[[redirects]]
   from = "/work-with-misty"
   to = "/work-with-misty.html"
   status = 200
 
 [[redirects]]
-  from = "/assessment"
-  to = "/assessment.html"
+  from = "/decision-led-leadership"
+  to = "/decision-led-leadership.html"
   status = 200
 
-# SPA-style fallback not needed – multi-page static site
+[[redirects]]
+  from = "/the-decision-code"
+  to = "/the-decision-code.html"
+  status = 200
+
+[[redirects]]
+  from = "/the-yes-room"
+  to = "/the-yes-room.html"
+  status = 200
+
+[[redirects]]
+  from = "/say-yes-experience"
+  to = "/say-yes-experience.html"
+  status = 200
+
+[[redirects]]
+  from = "/the-standard"
+  to = "/the-standard.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+# Legacy
+[[redirects]]
+  from = "/assessment"
+  to = "/the-decision-code"
+  status = 301
+
+[[redirects]]
+  from = "/nueva"
+  to = "/work-with-misty"
+  status = 301
+
+[[redirects]]
+  from = "/experiences"
+  to = "/"
+  status = 301
