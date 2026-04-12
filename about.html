@@ -70,6 +70,14 @@ img { max-width: 100%; height: auto; display: block; }
 .nav { display: flex; gap: 28px; align-items: center; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
 .nav a { color: var(--muted); transition: color 0.2s; }
 .nav a:hover { color: var(--text); }
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.nav-dropdown-toggle::after { content: "▾"; font-size: 9px; transition: transform 0.2s; }
+.nav-dropdown.open .nav-dropdown-toggle::after { transform: rotate(180deg); }
+.nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); min-width: 220px; background: rgba(250,248,245,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(26,26,26,0.12); padding: 12px 0; z-index: 50; }
+.nav-dropdown.open .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a { display: block; padding: 8px 22px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #4a342e; white-space: nowrap; transition: color 0.2s, background 0.2s; }
+.nav-dropdown-menu a:hover { color: #1a1a1a; background: rgba(26,26,26,0.04); }
 .nav a.active { color: var(--text); }
 
 .mobile-menu-btn {
@@ -100,6 +108,9 @@ img { max-width: 100%; height: auto; display: block; }
     padding: 24px 20px;
     gap: 20px;
   }
+  .nav-dropdown-menu { position: static; transform: none; min-width: 0; background: transparent; border: none; backdrop-filter: none; -webkit-backdrop-filter: none; padding: 4px 0 0 12px; }
+  .nav-dropdown.open .nav-dropdown-menu { display: flex; flex-direction: column; gap: 8px; }
+  .nav-dropdown-menu a { padding: 4px 0; font-size: 10px; }
 }
 
 /* ── Buttons ── */
@@ -391,7 +402,15 @@ img { max-width: 100%; height: auto; display: block; }
     <a href="index.html" class="brand">Misty Lavertu</a>
     <nav class="nav" id="main-nav">
       <a href="decision-led-leadership.html">Leadership</a>
-      <a href="say-yes.html">Movement</a>
+      <div class="nav-dropdown" id="nav-dropdown">
+            <a href="say-yes.html" class="nav-dropdown-toggle">Movement</a>
+            <div class="nav-dropdown-menu">
+              <a href="the-decision-code.html">The Decision Code</a>
+              <a href="the-yes-room.html">The YES Room</a>
+              <a href="say-yes-experience.html">The Say YES Experience</a>
+              <a href="the-standard.html">The Standard</a>
+            </div>
+          </div>
       <a href="about.html" class="active">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -534,6 +553,13 @@ img { max-width: 100%; height: auto; display: block; }
     });
   });
 })();
+
+  var dd = document.getElementById('nav-dropdown');
+  if (dd) {
+    var toggle = dd.querySelector('.nav-dropdown-toggle');
+    toggle.addEventListener('click', function(e) { e.preventDefault(); dd.classList.toggle('open'); });
+    document.addEventListener('click', function(e) { if (!dd.contains(e.target)) dd.classList.remove('open'); });
+  }
 </script>
 </body>
 </html>
