@@ -1,289 +1,775 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The YES Room | Misty Lavertu</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The YES Room | Misty Lavertu</title>
+  <meta name="description" content="Live masterclass — decades of work in one room. For leaders done waiting and ready to decide.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --bg-dark: #030303; --bg-card: rgba(255, 255, 255, 0.02); --glass-border: rgba(255, 255, 255, 0.06);
-  --gold: #E8B4B8; --gold-glow: rgba(232, 180, 184, 0.2); --burgundy: #4A0E17;
-  --text-main: #ffffff; --text-muted: rgba(255, 255, 255, 0.6);
-  --font-heading: 'Playfair Display', serif; --font-accent: 'Cinzel', serif; --font-body: 'Manrope', sans-serif;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
-ul { list-style: none; } img { max-width: 100%; height: auto; display: block; }
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --paper: #f5f2ef;
+      --text: #1a1a1a;
+      --muted: #4a342e;
+      --line: rgba(26,26,26,0.12);
+      --black: #1a1a1a;
+      --burgundy: #691818;
+      --gold: #e4c14e;
+      --plum: #420620;
+      --button-text: #faf8f5;
+      --max-width: 1220px;
+      --section-space: 120px;
+      --shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
 
-header { position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(3, 3, 3, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-.logo { font-family: var(--font-accent); font-size: 1.25rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
-nav ul { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
-nav a { font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
-nav a:hover { color: var(--gold); }
-.nav-cta { display: inline-block; padding: 0.5rem 1.15rem; border-radius: 50px; color: var(--bg-dark); background: var(--gold); font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
-.nav-cta:hover { background: var(--text-main); color: var(--bg-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
-.mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; background: none; border: none; padding: 0; font: inherit; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-.room-hero { position: relative; min-height: min(88svh, 760px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8rem 5% 4rem; text-align: center; overflow: hidden; }
-.room-hero::before { content: ''; position: absolute; top: 22%; left: 50%; transform: translateX(-50%); width: min(72vw, 720px); height: min(72vw, 720px); background: radial-gradient(circle, rgba(232, 180, 184, 0.14) 0%, transparent 62%); z-index: -1; pointer-events: none; }
-.room-hero .hero-subtitle { font-family: var(--font-accent); font-size: clamp(0.8rem, 1.8vw, 1rem); color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 1.25rem; }
-.room-hero .hero-title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.85rem, 4.5vw, 3.35rem);
-  line-height: 1.15;
-  margin-bottom: 1.35rem;
-  font-weight: 400;
-  font-style: italic;
-  max-width: min(38rem, 94vw);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.08em;
-}
-.room-hero .hero-title-line {
-  display: block;
-  text-align: center;
-}
-@media (min-width: 420px) {
-  .room-hero .hero-title-line { white-space: nowrap; }
-}
-.room-hero .hero-desc { font-size: clamp(0.95rem, 1.85vw, 1.1rem); color: var(--text-muted); max-width: 36rem; margin: 0 auto 2rem; line-height: 1.65; }
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-.room-main { max-width: 56rem; margin: 0 auto; padding: 0 5%; }
-.section-padding { padding: 4rem 0; position: relative; }
-.section-padding.room-hero-follow { padding-top: 2.5rem; }
-.sec-tag { font-family: var(--font-accent); font-size: 0.8rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem; display: inline-block; }
-.sec-title { font-family: var(--font-heading); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.2; }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    .page { overflow: hidden; }
 
-.promise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 0 auto; }
-.promise-card { background: var(--bg-card); backdrop-filter: blur(16px); border-radius: 20px; padding: 1.75rem 1.5rem; transition: border-color 0.25s ease, box-shadow 0.25s ease; border: 1px solid transparent; }
-.promise-card:hover { border-color: rgba(232, 180, 184, 0.12); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
-.promise-card .p-number { font-family: var(--font-accent); font-size: 0.68rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 0.65rem; display: block; }
-.promise-card h3 { font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-main); margin-bottom: 0.5rem; font-weight: 400; }
-.promise-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
 
-.room-intro-panel {
-  background: var(--bg-card);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: clamp(1.75rem, 4vw, 2.5rem);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: clamp(1.25rem, 3vw, 2rem);
-  align-items: start;
-}
-.room-intro-bit .sec-tag { margin-bottom: 0.65rem; }
-.room-intro-bit .room-lead { color: var(--text-muted); font-size: 0.98rem; line-height: 1.65; margin: 0; text-align: left; }
-.room-intro-divider { width: 1px; min-height: 4rem; background: linear-gradient(to bottom, transparent, var(--glass-border), transparent); align-self: stretch; }
-.room-section-label { text-align: center; margin-bottom: 2rem; }
-.room-section-label .sec-tag { margin-bottom: 0.5rem; }
-.room-section-label .sec-title { margin: 0; }
-.room-section-label .room-sub { color: var(--text-muted); max-width: 32rem; margin: 0.75rem auto 0; font-size: 0.95rem; line-height: 1.55; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
-.room-who-block { text-align: center; max-width: 38rem; margin: 0 auto; }
-.room-who-block h3 { font-family: var(--font-heading); font-size: clamp(1.5rem, 3vw, 1.85rem); font-weight: 400; margin: 0.5rem 0 1rem; color: var(--text-main); }
-.room-who-block p { color: var(--text-muted); font-size: 1rem; line-height: 1.65; margin: 0 0 1rem; }
-.room-who-block p:last-child { margin-bottom: 0; }
+    .display {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
 
-.room-host-card {
-  max-width: 26rem;
-  margin: 0 auto;
-  background: var(--bg-card);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  overflow: hidden;
-  text-align: center;
-}
-.room-host-card-img {
-  line-height: 0;
-  position: relative;
-  overflow: hidden;
-}
-/* Feather bottom into card — no blur overlay, just a soft opacity mask */
-.room-host-card-img img {
-  width: 100%;
-  height: auto;
-  display: block;
-  vertical-align: top;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, rgba(0, 0, 0, 0.45) 92%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, rgba(0, 0, 0, 0.45) 92%, transparent 100%);
-}
-.room-host-card-copy { padding: 1.75rem 1.5rem 2rem; }
-.room-host-card-copy .sec-tag { margin-bottom: 0.5rem; }
-.room-host-card-copy h3 { font-family: var(--font-heading); font-size: 1.65rem; font-weight: 400; margin: 0 0 1rem; color: var(--text-main); }
-.room-host-card-copy p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; margin: 0 0 1rem; text-align: left; }
-.room-host-card-copy p:last-of-type { margin-bottom: 0; }
-.room-host-card-copy a { display: inline-block; margin-top: 1.15rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; }
+    .heading {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin: 0 0 18px;
+    }
 
-.room-reg-panel {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: clamp(2rem, 5vw, 2.75rem);
-  text-align: center;
-}
-.room-reg-panel .sec-tag { margin-bottom: 0.5rem; }
-.room-reg-panel h3 { font-family: var(--font-heading); font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 400; margin: 0 0 0.75rem; color: var(--text-main); }
-.room-reg-panel > p { color: var(--text-muted); font-size: 0.95rem; margin: 0 auto 1.5rem; max-width: 28rem; }
-.reg-box {
-  max-width: 100%;
-  margin: 0 auto 1.75rem;
-  padding: 1.75rem;
-  text-align: left;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 18px;
-  border: 1px solid var(--glass-border);
-}
-.reg-box p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.92rem; }
-.reg-box p:last-child { margin-bottom: 0; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 28px;
+      background: var(--black);
+      color: var(--button-text);
+      border: 1px solid var(--black);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
 
-.cta-btn-solid { display: inline-block; background: var(--gold); color: var(--bg-dark); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
-.cta-btn-solid:hover { background: var(--text-main); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
-.cta-btn-outline { display: inline-block; padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; color: var(--gold); border: 1px solid var(--gold); }
-.cta-btn-outline:hover { background: var(--gold); color: var(--bg-dark); transform: translateY(-2px); }
+    .btn:hover {
+      background: transparent;
+      color: var(--black);
+    }
 
-footer { background: #000; padding: 3rem 5% 2rem; text-align: center; }
-.footer-bottom { margin-top: 0; padding-top: 2rem; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .btn-outline {
+      background: transparent;
+      color: var(--black);
+      border-color: var(--line);
+    }
 
-@media (max-width: 720px) {
-  .room-intro-panel { grid-template-columns: 1fr; }
-  .room-intro-divider { width: 100%; height: 1px; min-height: 0; background: var(--glass-border); }
-  .room-intro-bit .room-lead { text-align: center; }
-}
-@media (max-width: 768px) {
-  header { flex-wrap: wrap; align-items: center; }
-  header .logo { order: 0; }
-  header .mobile-menu-btn { order: 1; display: block; margin-left: auto; }
-  nav { display: none !important; }
-  .nav-cta { display: none; }
-  header.mobile-menu-open nav { display: block !important; width: 100%; order: 2; padding: 1rem 0 0; border-top: 1px solid var(--glass-border); margin-top: 0.5rem; }
-  header.mobile-menu-open nav ul { display: flex; flex-direction: column; gap: 1rem; }
-  header.mobile-menu-open .nav-cta { display: inline-block; width: 100%; text-align: center; margin-top: 1rem; order: 3; }
-  .promise-card { padding: 1.5rem 1.35rem; }
-  .footer-bottom { flex-direction: column; gap: 1rem; }
-  .room-host-card-copy p { text-align: center; }
-}
-</style>
+    .btn-outline:hover {
+      border-color: var(--black);
+      background: var(--black);
+      color: var(--button-text);
+    }
+
+    /* ── Topbar ── */
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(250,248,245,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .topbar-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 36px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover { color: var(--text); }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--text);
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+
+    /* ── Hero / Statement band ── */
+    .hero-statement {
+      background: linear-gradient(180deg, #f7f2ec 0%, #f2ebe4 100%);
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      padding: clamp(92px, 14vw, 180px) 0 clamp(72px, 10vw, 140px);
+    }
+
+    .hero-statement-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-statement .eyebrow { margin-bottom: 18px; }
+
+    .hero-statement .display {
+      font-size: clamp(48px, 8vw, 96px);
+      margin-bottom: 24px;
+    }
+
+    .hero-statement p {
+      max-width: 640px;
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* ── Sections ── */
+    .section {
+      padding: var(--section-space) 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .section-header .heading {
+      font-size: clamp(36px, 5vw, 62px);
+      margin-bottom: 14px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 16px;
+    }
+
+    /* ── Split layout ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .media-wrap { position: relative; }
+
+    .media-accent {
+      position: absolute;
+      width: 68%;
+      height: 68%;
+      background: var(--gold);
+      top: -28px;
+      left: -28px;
+      z-index: 0;
+    }
+
+    .media-card {
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      background: var(--paper);
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .media-card img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: min(78vh, 700px);
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .content-block { max-width: 520px; }
+
+    .content-block .heading {
+      font-size: clamp(42px, 6vw, 72px);
+      margin-bottom: 22px;
+    }
+
+    .content-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .content-block .muted { color: var(--muted); }
+
+    .content-block .btn { margin-top: 18px; }
+
+    /* ── Two-panel (for-who) ── */
+    .for-who {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .for-who-panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 42px 36px;
+    }
+
+    .for-who-panel .eyebrow { margin-bottom: 14px; }
+
+    .for-who-panel .heading {
+      font-size: clamp(32px, 4vw, 52px);
+      margin-bottom: 18px;
+    }
+
+    .for-who-panel p {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0 0 14px;
+      line-height: 1.65;
+    }
+
+    .for-who-panel p:last-child { margin-bottom: 0; }
+
+    .for-who-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .for-who-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 14px;
+      align-items: start;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .for-who-list li::before {
+      content: "\2014";
+      color: var(--gold);
+      font-weight: 700;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    /* ── Experience card grid ── */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 46px;
+    }
+
+    .experience-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 34px 28px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .experience-card .step {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .experience-card h3 {
+      margin: 0 0 14px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .experience-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ── Who it's for — centered ── */
+    .who-centered {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .who-centered .heading {
+      font-size: clamp(36px, 5vw, 62px);
+      margin-bottom: 16px;
+    }
+
+    .who-centered p {
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0 0 14px;
+      line-height: 1.7;
+    }
+
+    .who-centered p:last-child { margin-bottom: 0; }
+
+    /* ── Registration panel ── */
+    .reg-panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: clamp(42px, 6vw, 64px);
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .reg-panel .eyebrow { margin-bottom: 14px; }
+
+    .reg-panel .heading {
+      font-size: clamp(36px, 5vw, 56px);
+      margin-bottom: 16px;
+    }
+
+    .reg-panel > p {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0 auto 28px;
+      max-width: 520px;
+    }
+
+    .reg-details {
+      text-align: left;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 0;
+      margin: 0 0 36px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .reg-details p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .reg-details strong {
+      display: inline-block;
+      min-width: 120px;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .reg-fallback {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .reg-fallback a {
+      color: var(--burgundy);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+
+    .reg-fallback a:hover { color: var(--text); }
+
+    /* ── Divider ── */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--plum);
+      color: rgba(255,255,255,0.5);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1080px) {
+      :root { --section-space: 92px; }
+
+      .split,
+      .for-who {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .content-block { max-width: none; }
+
+      .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .media-card { min-height: 480px; }
+      .media-card img { max-height: min(72vh, 480px); }
+    }
+
+    @media (max-width: 820px) {
+      .nav { display: none; }
+      .mobile-menu-btn { display: block; }
+
+      .topbar-inner { min-height: 68px; }
+      .brand { font-size: 30px; }
+
+      .hero-statement .display,
+      .content-block .heading,
+      .for-who-panel .heading,
+      .who-centered .heading,
+      .reg-panel .heading {
+        line-height: 0.96;
+      }
+
+      .media-accent {
+        width: 58%;
+        height: 58%;
+      }
+
+      .topbar.menu-open .nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(250,248,245,0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 24px 20px;
+        border-bottom: 1px solid var(--line);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(calc(100% - 24px), var(--max-width));
+      }
+
+      .btn { width: 100%; }
+      .section { padding: 72px 0; }
+
+      .experience-grid { grid-template-columns: 1fr; }
+      .experience-card { padding: 28px 22px; }
+
+      .media-card { min-height: 380px; }
+      .media-card img { max-height: min(68vh, 380px); }
+
+      .for-who-panel { padding: 34px 24px; }
+      .reg-panel { padding: 34px 24px; }
+
+      .reg-details strong {
+        display: block;
+        min-width: 0;
+        margin-bottom: 2px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="page">
+    <header class="topbar" id="topbar">
+      <div class="container topbar-inner">
+        <a href="index.html" class="brand">Misty Lavertu</a>
 
-<header>
-  <div class="logo"><a href="index.html">Misty Lavertu</a></div>
-  <nav>
-    <ul>
-      <li><a href="decision-led-leadership.html">Leadership</a></li>
-      <li><a href="say-yes.html">Movement</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <a href="the-decision-code.html" class="nav-cta">Take The Decision Code</a>
-  <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
-</header>
+        <nav class="nav" id="main-nav" aria-label="Primary navigation">
+          <a href="decision-led-leadership.html">Leadership</a>
+          <a href="say-yes.html">Movement</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
 
-<!-- Section 1: Hero invitation -->
-<section class="room-hero">
-  <span class="hero-subtitle gs-up">The YES Room</span>
-  <h1 class="hero-title gs-up">
-    <span class="hero-title-line">A lifetime of leadership.</span>
-    <span class="hero-title-line">One room. One moment.</span>
-  </h1>
-  <p class="hero-desc gs-up">Live masterclass — decades of work in one room. For leaders done waiting and ready to decide.</p>
-  <p style="margin-top: 1.5rem;"><a href="mailto:hello@mistylavertu.com?subject=YES%20Room%20registration" class="cta-btn-solid">Step Inside The YES Room</a></p>
-</section>
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      </div>
+    </header>
 
-<main class="room-main">
+    <main>
+      <!-- ── Hero statement band ── -->
+      <section class="hero-statement">
+        <div class="container hero-statement-inner">
+          <div class="eyebrow reveal">The YES Room</div>
+          <h1 class="display reveal">A lifetime of leadership.<br>One room. One moment.</h1>
+          <p class="reveal">
+            Live masterclass — decades of work in one room. For leaders done waiting and ready to decide.
+          </p>
+          <a href="mailto:hello@mistylavertu.com?subject=YES%20Room%20registration" class="btn reveal">Step Inside The YES Room</a>
+        </div>
+      </section>
 
-<section class="section-padding room-hero-follow">
-  <div class="room-intro-panel gs-up">
-    <div class="room-intro-bit">
-      <span class="sec-tag">What this is</span>
-      <p class="room-lead">A live public invitation — not a webinar. Leadership, courage, decisive movement. Decision Drag named; shift from hesitation to real.</p>
-    </div>
-    <div class="room-intro-divider" aria-hidden="true"></div>
-    <div class="room-intro-bit">
-      <span class="sec-tag">Why it matters</span>
-      <p class="room-lead">Strategy isn’t the missing piece — the moment that closes knowing-to-moving is. Cleaner decisions, less overwhelm, movement when it counts.</p>
-    </div>
+      <!-- ── Two-panel intro ── -->
+      <section class="section">
+        <div class="container for-who">
+          <div class="for-who-panel reveal">
+            <div class="eyebrow">What this is</div>
+            <h2 class="heading">A live public invitation.</h2>
+            <p>Not a webinar. Not a replay. A room built for leadership, courage, and decisive movement.</p>
+            <p>Decision Drag named. The shift from hesitation to real — happening live, in one room, together.</p>
+          </div>
+
+          <div class="for-who-panel reveal">
+            <div class="eyebrow">Why it matters</div>
+            <h2 class="heading">Strategy isn't the missing piece.</h2>
+            <p>The moment that closes the gap between knowing and moving — that's the missing piece.</p>
+            <p>Cleaner decisions. Less overwhelm. Movement when it counts.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="container"><div class="section-divider"></div></div>
+
+      <!-- ── What you'll walk away with ── -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="eyebrow">In the room</div>
+            <h2 class="heading">What you'll walk away with</h2>
+            <p>Four outcomes from one live masterclass.</p>
+          </div>
+
+          <div class="experience-grid">
+            <article class="experience-card reveal">
+              <div>
+                <div class="step">01</div>
+                <h3>Clarity</h3>
+                <p>A clear understanding of what has been keeping you stuck — and what to do about it.</p>
+              </div>
+            </article>
+
+            <article class="experience-card reveal">
+              <div>
+                <div class="step">02</div>
+                <h3>Decision Drag</h3>
+                <p>A sharper lens on Decision Drag — how it operates and how to dismantle it.</p>
+              </div>
+            </article>
+
+            <article class="experience-card reveal">
+              <div>
+                <div class="step">03</div>
+                <h3>Commitment</h3>
+                <p>A new relationship to decision-making and commitment that changes how you lead.</p>
+              </div>
+            </article>
+
+            <article class="experience-card reveal">
+              <div>
+                <div class="step">04</div>
+                <h3>Leadership</h3>
+                <p>One clear shift that moves you out of hesitation and into leadership.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="container"><div class="section-divider"></div></div>
+
+      <!-- ── Who it's for ── -->
+      <section class="section">
+        <div class="container">
+          <div class="who-centered reveal">
+            <div class="eyebrow">Who it's for</div>
+            <h2 class="heading">Leaders who already know enough.</h2>
+            <p>Ambitious, high-capacity leaders ready for a real shift — not more content.</p>
+            <p>Small business owners, entrepreneurs, corporate teams, network marketing leaders. Women who are done consuming and ready to decide.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="container"><div class="section-divider"></div></div>
+
+      <!-- ── About Misty — split layout ── -->
+      <section class="section">
+        <div class="container split">
+          <div class="media-wrap reveal">
+            <div class="media-accent"></div>
+            <div class="media-card">
+              <img
+                src="Aestetics/e2ae0389-e77c-4750-8a7b-ec16e46ee44d.png"
+                alt="Misty Lavertu — your host for The YES Room"
+                loading="lazy"
+              >
+            </div>
+          </div>
+
+          <div class="content-block reveal">
+            <div class="eyebrow">Your host</div>
+            <h2 class="heading">Misty Lavertu</h2>
+            <p>More than three decades leading, building, and teaching one truth in every room: life changes the moment you decide.</p>
+            <p class="muted">The YES Room is the first public invitation into that body of work — a lifetime of leadership, distilled into one live experience.</p>
+            <a href="about.html" class="btn-outline btn">About Misty</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="container"><div class="section-divider"></div></div>
+
+      <!-- ── Registration ── -->
+      <section class="section">
+        <div class="container">
+          <div class="reg-panel reveal">
+            <div class="eyebrow">Registration</div>
+            <h2 class="heading">Live details</h2>
+            <p>Add your name to the list. When the room opens, you'll be the first to know.</p>
+
+            <div class="reg-details">
+              <p><strong>Date</strong> TBA</p>
+              <p><strong>Time</strong> TBA</p>
+              <p><strong>Format</strong> Live via Zoom</p>
+              <p><strong>Replay</strong> Details to follow once registration opens</p>
+            </div>
+
+            <a href="mailto:hello@mistylavertu.com?subject=YES%20Room%20registration" class="btn">Step Inside The YES Room</a>
+
+            <p class="reg-fallback">While you wait: <a href="the-decision-code.html">Take The Decision Code</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>&copy; 2026 Misty Lavertu</span>
+        <span>Decision-Led Leadership</span>
+      </div>
+    </footer>
   </div>
-</section>
 
-<section class="section-padding">
-  <div class="room-section-label gs-up">
-    <span class="sec-tag">In the room</span>
-    <h2 class="sec-title">What you’ll walk away with</h2>
-    <p class="room-sub">Four outcomes from one live masterclass.</p>
-  </div>
-  <div class="promise-grid">
-    <div class="promise-card gs-up"><span class="p-number">01</span><h3>Clarity</h3><p>A clear understanding of what has been keeping you stuck</p></div>
-    <div class="promise-card gs-up"><span class="p-number">02</span><h3>Decision Drag</h3><p>A sharper lens on Decision Drag and how it operates</p></div>
-    <div class="promise-card gs-up"><span class="p-number">03</span><h3>Commitment</h3><p>A new relationship to decision-making and commitment</p></div>
-    <div class="promise-card gs-up"><span class="p-number">04</span><h3>Leadership</h3><p>One clear shift that moves you out of hesitation and into leadership</p></div>
-  </div>
-</section>
+  <script>
+    var revealItems = document.querySelectorAll('.reveal');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach(function (item) { revealObserver.observe(item); });
 
-<section class="section-padding">
-  <div class="room-who-block gs-up">
-    <span class="sec-tag">Who it’s for</span>
-    <h3>Leaders who already know enough</h3>
-    <p>Ambitious, high-capacity leaders ready for a real shift — not more content.</p>
-    <p>Small business owners, entrepreneurs, corporate teams, network marketing leaders. Women who are done consuming and ready to decide.</p>
-  </div>
-</section>
+    (function () {
+      var btn = document.getElementById('mobile-menu-btn');
+      var topbar = document.getElementById('topbar');
+      if (!btn || !topbar) return;
 
-<section class="section-padding">
-  <div class="room-host-card gs-up">
-    <div class="room-host-card-img">
-      <img src="Aestetics/e2ae0389-e77c-4750-8a7b-ec16e46ee44d.png" alt="Misty Lavertu — your host for The YES Room" loading="lazy" decoding="async">
-    </div>
-    <div class="room-host-card-copy">
-      <span class="sec-tag">About Misty</span>
-      <h3>Your host</h3>
-      <p>Misty Lavertu has spent more than three decades leading, building, and teaching one truth in every room: life changes the moment you decide.</p>
-      <p>The YES Room is the first public invitation into that body of work.</p>
-      <a href="about.html">About Misty →</a>
-    </div>
-  </div>
-</section>
+      btn.addEventListener('click', function () {
+        var open = topbar.classList.toggle('menu-open');
+        btn.setAttribute('aria-expanded', open);
+        btn.innerHTML = open ? '&#10005;' : '&#9776;';
+      });
 
-<section class="section-padding" style="padding-bottom: 5rem;">
-  <div class="room-reg-panel gs-up">
-    <span class="sec-tag">Registration</span>
-    <h3>Live details</h3>
-    <p>Add dates, time zone, and link when the room is open.</p>
-    <div class="reg-box">
-      <p><strong>Date</strong> — TBA</p>
-      <p><strong>Time + time zone</strong> — TBA</p>
-      <p><strong>Format</strong> — Zoom registration (replace with your live link when open)</p>
-      <p><strong>Replay</strong> — Note here if a replay is offered.</p>
-      <p>When registration is closed: <a href="the-decision-code.html" style="color: var(--gold);">Take The Decision Code</a> while you wait — or step inside via email when you’re ready.</p>
-    </div>
-    <a href="mailto:hello@mistylavertu.com?subject=YES%20Room%20registration" class="cta-btn-solid">Step Inside The YES Room</a>
-    <p style="margin-top: 1.15rem; font-size: 0.88rem; color: var(--text-muted);">While you wait: <a href="the-decision-code.html" style="color: var(--gold); text-decoration: underline; text-underline-offset: 3px;">Take The Decision Code</a></p>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div class="footer-bottom">
-    <p>&copy; 2026 Misty Lavertu. All Rights Reserved.</p>
-    <p>Decision-Led Leadership</p>
-  </div>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray('.gs-up').forEach(el => { gsap.from(el, { y: 40, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" } }); });
-  (function() { var btn = document.getElementById('mobile-menu-btn'); var header = document.querySelector('header'); if (btn && header) { btn.addEventListener('click', function() { header.classList.toggle('mobile-menu-open'); btn.setAttribute('aria-expanded', header.classList.contains('mobile-menu-open')); btn.textContent = header.classList.contains('mobile-menu-open') ? '✕' : '☰'; }); var c = header.querySelector('.nav-cta'); if (c) c.addEventListener('click', function() { header.classList.remove('mobile-menu-open'); if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.textContent = '☰'; } }); header.querySelectorAll('nav a').forEach(function(a) { a.addEventListener('click', function() { header.classList.remove('mobile-menu-open'); if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.textContent = '☰'; } }); }); } })();
-</script>
+      topbar.querySelectorAll('.nav a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          topbar.classList.remove('menu-open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.innerHTML = '&#9776;';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
