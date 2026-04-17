@@ -131,17 +131,18 @@
       display: flex;
       gap: 28px;
       align-items: center;
-      font-size: 12px;
+      font-size: 13px;
+      font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
     .nav a {
-      color: var(--muted);
+      color: var(--text);
       transition: color 0.2s ease;
     }
 
-    .nav a:hover { color: var(--text); }
+    .nav a:hover { color: var(--burgundy); }
     .nav-dropdown { position: relative; }
     .nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; }
     .nav-dropdown-toggle::after { content: "▾"; font-size: 9px; transition: transform 0.2s; }
@@ -167,6 +168,9 @@
       padding: var(--section-space) 0;
       position: relative;
     }
+    .section--paper {
+      background: var(--paper);
+    }
 
     .section-header {
       text-align: center;
@@ -183,6 +187,11 @@
       max-width: 560px;
       margin: 0 auto;
       font-size: 16px;
+    }
+    .container-narrow {
+      max-width: 38rem;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* ── Hero ── */
@@ -213,6 +222,13 @@
       color: var(--muted);
       max-width: 480px;
       margin-bottom: 32px;
+    }
+    .hero-desc-note {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0.75;
     }
 
     .hero-media { position: relative; }
@@ -641,9 +657,9 @@
     <div class="hero-split">
       <div class="hero-text reveal">
         <div class="eyebrow">The Decision Code</div>
-        <h1 class="hero-title">You have a decision pattern&nbsp;&mdash; not a motivation&nbsp;problem.</h1>
-        <p class="hero-desc">Two-minute diagnostic: your Decision State, the drag underneath, and one concrete shift to move. For capable leaders who already know the next step but keep postponing it.</p>
-        <a href="https://quiz.mistylavertu.com/decision-code/" class="btn">Begin The Assessment</a>
+        <h1 class="hero-title">You're not stuck.<br>But something is keeping you from moving.</h1>
+        <p class="hero-desc">The Decision Code will show you why.<span class="hero-desc-note">Quick. Clear. And you'll know exactly what to do next.</span></p>
+        <a href="https://quiz.mistylavertu.com/decision-code/" class="btn">Take The Decision Code</a>
       </div>
       <div class="hero-media reveal">
         <div class="hero-accent"></div>
@@ -664,7 +680,7 @@
       <div class="eyebrow">Who it&rsquo;s for</div>
       <h2 class="heading">Capable leaders hitting the same wall</h2>
     </div>
-    <div style="max-width:620px;margin:0 auto;">
+    <div class="container-narrow">
       <ul class="for-who-list reveal">
         <li>You&rsquo;re not missing information &mdash; you&rsquo;re stalling on the decision you already sense.</li>
         <li>Open loops and half-commitments drain energy before you fully notice.</li>
@@ -676,39 +692,32 @@
 </section>
 
 <!-- ── 3. Two minutes — What you'll see ── -->
-<section class="section" style="background:var(--paper);">
+<section class="section section--paper">
   <div class="container">
     <div class="section-header reveal">
-      <div class="eyebrow">Two minutes</div>
-      <h2 class="heading">What you&rsquo;ll see</h2>
+      <div class="eyebrow">What it does</div>
+      <h2 class="heading">The Decision Code</h2>
     </div>
     <div class="steps-grid reveal">
       <div class="step-row">
         <span class="step-num">01</span>
         <div>
-          <strong>Answer fast</strong>
-          <p>First instinct counts &mdash; we&rsquo;re mapping reflex, not rehearsed story.</p>
+          <strong>Identifies your decision pattern</strong>
+          <p>See how you actually decide &mdash; not how you think you do.</p>
         </div>
       </div>
       <div class="step-row">
         <span class="step-num">02</span>
         <div>
-          <strong>Name the pattern</strong>
-          <p>Decision Drag shows up underneath the &ldquo;reasonable&rdquo; reasons you wait.</p>
+          <strong>Shows where you hesitate</strong>
+          <p>The specific point where Decision Drag takes hold.</p>
         </div>
       </div>
       <div class="step-row">
         <span class="step-num">03</span>
         <div>
-          <strong>One shift</strong>
-          <p>A single actionable start &mdash; not a laundry list &mdash; so you can move the same day.</p>
-        </div>
-      </div>
-      <div class="step-row">
-        <span class="step-num">04</span>
-        <div>
-          <strong>In your inbox</strong>
-          <p>Your read hits your email &mdash; save it, revisit it, act when you&rsquo;re ready.</p>
+          <strong>Gives your next step</strong>
+          <p>One clear action &mdash; so you can move, not just think about moving.</p>
         </div>
       </div>
     </div>
@@ -808,8 +817,8 @@
 <!-- ── 7. Final CTA ── -->
 <section class="section final-cta">
   <div class="container reveal">
-    <h2 class="heading">Two minutes. One pattern.<br>One start.</h2>
-    <a href="https://quiz.mistylavertu.com/decision-code/" class="btn">Begin The Assessment</a>
+    <h2 class="heading">Take The Decision Code.</h2>
+    <a href="https://quiz.mistylavertu.com/decision-code/" class="btn">Take The Decision Code</a>
     <div class="final-cta-links">
       <a href="the-yes-room.html">The YES Room</a>
       <span class="dot">&middot;</span>

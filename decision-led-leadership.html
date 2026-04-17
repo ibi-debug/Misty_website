@@ -85,9 +85,9 @@
       justify-content: center;
       min-height: 52px;
       padding: 0 28px;
-      background: var(--black);
+      background: var(--burgundy);
       color: var(--button-text);
-      border: 1px solid var(--black);
+      border: 1px solid var(--burgundy);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.18em;
@@ -98,7 +98,7 @@
 
     .btn:hover {
       background: transparent;
-      color: var(--black);
+      color: var(--burgundy);
     }
 
     /* ── Topbar ── */
@@ -131,17 +131,18 @@
       display: flex;
       gap: 28px;
       align-items: center;
-      font-size: 12px;
+      font-size: 13px;
+      font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
     .nav a {
-      color: var(--muted);
+      color: var(--text);
       transition: color 0.2s ease;
     }
 
-    .nav a:hover { color: var(--text); }
+    .nav a:hover { color: var(--burgundy); }
     .nav-dropdown { position: relative; }
     .nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; }
     .nav-dropdown-toggle::after { content: "▾"; font-size: 9px; transition: transform 0.2s; }

@@ -67,9 +67,9 @@ img { max-width: 100%; height: auto; display: block; }
   line-height: 1;
 }
 
-.nav { display: flex; gap: 28px; align-items: center; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
-.nav a { color: var(--muted); transition: color 0.2s; }
-.nav a:hover { color: var(--text); }
+.nav { display: flex; gap: 28px; align-items: center; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+.nav a { color: var(--text); transition: color 0.2s; }
+.nav a:hover { color: var(--burgundy); }
 .nav-dropdown { position: relative; }
 .nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; }
 .nav-dropdown-toggle::after { content: "▾"; font-size: 9px; transition: transform 0.2s; }
@@ -120,21 +120,21 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: center;
   min-height: 52px;
   padding: 0 28px;
-  background: var(--black);
+  background: var(--burgundy);
   color: var(--button-text);
   font-family: 'Manrope', sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  border: 2px solid var(--black);
+  border: 2px solid var(--burgundy);
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .btn:hover {
   background: transparent;
-  color: var(--black);
+  color: var(--burgundy);
 }
 
 .btn-light {
@@ -263,6 +263,9 @@ img { max-width: 100%; height: auto; display: block; }
 .centered-section { text-align: center; }
 
 .centered-section .section-eyebrow {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -285,6 +288,9 @@ img { max-width: 100%; height: auto; display: block; }
   line-height: 1.8;
   max-width: 640px;
   margin: 0 auto;
+}
+.centered-section p + p {
+  margin-top: 1.25rem;
 }
 
 /* ── Statement Band ── */
@@ -422,20 +428,20 @@ img { max-width: 100%; height: auto; display: block; }
 <section class="hero">
   <div class="wrap">
     <p class="hero-eyebrow reveal">About Misty</p>
-    <h1 class="hero-heading reveal">"I believe life changes the moment you decide."</h1>
-    <p class="hero-sub reveal">Built in practice: decades of leadership and one repeating pattern — capable people slowed by hesitation, not lack of talent.</p>
+    <h1 class="hero-heading reveal">You already know.</h1>
+    <p class="hero-sub reveal">You're here because you're done sitting in the space between knowing and moving.</p>
   </div>
 </section>
 
-<!-- ── 2. Misty's Story (Split — image right) ── -->
+<!-- ── 2. What I Believe (Split — image right) ── -->
 <section class="section-space">
   <div class="wrap">
     <div class="split">
       <div class="split-text reveal">
-        <p class="split-text-eyebrow">The Origin</p>
-        <h2>Misty's Story</h2>
-        <p>From North Battleford, Saskatchewan — a through-line of decisions: how we make them, protect them, and how they shape leadership.</p>
-        <p>30+ years, multi-seven-figure builds, thousands of moments requiring courage and clean commitment. The shift never changed: everything moved the moment they decided.</p>
+        <p class="split-text-eyebrow">The Belief</p>
+        <h2>I don't believe people are stuck.</h2>
+        <p>I believe they're undecided.</p>
+        <p>I teach Decision-Led Leadership.</p>
       </div>
       <div class="media-wrap reveal">
         <div class="media-accent top-right"></div>
@@ -447,50 +453,40 @@ img { max-width: 100%; height: auto; display: block; }
   </div>
 </section>
 
-<!-- ── 3. The Gap I Kept Seeing ── -->
+<!-- ── 3. Authority ── -->
 <section class="section-space statement-band">
   <div class="wrap centered-section">
-    <p class="section-eyebrow reveal">Why This Work Exists</p>
-    <h2 class="reveal">The gap I kept seeing</h2>
-    <p class="reveal">Same gap in every room — SMB, corporate, entrepreneurship, network marketing. Smart, capable people stuck in the space between knowing and moving.</p>
-    <p class="reveal" style="margin-top: 16px;">I call it <strong>Decision Drag</strong>.</p>
+    <p class="section-eyebrow reveal">Authority</p>
+    <h2 class="reveal">30+ years of leadership.</h2>
+    <p class="reveal">I've spent over 30 years in leadership&hellip; and more than 18 years building businesses, leading teams, and developing women into leaders who actually follow through.</p>
+    <p class="reveal">Not just starting&hellip; but finishing what they said they would do.</p>
+    <p class="reveal">I've coached thousands of women through indecision, overwhelm, and hesitation&hellip; and watched what happens when they finally decide.</p>
   </div>
 </section>
 
-<!-- ── 4. What I Help People Do ── -->
+<!-- ── 4. Proof ── -->
 <section class="section-space">
   <div class="wrap centered-section">
-    <p class="section-eyebrow reveal">The Result</p>
-    <h2 class="reveal">What I Help People Do</h2>
-    <p class="reveal">Eliminate Decision Drag. Move with decisive leadership, standards, self-trust, and compounding momentum. You first — then business, team, life.</p>
-    <p class="reveal" style="margin-top: 16px;">Bigger than one industry: the issue is the pattern; your arena is where you practice.</p>
-  </div>
-</section>
-
-<!-- ── 5. What I Believe ── -->
-<section class="section-space statement-band">
-  <div class="wrap centered-section">
-    <p class="section-eyebrow reveal">Leadership</p>
-    <h2 class="reveal">What I Believe</h2>
+    <p class="section-eyebrow reveal">The Proof</p>
+    <h2 class="reveal">What it's built on.</h2>
     <ul class="for-who-list reveal">
-      <li>Leadership starts when you stop negotiating what you already know — not when you have every answer.</li>
-      <li>Open loops are expensive.</li>
-      <li>Standards protect momentum.</li>
-      <li>Self-trust is built through action.</li>
-      <li>Transformation begins with one clean decision.</li>
+      <li>Seven-figure business.</li>
+      <li>Proven leadership.</li>
+      <li>Founder of the Say YES Movement.</li>
+      <li>At the core of it all&hellip; I know what it takes to move when it matters.</li>
     </ul>
   </div>
 </section>
 
-<!-- ── 6. What Makes This Different (Split — image left) ── -->
+<!-- ── 5. The Approach (Split — image left) ── -->
 <section class="section-space">
   <div class="wrap">
     <div class="split reverse">
       <div class="split-text reveal">
         <p class="split-text-eyebrow">The Approach</p>
-        <h2>What Makes This Different</h2>
-        <p>This isn't motivation. It's an operating system for how you lead — yourself first, then everything else. Built from real decisions, real stakes, real rooms.</p>
-        <p>No scripts. No hype loops. Just the pattern that moves people from hesitation to momentum — and keeps them there.</p>
+        <h2>Decision-Led Leadership</h2>
+        <p>I don't teach motivation. I don't teach hype.</p>
+        <p>I teach Decision-Led Leadership. Because the women who build powerful businesses and lives aren't the ones who think the longest&hellip; They're the ones who decide&hellip; and follow through.</p>
       </div>
       <div class="media-wrap reveal">
         <div class="media-accent bottom-left"></div>
@@ -502,10 +498,10 @@ img { max-width: 100%; height: auto; display: block; }
   </div>
 </section>
 
-<!-- ── 7. CTA ── -->
+<!-- ── 6. CTA ── -->
 <section class="cta-section">
   <div class="wrap">
-    <h2 class="reveal">If this work resonates, start with The Decision Code.</h2>
+    <h2 class="reveal">If you're ready to stop circling&hellip;</h2>
     <a href="the-decision-code.html" class="btn btn-light reveal">Take The Decision Code</a>
   </div>
 </section>

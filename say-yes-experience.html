@@ -95,9 +95,9 @@
       justify-content: center;
       min-height: 52px;
       padding: 0 28px;
-      background: var(--black);
+      background: var(--burgundy);
       color: var(--button-text);
-      border: 1px solid var(--black);
+      border: 1px solid var(--burgundy);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.18em;
@@ -108,18 +108,18 @@
 
     .btn:hover {
       background: transparent;
-      color: var(--black);
+      color: var(--burgundy);
     }
 
     .btn-outline {
       background: transparent;
-      color: var(--black);
-      border-color: var(--line);
+      color: var(--burgundy);
+      border-color: rgba(105,24,24,0.35);
     }
 
     .btn-outline:hover {
-      border-color: var(--black);
-      background: var(--black);
+      border-color: var(--burgundy);
+      background: var(--burgundy);
       color: var(--button-text);
     }
 
@@ -153,17 +153,18 @@
       display: flex;
       gap: 28px;
       align-items: center;
-      font-size: 12px;
+      font-size: 13px;
+      font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
     .nav a {
-      color: var(--muted);
+      color: var(--text);
       transition: color 0.2s ease;
     }
 
-    .nav a:hover { color: var(--text); }
+    .nav a:hover { color: var(--burgundy); }
     .nav-dropdown { position: relative; }
     .nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; }
     .nav-dropdown-toggle::after { content: "▾"; font-size: 9px; transition: transform 0.2s; }
@@ -242,6 +243,13 @@
       font-size: 18px;
       color: rgba(255,255,255,0.84);
       margin-bottom: 34px;
+    }
+    .hero-subnote {
+      margin-top: 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.62);
+      max-width: 28rem;
     }
 
     .hero-actions {
@@ -679,14 +687,14 @@
         <div class="container">
           <div class="hero-content reveal">
             <div class="eyebrow">The Say YES Experience</div>
-            <h1 class="display">Your life changes the moment you decide.</h1>
+            <h1 class="display">You've thought about it long enough.</h1>
             <p class="hero-copy">
-              A 4-day activation for women who are &ldquo;done being undecided&rdquo; and ready
-              to lead with clarity, standards, courage and action.
+              This is where you move.<br>4 Days. Decide. Commit. Move.
             </p>
             <div class="hero-actions">
               <a href="#join" class="btn">Join The Say YES Experience</a>
             </div>
+            <p class="hero-subnote">4 days. Real movement. No more starting over.</p>
           </div>
         </div>
       </section>
@@ -754,10 +762,9 @@
       <section class="section statement">
         <div class="container statement-inner reveal">
           <div class="eyebrow">4 days. Decide. Commit. Move.</div>
-          <h2 class="heading">This is not more information. This is activation.</h2>
+          <h2 class="heading">You've thought about it long enough. This is where you move.</h2>
           <p>
-            The Say Yes Experience is a high-touch, 4 day activation designed to pull you out
-            of hesitation, lock in your decision and move you into bold, protected action.
+            4 days. Real movement. No more starting over.
           </p>
         </div>
       </section>
@@ -878,8 +885,8 @@
       <section class="section final-cta" id="join">
         <div class="container reveal">
           <div class="eyebrow">Join The Say YES Experience</div>
-          <h2 class="heading">You already know.</h2>
-          <p>Now it is time to decide.</p>
+          <h2 class="heading">You've thought about it long enough.</h2>
+          <p>This is where you move.</p>
           <a href="mailto:hello@mistylavertu.com?subject=Say%20YES%20Experience" class="btn">Join The Say YES Experience</a>
         </div>
       </section>

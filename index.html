@@ -61,9 +61,9 @@
       justify-content: center;
       min-height: 52px;
       padding: 0 28px;
-      background: var(--black);
+      background: var(--burgundy);
       color: var(--button-text);
-      border: 1px solid var(--black);
+      border: 1px solid var(--burgundy);
       font-family: "Manrope", sans-serif;
       font-size: 12px;
       font-weight: 700;
@@ -72,7 +72,7 @@
       transition: all .25s ease;
       cursor: pointer;
     }
-    .btn:hover { background: transparent; color: var(--black) }
+    .btn:hover { background: transparent; color: var(--burgundy) }
     .btn-light {
       background: #fff;
       color: var(--black);
@@ -111,12 +111,13 @@
       display: flex;
       gap: 28px;
       align-items: center;
-      font-size: 12px;
+      font-size: 13px;
+      font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
     }
-    .nav a { color: var(--muted); transition: color .2s }
-    .nav a:hover { color: var(--text) }
+    .nav a { color: var(--text); transition: color .2s }
+    .nav a:hover { color: var(--burgundy) }
     .nav-dropdown { position: relative; }
     .nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; }
     .nav-dropdown-toggle::after { content: "▾"; font-size: 9px; transition: transform 0.2s; }
@@ -155,25 +156,73 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: 62% top;
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(66,6,32,0.1) 0%,
-        rgba(66,6,32,0.2) 30%,
-        rgba(26,26,26,0.55) 60%,
-        rgba(26,26,26,0.78) 100%
-      );
+      background:
+        linear-gradient(
+          90deg,
+          rgba(26,26,26,0.78) 0%,
+          rgba(26,26,26,0.55) 30%,
+          rgba(26,26,26,0.25) 60%,
+          rgba(26,26,26,0.1) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(66,6,32,0.15) 0%,
+          transparent 40%,
+          rgba(26,26,26,0.35) 100%
+        );
       z-index: 1;
+    }
+    @media (max-width: 820px) {
+      .hero-bg img { object-position: center top; }
+      .hero-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(66,6,32,0.1) 0%,
+          rgba(66,6,32,0.2) 30%,
+          rgba(26,26,26,0.55) 60%,
+          rgba(26,26,26,0.82) 100%
+        );
+      }
     }
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 760px;
-      padding: 120px 0 72px;
+      max-width: min(720px, 58%);
+      padding: clamp(120px, 28vh, 280px) 0 72px;
+    }
+    @media (max-width: 820px) {
+      .hero-content { max-width: 100%; }
+    }
+    .hero-issue {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+    .hero-issue::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero-tagline {
+      margin-top: 14px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      font-weight: 600;
     }
     .hero-content .eyebrow {
       color: rgba(255,255,255,0.6);
@@ -183,24 +232,31 @@
     }
     .hero-title {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(40px, 7.2vw, 86px);
+      font-size: clamp(52px, 9vw, 120px);
       font-weight: 500;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      margin: 0 0 18px;
+      line-height: 0.9;
+      letter-spacing: -0.045em;
+      margin: 0 0 24px;
+      color: #fff;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
     }
     .hero-desc {
-      font-size: 15px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(18px, 2vw, 22px);
+      font-style: italic;
       color: rgba(255,255,255,0.82);
-      max-width: 520px;
-      margin: 0 0 26px;
-      line-height: 1.65;
+      max-width: 36rem;
+      margin: 0 0 32px;
+      line-height: 1.5;
     }
     .hero-content .btn {
-      min-height: 48px;
-      padding: 0 22px;
+      min-height: 52px;
+      padding: 0 26px;
       font-size: 11px;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.2em;
     }
 
     /* ── Marquee ── */
@@ -247,6 +303,469 @@
       font-size: 16px;
     }
 
+    /* Centered narrative (used elsewhere if needed) */
+    .prose-centered {
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .prose-centered p {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0 0 16px;
+    }
+
+    .section--paper { background: var(--paper); }
+
+    /* ── Editorial system: magazine-style layouts (issue mark, chapter, display, ed-split) ── */
+    .section--ed { padding: var(--section-space) 0; position: relative }
+    .section--cream { background: var(--bg) }
+    .section--plum {
+      background:
+        radial-gradient(ellipse 90% 55% at 85% 0%, rgba(228,193,78,0.12) 0%, transparent 52%),
+        radial-gradient(ellipse 70% 45% at 0% 100%, rgba(105,24,24,0.30) 0%, transparent 52%),
+        linear-gradient(165deg, #240414 0%, var(--plum) 55%, #16020c 100%);
+      color: #fff;
+    }
+
+    /* Issue mark (wide-tracked label w/ rule) */
+    .issue-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .issue-mark::before {
+      content: "";
+      display: block;
+      width: 38px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.55;
+    }
+    .section--plum .issue-mark { color: rgba(255,255,255,0.55) }
+
+    /* Chapter mark (Nº 01 — The Problem) */
+    .chapter-mark {
+      display: flex;
+      align-items: baseline;
+      gap: 22px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .chapter-num {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(56px, 7vw, 96px);
+      font-weight: 500;
+      line-height: 0.9;
+      color: var(--burgundy);
+      letter-spacing: -0.04em;
+    }
+    .section--plum .chapter-num { color: var(--gold) }
+    .chapter-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      min-width: 140px;
+    }
+    .section--plum .chapter-label {
+      color: rgba(255,255,255,0.6);
+      border-bottom-color: rgba(255,255,255,0.18);
+    }
+
+    /* Display type — the big “cover” moment per section */
+    .display-mark {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(52px, 9vw, 128px);
+      line-height: 0.94;
+      letter-spacing: -0.045em;
+      margin: 0 0 0.4em;
+      color: var(--text);
+    }
+    .section--plum .display-mark { color: #fff }
+    .display-mark em {
+      font-style: italic;
+      color: var(--burgundy);
+    }
+    .section--plum .display-mark em { color: var(--gold) }
+
+    /* Masthead */
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    @media (min-width: 960px) {
+      .masthead {
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 72px;
+        align-items: end;
+      }
+    }
+    .masthead-dek {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--muted);
+      max-width: 36rem;
+      margin: 28px 0 0;
+    }
+    .masthead-meta {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.9;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+    .masthead-meta strong {
+      display: block;
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .masthead-meta a {
+      color: var(--muted);
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s, color .2s;
+    }
+    .masthead-meta a:hover { color: var(--burgundy); border-bottom-color: var(--burgundy) }
+
+    /* 12-col editorial grid + split variants */
+    .ed-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (min-width: 960px) {
+      .ed-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: 32px;
+        row-gap: 40px;
+      }
+      .ed-split .ed-col-photo { grid-column: 1 / span 6 }
+      .ed-split .ed-col-text  { grid-column: 8 / span 5 }
+      .ed-split--reverse .ed-col-text  { grid-column: 1 / span 5 }
+      .ed-split--reverse .ed-col-photo { grid-column: 7 / span 6 }
+      .ed-split--wide .ed-col-photo { grid-column: 1 / span 4 }
+      .ed-split--wide .ed-col-text  { grid-column: 6 / span 7 }
+      .ed-split--center .ed-col-text  { grid-column: 3 / span 8 }
+    }
+
+    /* Photo blocks — consistent editorial frames */
+    .ed-photo {
+      position: relative;
+      line-height: 0;
+      background: var(--paper);
+      overflow: hidden;
+    }
+    .ed-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%; /* bias to keep faces in frame */
+    }
+    .ed-photo--portrait { aspect-ratio: 4 / 5 }
+    .ed-photo--tall     { aspect-ratio: 3 / 4 }
+    .ed-photo--square   { aspect-ratio: 1 / 1 }
+    .ed-photo--wide     { aspect-ratio: 16 / 10 }
+    /* Plate: studio portrait on a clean background — show the full figure, don't crop */
+    .ed-photo--plate {
+      background: var(--paper);
+      aspect-ratio: 4 / 5;
+    }
+    .ed-photo--plate img {
+      object-fit: contain;
+      object-position: center bottom;
+    }
+    .section--plum .ed-photo--plate {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .ed-caption {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 14px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .ed-caption::before {
+      content: "";
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--burgundy);
+      margin-top: 7px;
+      flex: none;
+    }
+    .section--plum .ed-caption { color: rgba(255,255,255,0.6) }
+    .section--plum .ed-caption::before { background: var(--gold) }
+
+    /* Editorial body copy */
+    .ed-body p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0 0 1.1em;
+    }
+    .ed-body p:last-child { margin-bottom: 0 }
+    .ed-body p.lede {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(22px, 2.4vw, 28px);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .ed-body p.strong {
+      font-size: 18px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .section--plum .ed-body p { color: rgba(255,255,255,0.8) }
+    .section--plum .ed-body p.lede,
+    .section--plum .ed-body p.strong { color: #fff }
+
+    /* Full-bleed photo band: tall cover, face anchored near top */
+    .photo-band-full {
+      position: relative;
+      line-height: 0;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .photo-band-full img {
+      display: block;
+      width: 100%;
+      height: clamp(380px, 58vw, 640px);
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .photo-band-full::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.45) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .photo-band-caption {
+      position: absolute;
+      left: clamp(20px, 5vw, 80px);
+      bottom: clamp(22px, 4vw, 44px);
+      z-index: 2;
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      max-width: 420px;
+      line-height: 1.6;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-weight: 700;
+    }
+    .photo-band-caption::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 8px;
+      flex: none;
+    }
+
+    /* 3-photo editorial grid */
+    .photo-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 720px) {
+      .photo-grid-3 {
+        grid-template-columns: 1.1fr 0.9fr 1fr;
+        gap: 18px;
+      }
+    }
+    .photo-grid-3 .ed-photo { aspect-ratio: 4 / 5 }
+
+    /* Pullquote (Shift) — giant italic on plum */
+    .pullquote {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-style: italic;
+      font-size: clamp(44px, 8.5vw, 112px);
+      line-height: 1.0;
+      letter-spacing: -0.035em;
+      color: #fff;
+      margin: 0;
+    }
+    .pullquote em { color: var(--gold); font-style: italic }
+    .pullquote .mark-open {
+      font-style: normal;
+      color: var(--gold);
+      opacity: 0.85;
+      margin-right: 0.08em;
+    }
+    .pullquote-credit {
+      margin-top: 28px;
+      font-size: 11px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 1.5;
+      max-width: 40rem;
+    }
+    .pullquote-credit::before {
+      content: "";
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      flex: none;
+    }
+
+    /* Pathways — with photography */
+    .path-grid-ed {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    @media (min-width: 720px) {
+      .path-grid-ed { grid-template-columns: 1fr 1fr }
+    }
+    @media (min-width: 1080px) {
+      .path-grid-ed { grid-template-columns: repeat(4, 1fr); gap: 20px }
+    }
+    .path-card-ed {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--text);
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .path-card-ed:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+      border-color: rgba(105,24,24,0.4);
+    }
+    .path-card-ed .ed-photo {
+      aspect-ratio: 4 / 5;
+      background: var(--paper);
+    }
+    .path-card-ed-body {
+      padding: 26px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .path-chapter {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 700;
+    }
+    .path-card-ed h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      font-weight: 500;
+      margin: 0;
+      line-height: 1.15;
+      color: var(--text);
+    }
+    .path-card-ed .path-line {
+      font-size: 14px;
+      color: var(--muted);
+      font-style: italic;
+      margin: 0 0 10px;
+      line-height: 1.5;
+    }
+    .path-card-ed .path-link {
+      margin-top: auto;
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 700;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* About strip + stats in the margin */
+    .about-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (min-width: 960px) {
+      .about-strip {
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+        gap: 72px;
+      }
+    }
+    .about-stats { display: grid; gap: 24px; padding-top: 12px }
+    .about-stat { border-top: 1px solid var(--line); padding-top: 14px }
+    .about-stat-num {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(40px, 4.6vw, 56px);
+      font-weight: 500;
+      line-height: 1;
+      color: var(--burgundy);
+    }
+    .about-stat-label {
+      display: block;
+      margin-top: 8px;
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .about-portrait {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (min-width: 960px) {
+      .about-portrait { grid-template-columns: 1fr }
+    }
     /* ── Card grid ── */
     .card-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px }
     .card {
@@ -389,6 +908,8 @@
       font-size: 16px;
       color: var(--text);
     }
+    .content-block p.muted { color: var(--muted); }
+    .content-block p.lead-strong { font-weight: 600; }
     .content-block .btn { margin-top: 16px }
 
     /* ── CTA center ── */
@@ -468,20 +989,84 @@
       color: var(--muted);
     }
 
-    /* ── Quote band (final CTA) ── */
+    /* ── Quote band (final CTA): depth, lead-in, two-line punch, strong CTA ── */
     .quote-band {
-      background: var(--plum);
+      position: relative;
       color: #fff;
+      padding: clamp(96px, 15vw, 150px) 0;
+      border-top: 1px solid rgba(228, 193, 78, 0.28);
+      background:
+        radial-gradient(ellipse 90% 55% at 85% 0%, rgba(228, 193, 78, 0.14) 0%, transparent 52%),
+        radial-gradient(ellipse 70% 45% at 0% 100%, rgba(105, 24, 24, 0.35) 0%, transparent 50%),
+        linear-gradient(165deg, #240414 0%, var(--plum) 42%, #16020c 100%);
+      overflow: hidden;
+    }
+    .quote-band .container {
+      position: relative;
+      z-index: 1;
+    }
+    .quote-band-shell {
+      max-width: min(52rem, 100%);
+      margin: 0 auto;
       text-align: center;
-      padding: var(--section-space) 0;
     }
-    .quote-band .heading {
-      font-size: clamp(36px, 6vw, 72px);
+    @media (min-width: 768px) {
+      .quote-band-shell {
+        text-align: left;
+        padding-left: clamp(24px, 4vw, 40px);
+        border-left: 4px solid var(--gold);
+      }
+    }
+    .quote-band-whisper {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(22px, 3.2vw, 32px);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.35;
+      color: rgba(255, 255, 255, 0.88);
+      margin: 0 0 clamp(20px, 3vw, 32px);
+      max-width: 38rem;
+    }
+    @media (min-width: 768px) {
+      .quote-band-whisper {
+        margin-left: 0;
+        margin-right: auto;
+      }
+    }
+    .quote-band-heading {
+      margin: 0 0 clamp(32px, 4vw, 44px);
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+    }
+    .quote-band-line {
+      display: block;
+      font-size: clamp(36px, 7vw, 84px);
       color: #fff;
-      margin-bottom: 28px;
     }
-    .quote-band .btn { background: #fff; color: var(--black); border-color: #fff }
-    .quote-band .btn:hover { background: transparent; color: #fff; border-color: #fff }
+    .quote-band-line + .quote-band-line {
+      margin-top: 0.08em;
+    }
+    .quote-band-line--gold {
+      color: var(--gold);
+      text-shadow: 0 0 48px rgba(228, 193, 78, 0.22);
+    }
+    .quote-band-btn {
+      background: #fff;
+      color: var(--black);
+      border-color: #fff;
+      min-width: min(100%, 300px);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.25s ease, color 0.25s ease;
+    }
+    .quote-band-btn:hover {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.95);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
 
     /* ── Footer ── */
     .site-footer {
@@ -500,13 +1085,42 @@
       gap: 12px;
     }
 
-    /* ── Reveal ── */
+    /* ── Narrative blocks (Problem / Shift / Method): reliable scroll reveal only ── */
+    :root {
+      --flow-duration: 0.9s;
+      --flow-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .home-flow .home-flow-inner {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+      transition: opacity var(--flow-duration) var(--flow-ease),
+                  transform var(--flow-duration) var(--flow-ease);
+    }
+    .home-flow.is-in-view .home-flow-inner {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    /* ── Reveal (scroll-in) — rest of page ── */
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .8s ease, transform .8s ease;
+      transform: translate3d(0, 28px, 0);
+      transition: opacity var(--flow-duration) var(--flow-ease),
+                  transform var(--flow-duration) var(--flow-ease);
     }
-    .reveal.visible { opacity: 1; transform: translateY(0) }
+    .reveal.visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal,
+      .home-flow .home-flow-inner {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
 
     /* ── Responsive ── */
     @media (max-width: 1080px) {
@@ -518,6 +1132,10 @@
       .media-card img { max-height: min(72vh, 480px) }
       .content-block { max-width: none }
       .vertical-label { display: none }
+      .chapter-mark { margin-bottom: 22px; gap: 14px }
+      .chapter-num { font-size: clamp(52px, 13vw, 84px) }
+      .chapter-label { min-width: 0 }
+      .photo-band-full img { height: clamp(300px, 70vw, 520px) }
     }
     @media (max-width: 820px) {
       .nav { display: none }
@@ -587,10 +1205,11 @@
   <div class="hero-overlay"></div>
   <div class="container">
     <div class="hero-content reveal">
-      <div class="eyebrow">Decision-Led Leadership</div>
-      <h1 class="hero-title">Your life changes the moment you decide.</h1>
-      <p class="hero-desc">For leaders ready to name Decision Drag and move with clarity and decisive leadership — across business, teams, and life.</p>
+      <span class="hero-issue">Issue 01 &middot; 2026 &middot; Decision-Led Leadership</span>
+      <h1 class="hero-title">You're not <em>stuck.</em><br>You're <em>undecided.</em></h1>
+      <p class="hero-desc">You already know. You just haven't moved. This is where Decision Drag ends &mdash; and the woman who follows through begins.</p>
       <a href="the-decision-code.html" class="btn btn-light">Take The Decision Code</a>
+      <p class="hero-tagline">Quick &middot; Clear &middot; You'll know what to do next</p>
     </div>
   </div>
 </section>
@@ -609,159 +1228,221 @@
   </div>
 </div>
 
-<!-- Decision Drag -->
-<section class="section">
+<!-- Masthead -->
+<section class="section section--ed section--cream home-flow">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow">The Problem</div>
-      <h2 class="heading">Decision Drag</h2>
-      <p>The gap between knowing and moving — overthinking, open loops, unfinished decisions. Not a capability problem. An unnamed pattern.</p>
-    </div>
-    <div class="card-grid-3">
-      <div class="card reveal">
-        <div class="card-icon">↻</div>
-        <h3>Overthinking</h3>
-        <p>You keep refining instead of deciding.</p>
+    <div class="masthead home-flow-inner">
+      <div>
+        <span class="issue-mark">Issue 01 &middot; Decision-Led Leadership</span>
+        <h2 class="display-mark" style="margin-top: 26px;">For the woman who <em>knows</em> &mdash; and is ready to move.</h2>
+        <p class="masthead-dek">A manifesto on Decision Drag, the shift that changes everything, and the leadership of women who follow through.</p>
       </div>
-      <div class="card reveal">
-        <div class="card-icon">∞</div>
-        <h3>Open Loops</h3>
-        <p>Unfinished decisions keep draining energy and focus.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">◇</div>
-        <h3>Delayed Movement</h3>
-        <p>You know the move, but it keeps sliding to later.</p>
+      <div class="masthead-meta">
+        <strong>In This Issue</strong>
+        01 &mdash; <a href="#chapter-01">The Problem</a><br>
+        02 &mdash; <a href="#chapter-02">The Shift</a><br>
+        03 &mdash; <a href="#chapter-03">The Method</a><br>
+        04 &mdash; <a href="#chapter-04">Your Path</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Why It Matters -->
-<section class="statement-band">
+<!-- Chapter 01 — The Problem -->
+<section id="chapter-01" class="section section--ed section--cream home-flow">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow">Why It Matters</div>
-      <h2 class="heading">The Cost of Staying in the Gap</h2>
-      <p>Open decisions tax self-trust, momentum, and leadership — in work and life.</p>
-    </div>
-    <ul class="cost-list reveal">
-      <li>Leaking momentum</li>
-      <li>Weakened self-trust</li>
-      <li>Reduced clarity</li>
-      <li>Inconsistent follow-through</li>
-      <li>Slower leadership decisions</li>
-    </ul>
-  </div>
-</section>
-
-<!-- Decision-Led Leadership -->
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow">The Shift</div>
-      <h2 class="heading">Decision-Led Leadership</h2>
-      <p>Change belongs to those who decide — and protect the decision. Clean choices, closed loops, leadership from commitment not hesitation.</p>
-    </div>
-    <div class="grid-2x2 reveal">
-      <div class="principle-card"><h4>Clarity follows commitment</h4></div>
-      <div class="principle-card"><h4>Open loops are expensive</h4></div>
-      <div class="principle-card"><h4>Standards protect momentum</h4></div>
-      <div class="principle-card"><h4>Self-trust is built through action</h4></div>
+    <div class="ed-grid ed-split home-flow-inner">
+      <div class="ed-col-photo">
+        <div class="ed-photo ed-photo--plate">
+          <img src="Aestetics/Misty-(2-of-5).png" alt="Misty Lavertu &mdash; portrait" loading="lazy" decoding="async">
+        </div>
+        <div class="ed-caption">Portrait &mdash; The look of a woman who hasn't moved</div>
+      </div>
+      <div class="ed-col-text">
+        <div class="chapter-mark">
+          <span class="chapter-num">01</span>
+          <span class="chapter-label">The Problem</span>
+        </div>
+        <h2 class="display-mark">Decision <em>Drag.</em></h2>
+        <div class="ed-body">
+          <p class="lede">You've thought about it more than once.</p>
+          <p>You've gone back and forth. Played it out in your head. Waited for clarity, confidence&hellip; or the right time. And still &mdash; nothing moves.</p>
+          <p class="strong">Not because you don't know. Because you haven't decided.</p>
+          <p>I call it Decision Drag. Not stuck. Undecided.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Imagery Band -->
-<div class="imagery-band reveal">
-  <img src="Aestetics/Misty-Imagery.jpg" alt="Misty Lavertu — leadership in the room" loading="lazy" decoding="async">
+<!-- Full-bleed photo band -->
+<div class="photo-band-full home-flow">
+  <img src="Aestetics/photo_2026-02-02_18-30-04 (4).jpg" alt="Misty Lavertu &mdash; for the women ready to decide" loading="lazy" decoding="async">
+  <div class="photo-band-caption">For the women<br>ready to decide.</div>
 </div>
 
-<!-- The Decision Code -->
-<section class="section">
+<!-- Chapter 02 — The Shift (plum) -->
+<section id="chapter-02" class="section section--ed section--plum home-flow">
   <div class="container">
-    <div class="cta-block reveal">
-      <div class="eyebrow">The First Step</div>
-      <h2 class="heading">The Decision Code</h2>
-      <p>Two minutes. Your Decision State. The pattern behind the drag — so your next move is clear.</p>
-      <a href="the-decision-code.html" class="btn">Take The Decision Code</a>
-    </div>
-  </div>
-</section>
-
-<!-- The Movement -->
-<section class="section" style="background:var(--paper)">
-  <div class="container split">
-    <div class="media-wrap reveal">
-      <span class="vertical-label">The Movement</span>
-      <div class="media-accent"></div>
-      <div class="media-card"><img src="Aestetics/477f8286-b933-4874-b86d-2208807188dd.png" alt="The Say YES Movement" loading="lazy" decoding="async"></div>
-    </div>
-    <div class="content-block reveal">
-      <div class="eyebrow">The Movement</div>
-      <h2 class="heading">The Say YES Movement</h2>
-      <p>Not hype — a way of operating: courage before certainty, standards over second-guessing, decisions you stop negotiating.</p>
-      <a href="say-yes.html" class="btn">Explore The Say YES Movement</a>
-    </div>
-  </div>
-</section>
-
-<!-- The Path Forward -->
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow">The Path Forward</div>
-      <h2 class="heading">How the Work Unfolds</h2>
-      <p>Full path — details on each step when you are ready.</p>
-    </div>
-    <div class="path-grid reveal">
-      <div class="path-card">
-        <div class="path-num">Step 1</div>
-        <h3>The Decision Code</h3>
-        <p>Name your pattern.</p>
-        <a href="the-decision-code.html">Take it</a>
+    <div class="ed-grid ed-split--wide home-flow-inner" style="align-items: center;">
+      <div class="ed-col-photo">
+        <div class="ed-photo ed-photo--tall">
+          <img src="Aestetics/photo_2026-02-02_18-30-04.jpg" alt="Misty Lavertu" loading="lazy" decoding="async">
+        </div>
+        <div class="ed-caption">The Shift &mdash; 2026</div>
       </div>
-      <div class="path-card">
-        <div class="path-num">Step 2</div>
-        <h3>The YES Room</h3>
-        <p>Live masterclass when open.</p>
-        <a href="the-yes-room.html">Learn more</a>
-      </div>
-      <div class="path-card">
-        <div class="path-num">Step 3</div>
-        <h3>The Say YES Experience</h3>
-        <p>7-day activation.</p>
-        <a href="say-yes-experience.html">Explore</a>
-      </div>
-      <div class="path-card">
-        <div class="path-num">Step 4</div>
-        <h3>The Standard</h3>
-        <p>Signature deep work.</p>
-        <a href="the-standard.html">Explore</a>
+      <div class="ed-col-text">
+        <div class="chapter-mark">
+          <span class="chapter-num">02</span>
+          <span class="chapter-label">The Shift</span>
+        </div>
+        <blockquote class="pullquote">
+          <span class="mark-open">&ldquo;</span>Everything changes<br>the moment you <em>decide.</em>
+        </blockquote>
+        <p class="pullquote-credit">Not when you have the perfect plan &mdash; not when you feel ready. When you decide, decision creates clarity, builds confidence, and moves your life forward.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- About Misty -->
-<section class="section">
+<!-- 3-photo editorial grid -->
+<section class="section section--ed section--cream home-flow" style="padding-top: clamp(56px, 8vw, 88px); padding-bottom: clamp(56px, 8vw, 88px);">
   <div class="container">
-    <div class="stats-bar reveal">
-      <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Years Leadership</span></div>
-      <div class="stat"><span class="stat-num">1,000+</span><span class="stat-label">Lives Impacted</span></div>
-      <div class="stat"><span class="stat-num">Global</span><span class="stat-label">Rooms &amp; Teams Led</span></div>
-    </div>
-    <div class="split reverse">
-      <div class="content-block reveal">
-        <div class="eyebrow">About Misty</div>
-        <h2 class="heading">The Voice Behind Decision-Led Leadership</h2>
-        <p>30+ years leading and building. Same truth in every room: life changes the moment you decide. Transformational work — how leaders think, decide, and move.</p>
-        <a href="about.html" class="btn">About Misty</a>
+    <div class="photo-grid-3 home-flow-inner">
+      <div class="ed-photo">
+        <img src="Aestetics/event-photos/photo_2026-01-21_21-23-10.jpg" alt="" loading="lazy" decoding="async">
       </div>
-      <div class="media-wrap reveal">
-        <span class="vertical-label">About</span>
-        <div class="media-accent dark"></div>
-        <div class="media-card"><img src="Aestetics/photo_2026-01-12_15-31-41.png" alt="Misty Lavertu" loading="lazy" decoding="async"></div>
+      <div class="ed-photo">
+        <img src="Aestetics/event-photos/photo_2026-03-14_01-27-07.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="ed-photo">
+        <img src="Aestetics/event-photos/photo_2025-11-11_23-21-04.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Chapter 03 — The Method -->
+<section id="chapter-03" class="section section--ed section--cream home-flow">
+  <div class="container">
+    <div class="ed-grid ed-split--reverse home-flow-inner">
+      <div class="ed-col-text">
+        <div class="chapter-mark">
+          <span class="chapter-num">03</span>
+          <span class="chapter-label">The Method</span>
+        </div>
+        <h2 class="display-mark">Decision-Led <em>Leadership.</em></h2>
+        <div class="ed-body">
+          <p class="lede">I don't teach motivation. I don't teach hype.</p>
+          <p class="strong">I teach Decision-Led Leadership.</p>
+          <p>Because the women who build powerful businesses and lives aren't the ones who think the longest&hellip; They're the ones who decide &mdash; and follow through.</p>
+        </div>
+      </div>
+      <div class="ed-col-photo">
+        <div class="ed-photo ed-photo--plate">
+          <img src="Aestetics/Misty-(5-of-5)-(1).png" alt="Misty Lavertu" loading="lazy" decoding="async">
+        </div>
+        <div class="ed-caption">Portrait &mdash; Decision-Led Leadership</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About strip (Authority + stats in the margin) -->
+<section class="section section--ed section--paper home-flow">
+  <div class="container">
+    <div class="about-strip home-flow-inner">
+      <div>
+        <span class="issue-mark">About &mdash; Misty Lavertu</span>
+        <h2 class="display-mark" style="margin-top: 24px;">The voice behind the <em>movement.</em></h2>
+        <div class="ed-body" style="max-width: 36rem;">
+          <p>I've spent over 30 years in leadership&hellip; and more than 18 years building businesses, leading teams, and developing women into leaders who actually follow through.</p>
+          <p>I've coached thousands of women through indecision and overwhelm &mdash; and watched what happens when they finally decide.</p>
+          <p class="strong">At the core of it all&hellip; I know what it takes to move when it matters.</p>
+        </div>
+        <a href="about.html" class="btn" style="margin-top: 32px;">About Misty</a>
+      </div>
+      <div>
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="about-stat-num">30+</span>
+            <span class="about-stat-label">Years Leadership</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-num">18+</span>
+            <span class="about-stat-label">Years Building Businesses</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-num">7-Figure</span>
+            <span class="about-stat-label">Business Built</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-num">1000s</span>
+            <span class="about-stat-label">Women Coached</span>
+          </div>
+        </div>
+        <div class="ed-photo ed-photo--portrait" style="margin-top: 32px;">
+          <img src="Aestetics/photo_2026-01-12_15-31-41.png" alt="Misty Lavertu" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pathways with photography -->
+<section id="chapter-04" class="section section--ed section--cream home-flow">
+  <div class="container">
+    <div class="home-flow-inner">
+      <div class="chapter-mark">
+        <span class="chapter-num">04</span>
+        <span class="chapter-label">Your Path</span>
+      </div>
+      <h2 class="display-mark" style="max-width: 16ch; margin-bottom: clamp(40px, 6vw, 72px);">If you're still in your <em>head&hellip;</em></h2>
+      <div class="path-grid-ed">
+        <a href="the-decision-code.html" class="path-card-ed">
+          <div class="ed-photo">
+            <img src="Aestetics/photo_2026-01-12_15-31-36.png" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="path-card-ed-body">
+            <span class="path-chapter">Chapter I &mdash; Still in your head?</span>
+            <h3>The Decision Code</h3>
+            <p class="path-line">Find your pattern. Know what's really driving the drag.</p>
+            <span class="path-link">Take The Decision Code <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a href="the-yes-room.html" class="path-card-ed">
+          <div class="ed-photo">
+            <img src="Aestetics/photo_2026-01-12_15-31-47.png" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="path-card-ed-body">
+            <span class="path-chapter">Chapter II &mdash; Ready to move?</span>
+            <h3>The YES Room</h3>
+            <p class="path-line">Step inside the room where decision becomes practice.</p>
+            <span class="path-link">Step Inside <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a href="say-yes-experience.html" class="path-card-ed">
+          <div class="ed-photo">
+            <img src="Aestetics/event-photos/photo_2026-01-21_21-23-10.jpg" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="path-card-ed-body">
+            <span class="path-chapter">Chapter III &mdash; Ready for activation?</span>
+            <h3>The Say YES Experience</h3>
+            <p class="path-line">Four days. Real movement. A decision becomes a life.</p>
+            <span class="path-link">Join The Experience <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a href="the-standard.html" class="path-card-ed">
+          <div class="ed-photo">
+            <img src="Aestetics/photo_2026-02-02_18-30-20.jpg" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="path-card-ed-body">
+            <span class="path-chapter">Chapter IV &mdash; Ready for leadership?</span>
+            <h3>The Standard</h3>
+            <p class="path-line">Know. Decide. Become. The leadership standard.</p>
+            <span class="path-link">Enter The Standard <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -770,8 +1451,14 @@
 <!-- Final CTA -->
 <section class="quote-band">
   <div class="container reveal">
-    <h2 class="heading">Your next move is one decision away.</h2>
-    <a href="the-decision-code.html" class="btn">Take The Decision Code</a>
+    <div class="quote-band-shell">
+      <p class="quote-band-whisper">You've felt it &mdash; that pull, that knowing.</p>
+      <h2 class="quote-band-heading">
+        <span class="quote-band-line">This isn't about learning something new&hellip;</span>
+        <span class="quote-band-line quote-band-line--gold">It's about finally choosing something different.</span>
+      </h2>
+      <a href="the-decision-code.html" class="btn quote-band-btn">Take The Decision Code</a>
+    </div>
   </div>
 </section>
 
@@ -784,16 +1471,45 @@
 </footer>
 
 <script>
-  document.querySelectorAll('.reveal').forEach(function(el) {
-    new IntersectionObserver(function(entries, obs) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
+  (function() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reduce.matches) {
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        el.classList.add('visible');
       });
-    }, { threshold: 0.12 }).observe(el);
-  });
+      document.querySelectorAll('.home-flow').forEach(function(el) {
+        el.classList.add('is-in-view');
+      });
+      return;
+    }
+
+    var ioOpts = {
+      threshold: 0.12,
+      rootMargin: '0px 0px 12% 0px'
+    };
+
+    document.querySelectorAll('.home-flow').forEach(function(section) {
+      new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in-view');
+            obs.unobserve(e.target);
+          }
+        });
+      }, ioOpts).observe(section);
+    });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, ioOpts).observe(el);
+    });
+  })();
 
   (function() {
     var btn = document.getElementById('mobile-menu-btn');

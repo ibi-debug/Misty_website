@@ -27,18 +27,18 @@
     .eyebrow { display: inline-block; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
     .heading { font-family: "Cormorant Garamond", serif; font-weight: 500; line-height: 1; letter-spacing: -0.02em; margin: 0 0 18px; }
 
-    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; background: var(--black); color: var(--button-text); border: 1px solid var(--black); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; transition: all 0.25s ease; cursor: pointer; }
-    .btn:hover { background: transparent; color: var(--black); }
-    .btn-outline { background: transparent; color: var(--black); border-color: var(--line); }
-    .btn-outline:hover { border-color: var(--black); background: var(--black); color: var(--button-text); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; background: var(--burgundy); color: var(--button-text); border: 1px solid var(--burgundy); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; transition: all 0.25s ease; cursor: pointer; }
+    .btn:hover { background: transparent; color: var(--burgundy); }
+    .btn-outline { background: transparent; color: var(--burgundy); border-color: rgba(105,24,24,0.35); }
+    .btn-outline:hover { border-color: var(--burgundy); background: var(--burgundy); color: var(--button-text); }
 
     /* Topbar */
     .topbar { border-bottom: 1px solid var(--line); background: rgba(250,248,245,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 40; }
     .topbar-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { font-family: "Cormorant Garamond", serif; font-size: 36px; letter-spacing: -0.02em; line-height: 1; }
-    .nav { display: flex; gap: 28px; align-items: center; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
-    .nav a { color: var(--muted); transition: color 0.2s; }
-    .nav a:hover { color: var(--text); }
+    .nav { display: flex; gap: 28px; align-items: center; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+    .nav a { color: var(--text); transition: color 0.2s; }
+    .nav a:hover { color: var(--burgundy); }
     .nav-dropdown { position: relative; }
     .nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; }
     .nav-dropdown-toggle::after { content: "▾"; font-size: 9px; transition: transform 0.2s; }
@@ -51,6 +51,10 @@
 
     /* Sections */
     .section { padding: var(--section-space) 0; position: relative; }
+    .section--paper { background: var(--paper); }
+    .split-aside { text-align: left; max-width: none; width: 100%; }
+    .split-aside .eyebrow { margin-bottom: 12px; }
+    .split-aside .for-who-panel { margin: 0; max-width: none; }
 
     /* Statement band (hero) */
     .statement { background: linear-gradient(180deg, #f7f2ec 0%, #f2ebe4 100%); text-align: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -98,6 +102,7 @@
     .final-cta { background: linear-gradient(180deg, rgba(17,17,17,0.78), rgba(17,17,17,0.88)), url("Aestetics/event-photos/photo_2026-03-14_01-29-19.jpg") center/cover no-repeat; color: #fff; text-align: center; }
     .final-cta .heading { font-size: clamp(42px, 6vw, 72px); margin-bottom: 16px; }
     .final-cta p { max-width: 640px; margin: 0 auto 30px; color: rgba(255,255,255,0.8); font-size: 17px; }
+    .final-cta .eyebrow { color: rgba(255,255,255,0.62); margin-bottom: 14px; }
     .final-cta .btn { background: #fff; color: var(--black); border-color: #fff; }
     .final-cta .btn:hover { background: transparent; color: #fff; border-color: #fff; }
     .final-cta .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
@@ -172,8 +177,8 @@
   <section class="section statement">
     <div class="container statement-inner reveal">
       <div class="eyebrow">The Standard</div>
-      <h1 class="heading">Misty's signature program</h1>
-      <p>Not a quick fix. Not a temporary boost. The Standard is about sustained transformation — the kind that changes how you think, decide, and lead at every level.</p>
+      <h1 class="heading">You don't need to try harder.<br>You need a higher standard.</h1>
+      <p>Know. Decide. Become.</p>
     </div>
   </section>
 
@@ -195,22 +200,19 @@
     </div>
   </section>
 
-  <!-- Identity-Level Shifts -->
-  <section class="section" style="background: var(--paper);">
+  <!-- Framework -->
+  <section class="section section--paper">
     <div class="container">
       <div class="section-header reveal">
-        <div class="eyebrow">What shifts</div>
-        <h2 class="heading">Identity-level shifts</h2>
-        <p>The Standard is designed to produce lasting changes — not temporary activation.</p>
+        <div class="eyebrow">The Framework</div>
+        <h2 class="heading">Know. Decide. Become.</h2>
+        <p>A 6-week journey from knowing to becoming.</p>
       </div>
       <div class="for-who-panel reveal">
         <ul class="for-who-list">
-          <li>Higher decision quality</li>
-          <li>Stronger leadership presence</li>
-          <li>Deeper self-trust</li>
-          <li>Cleaner standards</li>
-          <li>More consistent operating rhythm</li>
-          <li>Less negotiation against your own knowing</li>
+          <li><strong>Week 1&ndash;2 &mdash; Know.</strong> Name the pattern. See what's been keeping you in delay.</li>
+          <li><strong>Week 3&ndash;4 &mdash; Decide.</strong> Make the decision. Close the open loops. Set the standard.</li>
+          <li><strong>Week 5&ndash;6 &mdash; Become.</strong> Embody the leader who follows through. Operate from decision, not hesitation.</li>
         </ul>
       </div>
     </div>
@@ -225,9 +227,9 @@
         <p>The Standard is built for women who have already done the initial work — they have named their pattern, started to move, and now need the structure that keeps them there.</p>
         <p>The program combines curriculum, coaching, and community into a sustained container designed to hold leaders through real transformation — not just insight, but embodiment.</p>
       </div>
-      <div class="centered-block reveal" style="text-align: left; max-width: none;">
+      <div class="split-aside reveal">
         <div class="for-who-panel">
-          <div class="eyebrow" style="margin-bottom: 12px;">The container includes</div>
+          <div class="eyebrow">The container includes</div>
           <ul class="for-who-list">
             <li>Structured curriculum for Decision-Led Leadership</li>
             <li>Direct coaching with Misty</li>
@@ -240,7 +242,7 @@
   </section>
 
   <!-- Why Now -->
-  <section class="section" style="background: var(--paper);">
+  <section class="section section--paper">
     <div class="container">
       <div class="centered-block reveal">
         <div class="eyebrow">Why now</div>
@@ -253,18 +255,18 @@
   <!-- Quote Band -->
   <section class="quote-band">
     <div class="container reveal">
-      <h2 class="heading">Raise the standard.</h2>
+      <h2 class="heading">Know. Decide. Become.</h2>
     </div>
   </section>
 
   <!-- Final CTA -->
   <section class="section final-cta">
     <div class="container reveal">
-      <div class="eyebrow" style="color: rgba(255,255,255,0.6); margin-bottom: 14px;">Apply</div>
-      <h2 class="heading">Your next level is one decision away.</h2>
-      <p>If you are ready for the deepest work Misty leads, apply now. If you are earlier in the path, start with The Decision Code.</p>
+      <div class="eyebrow">Enter The Standard</div>
+      <h2 class="heading">You don't need to try harder.<br>You need a higher standard.</h2>
+      <p>Know. Decide. Become.</p>
       <div class="cta-actions">
-        <a href="mailto:hello@mistylavertu.com?subject=The%20Standard%20-%20application" class="btn">Apply for The Standard</a>
+        <a href="mailto:hello@mistylavertu.com?subject=The%20Standard%20-%20application" class="btn">Enter The Standard</a>
         <a href="the-decision-code.html" class="btn btn-outline">Start with The Decision Code</a>
       </div>
     </div>
