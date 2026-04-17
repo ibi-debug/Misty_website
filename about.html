@@ -65,6 +65,14 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 36px;
   letter-spacing: -0.02em;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-logo {
+  height: 52px;
+  width: auto;
+  display: block;
 }
 
 .nav { display: flex; gap: 28px; align-items: center; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
@@ -405,7 +413,7 @@ img { max-width: 100%; height: auto; display: block; }
 <!-- ── Topbar ── -->
 <header class="topbar" id="topbar">
   <div class="container topbar-inner">
-    <a href="index.html" class="brand">Misty Lavertu</a>
+    <a href="index.html" class="brand" aria-label="Misty Lavertu &mdash; home"><img src="New photos/LOGO.png" alt="Misty Lavertu" class="brand-logo"></a>
     <nav class="nav" id="main-nav">
       <a href="decision-led-leadership.html">Leadership</a>
       <div class="nav-dropdown" id="nav-dropdown">
