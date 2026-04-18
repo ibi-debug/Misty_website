@@ -21,7 +21,7 @@
       --blush: #e4c14e;
       --plum: #420620;
       --button-text: #faf8f5;
-      --max-width: 1220px;
+      --max-width: 1320px;
       --section-space: 120px;
       --shadow: 0 20px 60px rgba(0,0,0,0.08);
     }
@@ -207,22 +207,13 @@
       .hero-content { max-width: 100%; }
     }
     .hero-issue {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
+      display: block;
       font-size: 10px;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.65);
       font-weight: 700;
       margin-bottom: 28px;
-    }
-    .hero-issue::before {
-      content: "";
-      display: block;
-      width: 36px;
-      height: 1px;
-      background: var(--gold);
     }
     .hero-tagline {
       margin-top: 14px;
@@ -358,6 +349,18 @@
       opacity: 0.55;
     }
     .section--plum .issue-mark { color: rgba(255,255,255,0.55) }
+    .issue-mark--no-rule {
+      gap: 0;
+    }
+    .issue-mark--no-rule::before {
+      display: none;
+    }
+    .issue-mark--sentence {
+      text-transform: none;
+      letter-spacing: 0.06em;
+      font-size: 11px;
+      font-weight: 600;
+    }
 
     /* Chapter mark (Nº 01 — The Problem) */
     .chapter-mark {
@@ -408,18 +411,44 @@
     }
     .section--plum .display-mark em { color: var(--gold) }
 
+    /* Pathways section — headline + dek (avoid one giant paragraph block) */
+    .path-head-ed {
+      margin-bottom: clamp(40px, 6vw, 72px);
+      max-width: min(780px, 100%);
+    }
+    .path-head-ed__title {
+      font-size: clamp(44px, 6.8vw, 88px);
+      line-height: 0.94;
+      letter-spacing: -0.045em;
+      margin: 0 0 0.22em;
+    }
+    .path-head-ed__dek {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(17px, 1.85vw, 22px);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--muted);
+      margin: 0;
+      max-width: 36ch;
+      line-height: 1.5;
+    }
+    .path-head-ed__dek strong {
+      font-style: normal;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.72em;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      display: inline-block;
+      margin-top: 0.35em;
+    }
+
     /* Masthead */
     .masthead {
       display: grid;
       grid-template-columns: 1fr;
       gap: 40px;
-    }
-    @media (min-width: 960px) {
-      .masthead {
-        grid-template-columns: minmax(0, 1fr) 300px;
-        gap: 72px;
-        align-items: end;
-      }
     }
     .masthead-dek {
       font-family: "Cormorant Garamond", serif;
@@ -431,28 +460,6 @@
       max-width: 36rem;
       margin: 28px 0 0;
     }
-    .masthead-meta {
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--muted);
-      line-height: 1.9;
-      border-top: 1px solid var(--line);
-      padding-top: 20px;
-    }
-    .masthead-meta strong {
-      display: block;
-      color: var(--text);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .masthead-meta a {
-      color: var(--muted);
-      border-bottom: 1px solid transparent;
-      transition: border-color .2s, color .2s;
-    }
-    .masthead-meta a:hover { color: var(--burgundy); border-bottom-color: var(--burgundy) }
-
     /* 12-col editorial grid + split variants */
     .ed-grid {
       display: grid;
@@ -470,8 +477,8 @@
       .ed-split .ed-col-text  { grid-column: 8 / span 5 }
       .ed-split--reverse .ed-col-text  { grid-column: 1 / span 5 }
       .ed-split--reverse .ed-col-photo { grid-column: 7 / span 6 }
-      .ed-split--wide .ed-col-photo { grid-column: 1 / span 4 }
-      .ed-split--wide .ed-col-text  { grid-column: 6 / span 7 }
+      .ed-split--wide .ed-col-text  { grid-column: 1 / span 5 }
+      .ed-split--wide .ed-col-photo { grid-column: 7 / span 6 }
       .ed-split--center .ed-col-text  { grid-column: 3 / span 8 }
     }
 
@@ -505,6 +512,32 @@
     .section--plum .ed-photo--plate {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
+    }
+    /* PNG with transparency — no cream frame; show full artboard (no cover crop) */
+    #chapter-02 .ed-photo {
+      background: transparent;
+      min-height: 720px;
+      overflow: visible;
+      position: relative;
+    }
+    #chapter-02 .ed-photo--cameo .cameo-svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+    }
+    @media (min-width: 1100px) {
+      #chapter-02 .ed-photo { min-height: 820px; }
+    }
+    /* Chapter 02: go side-by-side earlier, tight columns, photo gets more width */
+    @media (min-width: 820px) {
+      #chapter-02 .ed-grid.ed-split--wide {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: 16px;
+        row-gap: 40px;
+      }
+      #chapter-02 .ed-split--wide .ed-col-text  { grid-column: 1 / span 5; }
+      #chapter-02 .ed-split--wide .ed-col-photo { grid-column: 6 / span 7; }
     }
 
     .ed-caption {
@@ -574,49 +607,10 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.45) 0%, transparent 40%);
+      background: linear-gradient(0deg, rgba(0,0,0,0.35) 0%, transparent 45%);
       pointer-events: none;
       z-index: 1;
     }
-    .photo-band-caption {
-      position: absolute;
-      left: clamp(20px, 5vw, 80px);
-      bottom: clamp(22px, 4vw, 44px);
-      z-index: 2;
-      color: #fff;
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      max-width: 420px;
-      line-height: 1.6;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      font-weight: 700;
-    }
-    .photo-band-caption::before {
-      content: "";
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: var(--gold);
-      margin-top: 8px;
-      flex: none;
-    }
-
-    /* 3-photo editorial grid */
-    .photo-grid-3 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-    @media (min-width: 720px) {
-      .photo-grid-3 {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-      }
-    }
-    .photo-grid-3 .ed-photo { aspect-ratio: 4 / 5 }
 
     /* Pullquote (Shift) — giant italic on plum */
     .pullquote {
@@ -635,6 +629,12 @@
       color: var(--gold);
       opacity: 0.85;
       margin-right: 0.08em;
+    }
+    .pullquote .mark-close {
+      font-style: normal;
+      color: var(--gold);
+      opacity: 0.85;
+      margin-left: 0.06em;
     }
     .pullquote-credit {
       margin-top: 28px;
@@ -658,6 +658,17 @@
       background: var(--gold);
       flex: none;
     }
+    .pullquote-credit--stacked {
+      display: block;
+      text-transform: none;
+      letter-spacing: 0.04em;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.65;
+    }
+    .pullquote-credit--stacked::before {
+      display: none;
+    }
 
     /* Pathways — with photography */
     .path-grid-ed {
@@ -669,7 +680,7 @@
       .path-grid-ed { grid-template-columns: 1fr 1fr }
     }
     @media (min-width: 1080px) {
-      .path-grid-ed { grid-template-columns: repeat(4, 1fr); gap: 20px }
+      .path-grid-ed { grid-template-columns: repeat(3, 1fr); gap: 20px }
     }
     .path-card-ed {
       position: relative;
@@ -1194,7 +1205,8 @@
             <div class="nav-dropdown-menu">
               <a href="the-decision-code.html">The Decision Code</a>
               <a href="the-yes-room.html">The YES Room</a>
-              <a href="say-yes-experience.html">The Say YES Experience</a>
+              <a href="say-yes-experience.html">Say YES Experience</a>
+              <a href="say-yes-activation.html">Say YES Activation</a>
               <a href="the-standard.html">The Standard</a>
             </div>
           </div>
@@ -1213,10 +1225,10 @@
   <div class="hero-overlay"></div>
   <div class="container">
     <div class="hero-content reveal">
-      <span class="hero-issue">Issue 01 &middot; 2026 &middot; Decision-Led Leadership</span>
+      <span class="hero-issue">Decision-Led Leadership</span>
       <h1 class="hero-title">You're not <em>stuck.</em><br>You're <em>undecided.</em></h1>
-      <p class="hero-desc">You already know. You just haven't moved. This is where Decision Drag ends &mdash; and the woman who follows through begins.</p>
-      <a href="the-decision-code.html" class="btn btn-light">Take The Decision Code</a>
+      <p class="hero-desc">And the moment you decide&hellip; everything begins to change.<br />The next version of you starts here.</p>
+      <a href="say-yes-experience.html" class="btn btn-light">Join Say YES Experience</a>
       <p class="hero-tagline">Quick &middot; Clear &middot; You'll know what to do next</p>
     </div>
   </div>
@@ -1241,16 +1253,8 @@
   <div class="container">
     <div class="masthead home-flow-inner">
       <div>
-        <span class="issue-mark">Issue 01 &middot; Decision-Led Leadership</span>
-        <h2 class="display-mark" style="margin-top: 26px;">For the woman who <em>knows</em> &mdash; and is ready to move.</h2>
+        <h2 class="display-mark">For the woman who <em>knows</em>, and is ready to move.</h2>
         <p class="masthead-dek">A manifesto on Decision Drag, the shift that changes everything, and the leadership of women who follow through.</p>
-      </div>
-      <div class="masthead-meta">
-        <strong>In This Issue</strong>
-        01 &mdash; <a href="#chapter-01">The Problem</a><br>
-        02 &mdash; <a href="#chapter-02">The Shift</a><br>
-        03 &mdash; <a href="#chapter-03">The Method</a><br>
-        04 &mdash; <a href="#chapter-04">Your Path</a>
       </div>
     </div>
   </div>
@@ -1262,69 +1266,59 @@
     <div class="ed-grid ed-split home-flow-inner">
       <div class="ed-col-photo">
         <div class="ed-photo ed-photo--plate">
-          <img src="New photos/photo_2026-04-17_02-19-11 (2).jpg" alt="Misty Lavertu &mdash; pulled in every direction" loading="lazy" decoding="async">
+          <img src="New photos/chapter-01-portrait.png" alt="Misty Lavertu &mdash; the moment you decide" loading="lazy" decoding="async">
         </div>
-        <div class="ed-caption">Portrait &mdash; The woman pulled in every direction</div>
       </div>
       <div class="ed-col-text">
-        <div class="chapter-mark">
-          <span class="chapter-num">01</span>
-          <span class="chapter-label">The Problem</span>
-        </div>
         <h2 class="display-mark">Decision <em>Drag.</em></h2>
         <div class="ed-body">
           <p class="lede">You've thought about it more than once.</p>
           <p>You've gone back and forth. Played it out in your head. Waited for clarity, confidence&hellip; or the right time. And still &mdash; nothing moves.</p>
           <p class="strong">Not because you don't know. Because you haven't decided.</p>
-          <p>I call it Decision Drag. Not stuck. Undecided.</p>
+          <p>Not stuck. Undecided.</p>
+          <p>I call it Decision Drag.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- Full-bleed photo band -->
-<div class="photo-band-full home-flow">
-  <img src="Aestetics/photo_2026-02-02_18-30-04 (4).jpg" alt="Misty Lavertu &mdash; for the women ready to decide" loading="lazy" decoding="async">
-  <div class="photo-band-caption">For the women<br>ready to decide.</div>
-</div>
 
 <!-- Chapter 02 — The Shift (plum) -->
 <section id="chapter-02" class="section section--ed section--plum home-flow">
   <div class="container">
     <div class="ed-grid ed-split--wide home-flow-inner" style="align-items: center;">
-      <div class="ed-col-photo">
-        <div class="ed-photo ed-photo--tall">
-          <img src="Aestetics/photo_2026-02-02_18-30-04.jpg" alt="Misty Lavertu" loading="lazy" decoding="async">
-        </div>
-        <div class="ed-caption">The Shift &mdash; 2026</div>
-      </div>
       <div class="ed-col-text">
-        <div class="chapter-mark">
-          <span class="chapter-num">02</span>
-          <span class="chapter-label">The Shift</span>
-        </div>
         <blockquote class="pullquote">
-          <span class="mark-open">&ldquo;</span>Everything changes<br>the moment you <em>decide.</em>
+          <span class="mark-open">&ldquo;</span>Everything changes<br>the moment you <em>decide.</em><span class="mark-close">&rdquo;</span>
         </blockquote>
-        <p class="pullquote-credit">Not when you have the perfect plan &mdash; not when you feel ready. When you decide, decision creates clarity, builds confidence, and moves your life forward.</p>
+        <p class="pullquote-credit pullquote-credit--stacked">Not when you have the perfect plan. Not when you feel ready.<br />
+When you decide.<br />
+Decision creates clarity. Builds confidence. Moves your life forward.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3-photo editorial grid -->
-<section class="section section--ed section--cream home-flow" style="padding-top: clamp(56px, 8vw, 88px); padding-bottom: clamp(56px, 8vw, 88px);">
-  <div class="container">
-    <div class="photo-grid-3 home-flow-inner">
-      <div class="ed-photo">
-        <img src="New photos/photo_2026-04-17_02-19-10 (2).jpg" alt="Misty Lavertu &mdash; in motion" loading="lazy" decoding="async">
-      </div>
-      <div class="ed-photo">
-        <img src="New photos/photo_2026-04-17_02-19-13.jpg" alt="Misty Lavertu &mdash; in thought" loading="lazy" decoding="async">
-      </div>
-      <div class="ed-photo">
-        <img src="New photos/photo_2026-04-17_02-19-12.jpg" alt="Misty Lavertu &mdash; at work" loading="lazy" decoding="async">
+      <div class="ed-col-photo">
+        <div class="ed-photo ed-photo--tall ed-photo--cameo">
+          <!--
+            Inline SVG cameo: image, its clip (head chimney + body circle),
+            and the visible ring are all in the same viewBox so they align.
+          -->
+          <svg class="cameo-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" aria-labelledby="cameoTitle" role="img">
+            <title id="cameoTitle">Misty Lavertu</title>
+            <defs>
+              <clipPath id="chapter02-cameo">
+                <rect x="30" y="0" width="40" height="54"/>
+                <circle cx="50" cy="54" r="34"/>
+              </clipPath>
+              <radialGradient id="chapter02-plate" cx="50%" cy="45%" r="55%">
+                <stop offset="0%" stop-color="rgba(255, 214, 196, 0.22)"/>
+                <stop offset="65%" stop-color="rgba(255, 214, 196, 0.08)"/>
+                <stop offset="100%" stop-color="rgba(255, 214, 196, 0)"/>
+              </radialGradient>
+            </defs>
+            <!-- Soft filled disc behind Misty, matching the clip circle -->
+            <circle cx="50" cy="54" r="34" fill="url(#chapter02-plate)"/>
+            <image href="Aestetics/Untitled%20design.png" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#chapter02-cameo)"/>
+          </svg>
+        </div>
       </div>
     </div>
   </div>
@@ -1335,22 +1329,17 @@
   <div class="container">
     <div class="ed-grid ed-split--reverse home-flow-inner">
       <div class="ed-col-text">
-        <div class="chapter-mark">
-          <span class="chapter-num">03</span>
-          <span class="chapter-label">The Method</span>
-        </div>
-        <h2 class="display-mark">Decision-Led <em>Leadership.</em></h2>
+        <h2 class="display-mark"><span style="white-space: nowrap;">Decision-Led</span> <em>Leadership.</em></h2>
         <div class="ed-body">
           <p class="lede">I don't teach motivation. I don't teach hype.</p>
-          <p class="strong">I teach Decision-Led Leadership.</p>
-          <p>Because the women who build powerful businesses and lives aren't the ones who think the longest&hellip; They're the ones who decide &mdash; and follow through.</p>
+          <p class="lede">I teach Decision-Led Leadership.</p>
+          <p>Because the women who build powerful businesses and lives aren't the ones who think the longest. They're the ones who decide and follow through.</p>
         </div>
       </div>
       <div class="ed-col-photo">
         <div class="ed-photo ed-photo--portrait">
-          <img src="Aestetics/photo_2026-02-21_21-39-06.jpg" alt="Misty Lavertu &mdash; Decision-Led Leadership" loading="lazy" decoding="async">
+          <img src="New photos/chapter-03-portrait.png" alt="Misty Lavertu &mdash; Decision-Led Leadership" loading="lazy" decoding="async">
         </div>
-        <div class="ed-caption">Portrait &mdash; Decision-Led Leadership</div>
       </div>
     </div>
   </div>
@@ -1361,11 +1350,11 @@
   <div class="container">
     <div class="about-strip home-flow-inner">
       <div>
-        <span class="issue-mark">About &mdash; Misty Lavertu</span>
+        <span class="issue-mark issue-mark--no-rule issue-mark--sentence">About - Misty Lavertu</span>
         <h2 class="display-mark" style="margin-top: 24px;">The voice behind the <em>movement.</em></h2>
         <div class="ed-body" style="max-width: 36rem;">
-          <p>I've spent over 30 years in leadership&hellip; and more than 18 years building businesses, leading teams, and developing women into leaders who actually follow through.</p>
-          <p>I've coached thousands of women through indecision and overwhelm &mdash; and watched what happens when they finally decide.</p>
+          <p>I've spent over 30 years in leadership&hellip; and more than 18 years building businesses, leading teams, and developing women into leaders who follow through.</p>
+          <p>I've coached thousands of women through indecision and overwhelm, and watched what happens when they finally decide.</p>
           <p class="strong">At the core of it all&hellip; I know what it takes to move when it matters.</p>
         </div>
         <a href="about.html" class="btn" style="margin-top: 32px;">About Misty</a>
@@ -1401,54 +1390,39 @@
 <section id="chapter-04" class="section section--ed section--cream home-flow">
   <div class="container">
     <div class="home-flow-inner">
-      <div class="chapter-mark">
-        <span class="chapter-num">04</span>
-        <span class="chapter-label">Your Path</span>
-      </div>
-      <h2 class="display-mark" style="max-width: 16ch; margin-bottom: clamp(40px, 6vw, 72px);">If you're still in your <em>head&hellip;</em></h2>
+      <header class="path-head-ed">
+        <h2 class="display-mark path-head-ed__title">The next version of you<br><em>starts here.</em></h2>
+        <p class="path-head-ed__dek">You already know.<br><strong>Now you choose.</strong></p>
+      </header>
       <div class="path-grid-ed">
-        <a href="the-decision-code.html" class="path-card-ed">
-          <div class="ed-photo">
-            <img src="Aestetics/photo_2026-01-12_15-31-36.png" alt="" loading="lazy" decoding="async">
-          </div>
-          <div class="path-card-ed-body">
-            <span class="path-chapter">Chapter I &mdash; Still in your head?</span>
-            <h3>The Decision Code</h3>
-            <p class="path-line">Find your pattern. Know what's really driving the drag.</p>
-            <span class="path-link">Take The Decision Code <span aria-hidden="true">&rarr;</span></span>
-          </div>
-        </a>
-        <a href="the-yes-room.html" class="path-card-ed">
-          <div class="ed-photo">
-            <img src="Aestetics/photo_2026-01-12_15-31-47.png" alt="" loading="lazy" decoding="async">
-          </div>
-          <div class="path-card-ed-body">
-            <span class="path-chapter">Chapter II &mdash; Ready to move?</span>
-            <h3>The YES Room</h3>
-            <p class="path-line">Step inside the room where decision becomes practice.</p>
-            <span class="path-link">Step Inside <span aria-hidden="true">&rarr;</span></span>
-          </div>
-        </a>
         <a href="say-yes-experience.html" class="path-card-ed">
           <div class="ed-photo">
-            <img src="Aestetics/event-photos/photo_2026-01-21_21-23-10.jpg" alt="" loading="lazy" decoding="async">
+            <img src="Aestetics/misty-yes-pointing.png" alt="" loading="lazy" decoding="async" style="filter: grayscale(100%);">
           </div>
           <div class="path-card-ed-body">
-            <span class="path-chapter">Chapter III &mdash; Ready for activation?</span>
-            <h3>The Say YES Experience</h3>
-            <p class="path-line">Four days. Real movement. A decision becomes a life.</p>
-            <span class="path-link">Join The Experience <span aria-hidden="true">&rarr;</span></span>
+            <h3>Say YES Experience</h3>
+            <p class="path-line">4 days. Real movement. No more starting over.</p>
+            <span class="path-link">Join Experience <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a href="say-yes-activation.html" class="path-card-ed">
+          <div class="ed-photo">
+            <img src="Aestetics/misty-yes-paddle.png" alt="" loading="lazy" decoding="async" style="filter: grayscale(100%);">
+          </div>
+          <div class="path-card-ed-body">
+            <h3>Say YES Activation</h3>
+            <p class="path-line">21 days. Where your decisions become discipline.</p>
+            <span class="path-link">Join Activation <span aria-hidden="true">&rarr;</span></span>
           </div>
         </a>
         <a href="the-standard.html" class="path-card-ed">
           <div class="ed-photo">
-            <img src="Aestetics/photo_2026-02-02_18-30-20.jpg" alt="" loading="lazy" decoding="async">
+            <img src="Aestetics/misty-standard-yes-bw.png" alt="" loading="lazy" decoding="async">
           </div>
           <div class="path-card-ed-body">
-            <span class="path-chapter">Chapter IV &mdash; Ready for leadership?</span>
             <h3>The Standard</h3>
-            <p class="path-line">Know. Decide. Become. The leadership standard.</p>
-            <span class="path-link">Enter The Standard <span aria-hidden="true">&rarr;</span></span>
+            <p class="path-line">Know. Decide. Become. Six weeks — who you are now.</p>
+            <span class="path-link">Enter Standard <span aria-hidden="true">&rarr;</span></span>
           </div>
         </a>
       </div>
@@ -1460,12 +1434,12 @@
 <section class="quote-band">
   <div class="container reveal">
     <div class="quote-band-shell">
-      <p class="quote-band-whisper">You've felt it &mdash; that pull, that knowing.</p>
+      <p class="quote-band-whisper">"You've felt it... that pull, that knowing"</p>
       <h2 class="quote-band-heading">
         <span class="quote-band-line">This isn't about learning something new&hellip;</span>
         <span class="quote-band-line quote-band-line--gold">It's about finally choosing something different.</span>
       </h2>
-      <a href="the-decision-code.html" class="btn quote-band-btn">Take The Decision Code</a>
+      <a href="say-yes-experience.html" class="btn quote-band-btn">Join Say YES Experience</a>
     </div>
   </div>
 </section>

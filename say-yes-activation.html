@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Say YES Activation | Misty Lavertu</title>
+  <meta
+    name="description"
+    content="A 21-day implementation experience — where your decisions become discipline and your actions match your standards."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --paper: #f5f2ef;
+      --text: #1a1a1a;
+      --muted: #4a342e;
+      --line: rgba(26, 26, 26, 0.12);
+      --black: #1a1a1a;
+      --burgundy: #691818;
+      --gold: #e4c14e;
+      --blush: #e4c14e;
+      --plum: #420620;
+      --button-text: #faf8f5;
+      --max-width: 1220px;
+      --section-space: 120px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      --radius: 2px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    .page { overflow: hidden; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .display {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .heading {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin: 0 0 18px;
+    }
+
+    .body-copy {
+      font-size: 16px;
+      color: var(--text);
+      max-width: 620px;
+    }
+
+    .muted { color: var(--muted); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 28px;
+      background: var(--burgundy);
+      color: var(--button-text);
+      border: 1px solid var(--burgundy);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--burgundy);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--burgundy);
+      border-color: rgba(105,24,24,0.35);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--burgundy);
+      background: var(--burgundy);
+      color: var(--button-text);
+    }
+
+    /* ── Topbar ── */
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(251, 248, 244, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .topbar-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 36px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-logo {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      color: var(--text);
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover { color: var(--burgundy); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+    .nav-dropdown-toggle::after { content: "▾"; font-size: 9px; transition: transform 0.2s; }
+    .nav-dropdown.open .nav-dropdown-toggle::after { transform: rotate(180deg); }
+    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); min-width: 220px; background: rgba(250,248,245,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(26,26,26,0.12); padding: 12px 0; z-index: 50; }
+    .nav-dropdown.open .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu a { display: block; padding: 8px 22px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #4a342e; white-space: nowrap; transition: color 0.2s, background 0.2s; }
+    .nav-dropdown-menu a:hover { color: #1a1a1a; background: rgba(26,26,26,0.04); }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--text);
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(105, 24, 24, 0.42) 0%,
+          rgba(66, 6, 32, 0.38) 22%,
+          rgba(26, 26, 26, 0.52) 52%,
+          rgba(10, 10, 10, 0.82) 100%
+        ),
+        url("Aestetics/Misty-Imagery.jpg") center/cover no-repeat;
+      color: #fff;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(105, 24, 24, 0.32) 0%,
+          rgba(66, 6, 32, 0.18) 32%,
+          rgba(0, 0, 0, 0.12) 55%,
+          rgba(0, 0, 0, 0.28) 100%
+        );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 120px 0 72px;
+      max-width: 760px;
+    }
+
+    .hero .eyebrow {
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 20px;
+      font-size: clamp(13px, 2.5vw, 18px);
+      font-weight: 600;
+      letter-spacing: 0.2em;
+    }
+
+    .hero .display {
+      font-size: clamp(62px, 12vw, 122px);
+      margin-bottom: 24px;
+    }
+
+    .hero-copy {
+      max-width: 560px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.84);
+      margin-bottom: 34px;
+    }
+    .hero-subnote {
+      margin-top: 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.62);
+      max-width: 28rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero .btn {
+      background: #fff;
+      color: var(--black);
+      border-color: #fff;
+    }
+
+    .hero .btn:hover {
+      background: transparent;
+      color: #fff;
+      border-color: #fff;
+    }
+
+    /* ── Sections ── */
+    .section {
+      padding: var(--section-space) 0;
+      position: relative;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .split.reverse {
+      grid-template-columns: 0.95fr 1.05fr;
+    }
+
+    .media-wrap { position: relative; }
+
+    .media-accent {
+      position: absolute;
+      width: 68%;
+      height: 68%;
+      background: var(--blush);
+      top: -28px;
+      left: -28px;
+      z-index: 0;
+    }
+
+    .media-accent.dark {
+      background: var(--plum);
+      left: auto;
+      right: -34px;
+      top: 54px;
+      width: 72%;
+      height: 62%;
+    }
+
+    .media-card {
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      background: var(--paper);
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .media-card.tall { min-height: 700px; }
+
+    .media-card img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: min(78vh, 720px);
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .vertical-label {
+      position: absolute;
+      left: -74px;
+      bottom: 44px;
+      transform: rotate(-90deg);
+      transform-origin: left bottom;
+      font-size: 10px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .content-block { max-width: 520px; }
+
+    .content-block .heading {
+      font-size: clamp(42px, 6vw, 72px);
+      margin-bottom: 22px;
+    }
+
+    .content-block p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .content-block .btn { margin-top: 18px; }
+
+    /* ── Statement band ── */
+    .statement {
+      background: linear-gradient(180deg, #f7f2ec 0%, #f2ebe4 100%);
+      text-align: center;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .statement-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .statement .heading {
+      font-size: clamp(48px, 8vw, 96px);
+      margin-bottom: 20px;
+    }
+
+    .statement p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* ── Experience grid ── */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 46px;
+    }
+
+    .experience-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 34px 28px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .experience-card .step {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .experience-card h3 {
+      margin: 0 0 14px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .experience-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ── For-who panels ── */
+    .for-who {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .for-who-panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 42px 36px;
+    }
+
+    .for-who-panel .heading {
+      font-size: clamp(42px, 6vw, 72px);
+      margin-bottom: 18px;
+    }
+
+    .for-who-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .for-who-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 14px;
+      align-items: start;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .for-who-list li::before {
+      content: "\2014";
+      color: var(--gold);
+      font-weight: 700;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    /* ── Quote band ── */
+    .quote-band {
+      padding: 80px 0;
+      background: var(--plum);
+      color: #fff;
+      text-align: center;
+    }
+
+    .quote-band .heading {
+      font-size: clamp(42px, 7vw, 92px);
+      margin-bottom: 0;
+    }
+
+    .quote-band .eyebrow {
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 18px;
+    }
+
+    /* ── Final CTA ── */
+    .final-cta {
+      background:
+        linear-gradient(180deg, rgba(17,17,17,0.78), rgba(17,17,17,0.88)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+
+    .final-cta .heading {
+      font-size: clamp(54px, 8vw, 108px);
+      margin-bottom: 16px;
+    }
+
+    .final-cta p {
+      max-width: 640px;
+      margin: 0 auto 30px;
+      color: rgba(255,255,255,0.8);
+      font-size: 18px;
+    }
+
+    .final-cta .btn {
+      background: #fff;
+      color: var(--black);
+      border-color: #fff;
+    }
+
+    .final-cta .btn:hover {
+      background: transparent;
+      color: #fff;
+      border-color: #fff;
+    }
+
+    .footer-note {
+      border-top: 1px solid rgba(255,255,255,0.14);
+      margin-top: 40px;
+      padding-top: 20px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.52);
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--plum);
+      color: rgba(255,255,255,0.5);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .site-footer a {
+      color: rgba(255,255,255,0.7);
+      transition: color 0.2s;
+    }
+
+    .site-footer a:hover { color: #fff; }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1080px) {
+      :root { --section-space: 92px; }
+
+      .split,
+      .split.reverse,
+      .for-who {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .content-block,
+      .body-copy { max-width: none; }
+      .experience-grid { grid-template-columns: 1fr; }
+
+      .media-card,
+      .media-card.tall { min-height: 480px; }
+
+      .media-card img { max-height: min(72vh, 480px); }
+
+      .vertical-label { display: none; }
+    }
+
+    @media (max-width: 820px) {
+      .nav { display: none; }
+      .mobile-menu-btn { display: block; }
+
+      .topbar-inner { min-height: 68px; }
+      .brand { font-size: 30px; }
+
+      .hero-content { padding: 100px 0 52px; }
+      .hero-copy { font-size: 16px; }
+
+      .statement .heading,
+      .content-block .heading,
+      .for-who-panel .heading,
+      .quote-band .heading,
+      .final-cta .heading {
+        line-height: 0.96;
+      }
+
+      .media-accent,
+      .media-accent.dark {
+        width: 58%;
+        height: 58%;
+      }
+
+      /* Mobile nav drawer */
+      .topbar.menu-open .nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(251, 248, 244, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 24px 20px;
+        border-bottom: 1px solid var(--line);
+        gap: 20px;
+      }
+      .nav-dropdown-menu { position: static; transform: none; min-width: 0; background: transparent; border: none; backdrop-filter: none; -webkit-backdrop-filter: none; padding: 4px 0 0 12px; }
+      .nav-dropdown.open .nav-dropdown-menu { display: flex; flex-direction: column; gap: 8px; }
+      .nav-dropdown-menu a { padding: 4px 0; font-size: 10px; }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(calc(100% - 24px), var(--max-width));
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn { width: 100%; }
+      .section { padding: 72px 0; }
+
+      .media-card,
+      .media-card.tall { min-height: 380px; }
+
+      .media-card img { max-height: min(68vh, 380px); }
+
+      .for-who-panel { padding: 34px 24px; }
+      .experience-card { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar" id="topbar">
+      <div class="container topbar-inner">
+        <a href="index.html" class="brand" aria-label="Misty Lavertu &mdash; home"><img src="New photos/LOGO.png" alt="Misty Lavertu" class="brand-logo"></a>
+
+        <nav class="nav" id="main-nav" aria-label="Primary navigation">
+          <a href="decision-led-leadership.html">Leadership</a>
+          <div class="nav-dropdown" id="nav-dropdown">
+            <a href="say-yes.html" class="nav-dropdown-toggle">Movement</a>
+            <div class="nav-dropdown-menu">
+              <a href="the-decision-code.html">The Decision Code</a>
+              <a href="the-yes-room.html">The YES Room</a>
+              <a href="say-yes-experience.html">Say YES Experience</a>
+              <a href="say-yes-activation.html">Say YES Activation</a>
+              <a href="the-standard.html">The Standard</a>
+            </div>
+          </div>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ── Hero ── -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content reveal">
+            <div class="eyebrow">Say YES Activation</div>
+            <h1 class="display">21 days.<br>Where your decisions become discipline.</h1>
+            <p class="hero-copy">
+              This is where most people fall off.<br>You won't.
+            </p>
+            <div class="hero-actions">
+              <a href="#join" class="btn">Join Say YES Activation</a>
+            </div>
+            <p class="hero-subnote">Bridge the gap between deciding and becoming the person who follows through.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── What it is ── -->
+      <section class="section" id="experience">
+        <div class="container split">
+          <div class="media-wrap reveal">
+            <div class="media-accent"></div>
+            <div class="media-card tall">
+              <img
+                src="Aestetics/photo_2026-01-12_15-31-47.png"
+                alt="Misty Lavertu — Say YES Activation"
+                loading="lazy"
+              />
+            </div>
+            <div class="vertical-label">Say YES Activation</div>
+          </div>
+
+          <div class="content-block reveal">
+            <div class="eyebrow">What it is</div>
+            <h2 class="heading">Implementation, not inspiration.</h2>
+            <p>
+              Say YES Activation is a 21-day implementation experience designed to bridge the gap between deciding and actually becoming the person who follows through.
+            </p>
+            <p>
+              Over these 21 days, you'll take the decision you made and turn it into consistent action. You'll build discipline, strengthen self-trust, and start operating at a higher standard in your day-to-day life.
+            </p>
+            <p>No more starting and stopping. No more relying on motivation.</p>
+            <p>This is about repetition. Execution. And proving to yourself that you do what you say you're going to do.</p>
+            <a href="#join" class="btn">Join Say YES Activation</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Discipline ── -->
+      <section class="section">
+        <div class="container split reverse">
+          <div class="content-block reveal">
+            <div class="eyebrow">Why 21 days</div>
+            <h2 class="heading">This is where discipline is built.</h2>
+            <p>This is where your actions begin to match your standards.</p>
+            <p>
+              Most people know what to do. Fewer people do it consistently. Activation is the container that turns a decision into a practice — so your behavior starts to match who you say you are.
+            </p>
+          </div>
+
+          <div class="media-wrap reveal">
+            <div class="media-accent dark"></div>
+            <div class="media-card">
+              <img
+                src="Aestetics/photo_2026-01-12_15-31-41.png"
+                alt="Misty Lavertu — discipline and follow-through"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Statement band ── -->
+      <section class="section statement">
+        <div class="container statement-inner reveal">
+          <div class="eyebrow">The bridge</div>
+          <h2 class="heading">Decide once. Practice daily.</h2>
+          <p>
+            Repetition. Execution. Proof you follow through.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Pillars ── -->
+      <section class="section" id="inside">
+        <div class="container">
+          <div class="reveal" style="max-width: 720px;">
+            <div class="eyebrow">Inside Activation</div>
+            <h2 class="heading" style="font-size: clamp(48px, 7vw, 86px);">What you train</h2>
+            <p class="body-copy">
+              Three commitments that change how you operate — not for a weekend, but in real life.
+            </p>
+          </div>
+
+          <div class="experience-grid">
+            <article class="experience-card reveal">
+              <div>
+                <div class="step">01</div>
+                <h3>Repetition</h3>
+                <p>
+                  Small actions, stacked daily — so follow-through stops being optional and starts becoming normal.
+                </p>
+              </div>
+            </article>
+
+            <article class="experience-card reveal">
+              <div>
+                <div class="step">02</div>
+                <h3>Execution</h3>
+                <p>
+                  Less negotiating with yourself. More doing what you said you would do — especially when it's inconvenient.
+                </p>
+              </div>
+            </article>
+
+            <article class="experience-card reveal">
+              <div>
+                <div class="step">03</div>
+                <h3>Standards</h3>
+                <p>
+                  Your actions begin to match the standard you claim — until self-trust isn't a mood, it's evidence.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Pull quote split ── -->
+      <section class="section">
+        <div class="container split">
+          <div class="media-wrap reveal">
+            <div class="media-accent"></div>
+            <div class="media-card">
+              <img
+                src="Aestetics/photo_2026-02-02_18-34-43.jpg"
+                alt="Misty Lavertu — leadership in motion"
+                loading="lazy"
+              />
+            </div>
+            <div class="vertical-label">Decision-Led Leadership</div>
+          </div>
+
+          <div class="content-block reveal">
+            <div class="eyebrow">The point</div>
+            <h2 class="heading">Stop negotiating with yourself.</h2>
+            <p>This isn't about motivation. It's about evidence — accumulated in small, repeated choices.</p>
+            <p>That's how discipline gets built.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Who it's for ── -->
+      <section class="section" id="for-you">
+        <div class="container for-who">
+          <div class="for-who-panel reveal">
+            <div class="eyebrow">Who this is for</div>
+            <h2 class="heading">You've already decided. Now you practice.</h2>
+            <ul class="for-who-list">
+              <li>You've made the decision — and you want it to stick in real life</li>
+              <li>You're tired of momentum that dies the moment life gets loud</li>
+              <li>You want discipline and self-trust without harshness or burnout</li>
+              <li>You're ready for your behavior to match your standards</li>
+            </ul>
+          </div>
+
+          <div class="for-who-panel reveal">
+            <div class="eyebrow">What becomes possible</div>
+            <h2 class="heading">Proof you can feel.</h2>
+            <ul class="for-who-list">
+              <li>Consistency that doesn't depend on feeling "ready"</li>
+              <li>Cleaner follow-through and fewer abandoned commitments</li>
+              <li>A higher baseline for how you lead yourself day to day</li>
+              <li>Self-trust that comes from keeping your word to yourself</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Quote band ── -->
+      <section class="quote-band">
+        <div class="container reveal">
+          <div class="eyebrow">Activation</div>
+          <h2 class="heading">Your actions begin to match your standards.</h2>
+        </div>
+      </section>
+
+      <!-- ── Final CTA ── -->
+      <section class="section final-cta" id="join">
+        <div class="container reveal">
+          <div class="eyebrow">Join Say YES Activation</div>
+          <h2 class="heading">21 days. Discipline you can prove.</h2>
+          <p>Request details and next open date.</p>
+          <a href="mailto:hello@mistylavertu.com?subject=Say%20YES%20Activation" class="btn">Join Say YES Activation</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>&copy; 2026 Misty Lavertu. All Rights Reserved.</span>
+        <span>Decision-Led Leadership</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    /* Scroll-reveal */
+    var revealItems = document.querySelectorAll('.reveal');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach(function (item) { revealObserver.observe(item); });
+
+    /* Mobile menu toggle */
+    (function () {
+      var btn = document.getElementById('mobile-menu-btn');
+      var topbar = document.getElementById('topbar');
+      if (!btn || !topbar) return;
+
+      btn.addEventListener('click', function () {
+        var open = topbar.classList.toggle('menu-open');
+        btn.setAttribute('aria-expanded', open);
+        btn.innerHTML = open ? '&#10005;' : '&#9776;';
+      });
+
+      topbar.querySelectorAll('.nav a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          topbar.classList.remove('menu-open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.innerHTML = '&#9776;';
+        });
+      });
+    })();
+
+    var dd = document.getElementById('nav-dropdown');
+    if (dd) {
+      var toggle = dd.querySelector('.nav-dropdown-toggle');
+      toggle.addEventListener('click', function(e) { e.preventDefault(); dd.classList.toggle('open'); });
+      document.addEventListener('click', function(e) { if (!dd.contains(e.target)) dd.classList.remove('open'); });
+    }
+  </script>
+</body>
+</html>
