@@ -1,816 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Decision-Led Leadership | Misty Lavertu</title>
-  <meta
-    name="description"
-    content="A way of leading that starts with how you decide — clean decisions, protected standards, and momentum built from commitment."
-  />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-
+  <meta name="description" content="A way of leading that starts with how you decide. Clean decisions, protected standards, momentum built from commitment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+  <link rel="stylesheet" href="styles/editorial.css">
   <style>
-    :root {
-      --bg: #faf8f5;
-      --paper: #f5f2ef;
-      --text: #1a1a1a;
-      --muted: #4a342e;
-      --line: rgba(26, 26, 26, 0.12);
-      --black: #1a1a1a;
-      --burgundy: #691818;
-      --gold: #e4c14e;
-      --plum: #420620;
-      --button-text: #faf8f5;
-      --max-width: 1220px;
-      --section-space: 120px;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-    }
-
-    * { box-sizing: border-box; margin: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: "Manrope", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      overflow-x: hidden;
-    }
-
-    img { display: block; width: 100%; height: auto; }
-    a { color: inherit; text-decoration: none; }
-    .page { overflow: hidden; }
-
-    .container {
-      width: min(calc(100% - 40px), var(--max-width));
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .display {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      margin: 0;
-    }
-
-    .heading {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      line-height: 1;
-      letter-spacing: -0.02em;
-      margin: 0 0 18px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 28px;
-      background: var(--burgundy);
-      color: var(--button-text);
-      border: 1px solid var(--burgundy);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: transparent;
-      color: var(--burgundy);
-    }
-
-    /* ── Topbar ── */
-    .topbar {
-      border-bottom: 1px solid var(--line);
-      background: rgba(250, 248, 245, 0.92);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 40;
-    }
-
-    .topbar-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 36px;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .brand-logo {
-      height: 52px;
-      width: auto;
-      display: block;
-    }
-
-    .nav {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .nav a {
-      color: var(--text);
-      transition: color 0.2s ease;
-    }
-
-    .nav a:hover { color: var(--burgundy); }
-    .nav-dropdown { position: relative; }
-    .nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; }
-    .nav-dropdown-toggle::after { content: "▾"; font-size: 9px; transition: transform 0.2s; }
-    .nav-dropdown.open .nav-dropdown-toggle::after { transform: rotate(180deg); }
-    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); min-width: 220px; background: rgba(250,248,245,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(26,26,26,0.12); padding: 12px 0; z-index: 50; }
-    .nav-dropdown.open .nav-dropdown-menu { display: block; }
-    .nav-dropdown-menu a { display: block; padding: 8px 22px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #4a342e; white-space: nowrap; transition: color 0.2s, background 0.2s; }
-    .nav-dropdown-menu a:hover { color: #1a1a1a; background: rgba(26,26,26,0.04); }
-    .nav a.active { color: var(--text); }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: var(--text);
-      cursor: pointer;
-      padding: 4px;
-      line-height: 1;
-    }
-
-    /* ── Hero (statement band) ── */
-    .hero {
-      padding: var(--section-space) 0;
-      background: linear-gradient(180deg, #f7f2ec 0%, var(--bg) 100%);
-      text-align: center;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero-inner {
-      max-width: 920px;
-      margin: 0 auto;
-    }
-
-    .hero .eyebrow { margin-bottom: 18px; }
-
-    .hero .display {
-      font-size: clamp(48px, 8vw, 96px);
-      margin-bottom: 24px;
-    }
-
-    .hero-desc {
-      max-width: 660px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    /* ── Sections ── */
-    .section {
-      padding: var(--section-space) 0;
-      position: relative;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .media-wrap { position: relative; }
-
-    .media-accent {
-      position: absolute;
-      width: 68%;
-      height: 68%;
-      background: var(--gold);
-      top: -28px;
-      left: -28px;
-      z-index: 0;
-    }
-
-    .media-card {
-      position: relative;
-      z-index: 1;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      background: var(--paper);
-      min-height: 580px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .media-card img {
-      width: auto;
-      max-width: 100%;
-      height: auto;
-      max-height: min(78vh, 720px);
-      object-fit: contain;
-      object-position: center;
-    }
-
-    .content-block { max-width: 520px; }
-
-    .content-block .heading {
-      font-size: clamp(42px, 6vw, 72px);
-      margin-bottom: 22px;
-    }
-
-    .content-block p {
-      margin: 0 0 16px;
-      font-size: 16px;
-      color: var(--text);
-    }
-
-    .content-block .muted { color: var(--muted); }
-
-    /* ── Statement band ── */
-    .statement {
-      background: linear-gradient(180deg, #f7f2ec 0%, #f2ebe4 100%);
-      text-align: center;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .statement-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .statement .heading {
-      font-size: clamp(42px, 7vw, 82px);
-      margin-bottom: 20px;
-    }
-
-    .statement p {
-      max-width: 680px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    /* ── Principles grid ── */
-    .principles-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-      margin-top: 46px;
-    }
-
-    .experience-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 34px 28px;
-      min-height: 220px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .experience-card .label {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .experience-card h3 {
-      margin: 0 0 14px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 36px;
-      font-weight: 500;
-      line-height: 1.05;
-    }
-
-    .experience-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .experience-card.full {
-      grid-column: 1 / -1;
-      text-align: center;
-      min-height: 180px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .experience-card.full h3 {
-      font-size: clamp(38px, 5vw, 56px);
-      margin-bottom: 10px;
-    }
-
-    /* ── Where It Applies grid ── */
-    .applies-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-top: 46px;
-    }
-
-    .applies-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 38px 30px;
-    }
-
-    .applies-card h3 {
-      margin: 0 0 12px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 32px;
-      font-weight: 500;
-      line-height: 1.1;
-    }
-
-    .applies-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* ── Why It Matters ── */
-    .text-section {
-      max-width: 720px;
-    }
-
-    .text-section .heading {
-      font-size: clamp(42px, 6vw, 72px);
-      margin-bottom: 22px;
-    }
-
-    .text-section p {
-      margin: 0 0 16px;
-      font-size: 16px;
-      color: var(--muted);
-    }
-
-    /* ── Quote band ── */
-    .quote-band {
-      padding: 80px 0;
-      background: var(--plum);
-      color: #fff;
-      text-align: center;
-    }
-
-    .quote-band .heading {
-      font-size: clamp(42px, 7vw, 92px);
-      margin-bottom: 0;
-    }
-
-    .quote-band .eyebrow {
-      color: rgba(255, 255, 255, 0.58);
-      margin-bottom: 18px;
-    }
-
-    /* ── Final CTA ── */
-    .final-cta {
-      background-image:
-        linear-gradient(180deg, rgba(17, 17, 17, 0.78), rgba(17, 17, 17, 0.88)),
-        url("Aestetics/Misty-(5-of-5)-(1).png");
-      background-position: center, center 18%;
-      background-size: 100% 100%, cover;
-      background-repeat: no-repeat;
-      color: #fff;
-      text-align: center;
-    }
-
-    .final-cta .heading {
-      font-size: clamp(48px, 8vw, 96px);
-      margin-bottom: 16px;
-    }
-
-    .final-cta p {
-      max-width: 640px;
-      margin: 0 auto 30px;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 18px;
-    }
-
-    .final-cta .btn {
-      background: #fff;
-      color: var(--black);
-      border-color: #fff;
-    }
-
-    .final-cta .btn:hover {
-      background: transparent;
-      color: #fff;
-      border-color: #fff;
-    }
-
-    /* ── Footer ── */
-    .site-footer {
-      background: var(--plum);
-      color: rgba(255, 255, 255, 0.5);
-      padding: 28px 0;
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .site-footer a {
-      color: rgba(255, 255, 255, 0.7);
-      transition: color 0.2s;
-    }
-
-    .site-footer a:hover { color: #fff; }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    /* ── Scroll reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 1080px) {
-      :root { --section-space: 92px; }
-
-      .split {
-        grid-template-columns: 1fr;
-        gap: 42px;
-      }
-
-      .content-block { max-width: none; }
-      .text-section { max-width: none; }
-
-      .principles-grid { grid-template-columns: 1fr; }
-      .applies-grid { grid-template-columns: 1fr; }
-
-      .media-card { min-height: 480px; }
-      .media-card img { max-height: min(72vh, 480px); }
-    }
-
-    @media (max-width: 820px) {
-      .nav { display: none; }
-      .mobile-menu-btn { display: block; }
-
-      .topbar-inner { min-height: 68px; }
-      .brand { font-size: 30px; }
-
-      .statement .heading,
-      .content-block .heading,
-      .text-section .heading,
-      .quote-band .heading,
-      .final-cta .heading {
-        line-height: 0.96;
-      }
-
-      .media-accent {
-        width: 58%;
-        height: 58%;
-      }
-
-      .topbar.menu-open .nav {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(250, 248, 245, 0.97);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        padding: 24px 20px;
-        border-bottom: 1px solid var(--line);
-        gap: 20px;
-      }
-      .nav-dropdown-menu { position: static; transform: none; min-width: 0; background: transparent; border: none; backdrop-filter: none; -webkit-backdrop-filter: none; padding: 4px 0 0 12px; }
-      .nav-dropdown.open .nav-dropdown-menu { display: flex; flex-direction: column; gap: 8px; }
-      .nav-dropdown-menu a { padding: 4px 0; font-size: 10px; }
-    }
-
-    @media (max-width: 560px) {
-      .container {
-        width: min(calc(100% - 24px), var(--max-width));
-      }
-
-      .btn { width: 100%; }
-      .section { padding: 72px 0; }
-
-      .media-card { min-height: 380px; }
-      .media-card img { max-height: min(68vh, 380px); }
-      .experience-card { padding: 28px 22px; }
-      .applies-card { padding: 28px 22px; }
-
-      .footer-inner {
-        flex-direction: column;
-        gap: 8px;
-      }
+    /* Leadership page: cinematic cover band */
+    .leadership-page .photo-band-full { background: #0b1320; }
+    .leadership-page .photo-band-full img {
+      height: clamp(380px, 62vw, 720px);
+      object-fit: cover;
+      object-position: center center;
     }
   </style>
 </head>
-<body>
-  <div class="page">
-    <header class="topbar" id="topbar">
-      <div class="container topbar-inner">
-        <a href="index.html" class="brand" aria-label="Misty Lavertu &mdash; home"><img src="New photos/LOGO.png" alt="Misty Lavertu" class="brand-logo"></a>
+<body class="leadership-page">
 
-        <nav class="nav" id="main-nav" aria-label="Primary navigation">
-          <a href="decision-led-leadership.html" class="active">Leadership</a>
-          <div class="nav-dropdown" id="nav-dropdown">
-            <a href="say-yes.html" class="nav-dropdown-toggle">Movement</a>
-            <div class="nav-dropdown-menu">
-              <a href="the-decision-code.html">The Decision Code</a>
-              <a href="the-yes-room.html">The YES Room</a>
-              <a href="say-yes-experience.html">Say YES Experience</a>
-              <a href="say-yes-activation.html">Say YES Activation</a>
-              <a href="the-standard.html">The Standard</a>
-            </div>
-          </div>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-
-        <button
-          type="button"
-          class="mobile-menu-btn"
-          id="mobile-menu-btn"
-          aria-label="Open menu"
-          aria-expanded="false"
-        >&#9776;</button>
+<!-- Topbar -->
+<header class="topbar" id="topbar">
+  <div class="container topbar-inner">
+    <a href="index.html" class="brand" aria-label="Misty Lavertu home"><img src="New photos/LOGO.png" alt="Misty Lavertu" class="brand-logo"></a>
+    <nav class="nav" id="main-nav">
+      <a href="decision-led-leadership.html" class="active">Leadership</a>
+      <div class="nav-dropdown" id="nav-dropdown">
+        <a href="say-yes.html" class="nav-dropdown-toggle">Movement</a>
+        <div class="nav-dropdown-menu">
+          <a href="the-decision-code.html">The Decision Code</a>
+          <a href="the-yes-room.html">The YES Room</a>
+          <a href="say-yes-experience.html">Say YES Experience</a>
+          <a href="say-yes-activation.html">Say YES Activation</a>
+          <a href="the-standard.html">The Standard</a>
+        </div>
       </div>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+  </div>
+</header>
+
+<!-- Masthead -->
+<section class="section section--ed section--cream home-flow">
+  <div class="container">
+    <div class="masthead home-flow-inner">
+      <div>
+        <span class="issue-mark issue-mark--no-rule">Decision-Led Leadership</span>
+        <h1 class="display-mark" style="margin-top: 22px;">A way of leading that starts with how you <em>decide.</em></h1>
+        <p class="masthead-dek">Clean decisions, protected standards, momentum built from commitment. Not more noise. Not more waiting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cover band -->
+<section class="photo-band-full home-flow">
+  <img src="Aestetics/event-photos/misty-stage-cityscape.png" alt="Misty Lavertu speaking on stage" loading="lazy" decoding="async">
+</section>
+
+<!-- What It Means -->
+<section id="what-it-means" class="section section--ed section--cream home-flow">
+  <div class="container">
+    <div class="ed-grid ed-split home-flow-inner">
+      <div class="ed-col-photo">
+        <div class="ed-photo ed-photo--portrait">
+          <img src="New photos/photo_2026-04-17_02-19-13.jpg" alt="Misty Lavertu working in a quiet moment" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="ed-col-text">
+        <h2 class="display-mark">Leadership shows in the <em>quiet moments.</em></h2>
+        <div class="ed-body">
+          <p class="lede">The decisions you keep. The standards you hold when no one is watching.</p>
+          <p>The place where you stop negotiating with yourself and start moving.</p>
+          <p class="strong">Decision-Led Leadership is internal clarity made visible.</p>
+          <p>Clean commitment. Movement before certainty. Momentum built on self-trust instead of busy urgency.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Decision Drag (pullquote on plum) -->
+<section id="decision-drag" class="section section--ed section--plum home-flow">
+  <div class="container">
+    <div class="ed-grid ed-split--reverse home-flow-inner">
+      <div class="ed-col-text">
+        <h2 class="pullquote" style="font-size: clamp(40px, 6vw, 88px);"><span class="mark-open">&ldquo;</span>The gap between <em>knowing</em> and <em>moving.</em><span class="mark-close">&rdquo;</span></h2>
+        <p class="pullquote-credit pullquote-credit--stacked">Decision Drag is the unnamed pattern. Overthinking. Open loops. Delayed follow-through. It looks like discernment. It feels like wisdom. But left unnamed, it leaks momentum, trust, and time.</p>
+      </div>
+      <div class="ed-col-photo">
+        <div class="ed-photo ed-photo--portrait">
+          <img src="Aestetics/photo_2026-02-02_18-29-42.jpg" alt="Misty Lavertu in a fuchsia suit, grounded stance" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Principles -->
+<section id="principles" class="section section--ed section--paper home-flow">
+  <div class="container home-flow-inner">
+    <header class="path-head-ed">
+      <h2 class="display-mark path-head-ed__title">What this work is <em>built on.</em></h2>
+      <p class="path-head-ed__dek"><strong>Four principles.</strong> One leadership pattern.</p>
     </header>
 
-    <main>
-      <!-- ── 1. Hero ── -->
-      <section class="hero">
-        <div class="container hero-inner reveal">
-          <div class="eyebrow">Decision-Led Leadership</div>
-          <h1 class="display">A way of leading that starts with how you decide</h1>
-          <p class="hero-desc">
-            Clean decisions, protected with standards, movement built from commitment —
-            not more noise, not more waiting.
-          </p>
+    <div class="ed-rail">
+      <div class="ed-rail__item">
+        <div class="ed-rail__num">01</div>
+        <div class="ed-rail__body">
+          <h3>Clarity follows commitment.</h3>
+          <p>You decide first, then the path sharpens. Waiting for clarity is how capable people stay still.</p>
         </div>
-      </section>
-
-      <!-- ── 2. What It Means ── -->
-      <section class="section">
-        <div class="container split">
-          <div class="content-block reveal">
-            <div class="eyebrow">What it means</div>
-            <h2 class="heading">Leadership shows in the quiet moments.</h2>
-            <p>
-              The decisions you keep. The standards you hold when no one is watching.
-              The place where you stop negotiating with yourself and start moving.
-            </p>
-            <p class="muted">
-              Decision-Led Leadership is internal clarity made visible — clean commitment,
-              movement before certainty, momentum built on self-trust instead of busy urgency.
-            </p>
-          </div>
-
-          <div class="media-wrap reveal">
-            <div class="media-accent"></div>
-            <div class="media-card">
-              <img
-                src="Aestetics/Misty-(5-of-5)-(1).png"
-                alt="Misty Lavertu in a white blazer, seated in a director's chair — decisive leadership"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── 3. Decision Drag ── -->
-      <section class="section statement">
-        <div class="container statement-inner reveal">
-          <div class="eyebrow">Decision Drag</div>
-          <h2 class="heading">The gap between knowing and moving</h2>
-          <p>
-            Decision Drag is the unnamed pattern — overthinking, open loops,
-            delayed follow-through. It looks like discernment. It feels like wisdom.
-            But left unnamed, it leaks momentum, trust, and time.
-          </p>
-        </div>
-      </section>
-
-      <!-- ── 4. Principles ── -->
-      <section class="section">
-        <div class="container">
-          <div class="reveal" style="max-width: 720px;">
-            <div class="eyebrow">Principles</div>
-            <h2 class="heading" style="font-size: clamp(48px, 7vw, 86px);">What this work is built on</h2>
-          </div>
-
-          <div class="principles-grid">
-            <article class="experience-card reveal">
-              <div>
-                <div class="label">Principle 01</div>
-                <h3>Clarity follows commitment</h3>
-                <p>You decide first, then the path sharpens. Waiting for clarity is how capable people stay still.</p>
-              </div>
-            </article>
-
-            <article class="experience-card reveal">
-              <div>
-                <div class="label">Principle 02</div>
-                <h3>Open loops are expensive</h3>
-                <p>Unfinished decisions drain leadership bandwidth — silently, steadily, and without permission.</p>
-              </div>
-            </article>
-
-            <article class="experience-card reveal">
-              <div>
-                <div class="label">Principle 03</div>
-                <h3>Standards protect momentum</h3>
-                <p>What you protect is what compounds. Lower the standard once, and the cost multiplies.</p>
-              </div>
-            </article>
-
-            <article class="experience-card reveal">
-              <div>
-                <div class="label">Principle 04</div>
-                <h3>Self-trust is built through action</h3>
-                <p>Not more information, not more reflection, not more time. Through action.</p>
-              </div>
-            </article>
-
-            <article class="experience-card full reveal">
-              <div>
-                <h3>Leadership starts within.</h3>
-                <p>How you lead yourself shapes every other room you lead.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── 5. Where It Applies ── -->
-      <section class="section" style="background: var(--paper);">
-        <div class="container">
-          <div class="reveal" style="max-width: 720px;">
-            <div class="eyebrow">Where it applies</div>
-            <h2 class="heading" style="font-size: clamp(48px, 7vw, 86px);">Across arenas</h2>
-            <p style="color: var(--muted); font-size: 16px; margin-bottom: 0;">
-              Decision-Led Leadership applies across arenas because the core issue is human, not industry-specific.
-            </p>
-          </div>
-
-          <div class="applies-grid">
-            <div class="applies-card reveal">
-              <h3>Personal leadership</h3>
-              <p>Identity, relationships, and the decisions no one else sees — the ones that shape everything else.</p>
-            </div>
-
-            <div class="applies-card reveal">
-              <h3>Entrepreneurship</h3>
-              <p>Building under pressure with clarity and standards, not reaction and compromise.</p>
-            </div>
-
-            <div class="applies-card reveal">
-              <h3>Corporate teams</h3>
-              <p>Leading people, priorities, and pace without hesitation or internal negotiation.</p>
-            </div>
-
-            <div class="applies-card reveal">
-              <h3>Network marketing</h3>
-              <p>Mentorship, values, effort-based leadership, and duplication without compromise.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── 6. Why It Matters Now ── -->
-      <section class="section">
-        <div class="container">
-          <div class="text-section reveal">
-            <div class="eyebrow">Why it matters now</div>
-            <h2 class="heading">Hesitation gets expensive.</h2>
-            <p>
-              At higher levels of responsibility, Decision Drag looks like discernment —
-              but it quietly caps your leadership. The longer you circle, the more you pay
-              in lost momentum, diluted trust, and compound delay.
-            </p>
-            <p>
-              This work changes that pattern. Not with more information, but with a
-              framework that makes clean, committed movement the default.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── 7. Quote Band ── -->
-      <section class="quote-band">
-        <div class="container reveal">
-          <div class="eyebrow">The invitation</div>
-          <h2 class="heading">See your pattern — then move.</h2>
-        </div>
-      </section>
-
-      <!-- ── 8. Final CTA ── -->
-      <section class="section final-cta">
-        <div class="container reveal">
-          <div class="eyebrow" style="color: rgba(255,255,255,0.58); margin-bottom: 18px;">Start here</div>
-          <h2 class="heading">Take The Decision Code</h2>
-          <p>
-            Name the pattern. See how you decide under pressure. Then decide what changes.
-          </p>
-          <a href="the-decision-code.html" class="btn">Take The Decision Code</a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <span>&copy; 2026 Misty Lavertu. All Rights Reserved.</span>
-        <span>Decision-Led Leadership</span>
       </div>
-    </footer>
+      <div class="ed-rail__item">
+        <div class="ed-rail__num">02</div>
+        <div class="ed-rail__body">
+          <h3>Open loops are expensive.</h3>
+          <p>Unfinished decisions drain leadership bandwidth. Silently, steadily, and without permission.</p>
+        </div>
+      </div>
+      <div class="ed-rail__item">
+        <div class="ed-rail__num">03</div>
+        <div class="ed-rail__body">
+          <h3>Standards protect momentum.</h3>
+          <p>What you protect is what compounds. Lower the standard once, and the cost multiplies.</p>
+        </div>
+      </div>
+      <div class="ed-rail__item">
+        <div class="ed-rail__num">04</div>
+        <div class="ed-rail__body">
+          <h3>Self-trust is built through action.</h3>
+          <p>Not more information. Not more reflection. Not more time. Through action.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ed-coda">
+      <span class="ed-coda__label">The through-line</span>
+      <h3>Leadership starts within.</h3>
+      <p>How you lead yourself shapes every other room you lead.</p>
+    </div>
   </div>
+</section>
 
-  <script>
-    var revealItems = document.querySelectorAll('.reveal');
-    var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealItems.forEach(function (item) { revealObserver.observe(item); });
+<!-- Where It Applies -->
+<section id="where-it-applies" class="section section--ed section--cream home-flow">
+  <div class="container home-flow-inner">
+    <header class="path-head-ed">
+      <h2 class="display-mark path-head-ed__title">Across <em>arenas.</em></h2>
+      <p class="path-head-ed__dek">Decision-Led Leadership applies across arenas because the core issue is human, not industry-specific.</p>
+    </header>
 
-    (function () {
-      var btn = document.getElementById('mobile-menu-btn');
-      var topbar = document.getElementById('topbar');
-      if (!btn || !topbar) return;
+    <div class="ed-index">
+      <div class="ed-index__item">
+        <span class="ed-index__label">Arena 01</span>
+        <h3>Personal leadership.</h3>
+        <p>Identity, relationships, and the decisions no one else sees. The ones that shape everything else.</p>
+      </div>
+      <div class="ed-index__item">
+        <span class="ed-index__label">Arena 02</span>
+        <h3>Entrepreneurship.</h3>
+        <p>Building under pressure with clarity and standards. Not reaction. Not compromise.</p>
+      </div>
+      <div class="ed-index__item">
+        <span class="ed-index__label">Arena 03</span>
+        <h3>Corporate teams.</h3>
+        <p>Leading people, priorities, and pace without hesitation or internal negotiation.</p>
+      </div>
+      <div class="ed-index__item">
+        <span class="ed-index__label">Arena 04</span>
+        <h3>Network marketing.</h3>
+        <p>Mentorship, values, effort-based leadership, and duplication without compromise.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      btn.addEventListener('click', function () {
-        var open = topbar.classList.toggle('menu-open');
-        btn.setAttribute('aria-expanded', open);
-        btn.innerHTML = open ? '&#10005;' : '&#9776;';
-      });
+<!-- Why It Matters Now -->
+<section id="why-it-matters" class="section section--ed section--paper home-flow">
+  <div class="container">
+    <div class="ed-grid ed-split--reverse home-flow-inner">
+      <div class="ed-col-text">
+        <h2 class="display-mark">Hesitation gets <em>expensive.</em></h2>
+        <div class="ed-body">
+          <p class="lede">At higher levels of responsibility, Decision Drag looks like discernment. But it quietly caps your leadership.</p>
+          <p>The longer you circle, the more you pay. In lost momentum. In diluted trust. In compound delay.</p>
+          <p class="strong">This work changes that pattern.</p>
+          <p>Not with more information. With a framework that makes clean, committed movement the default.</p>
+        </div>
+      </div>
+      <div class="ed-col-photo">
+        <div class="ed-photo ed-photo--portrait">
+          <img src="Aestetics/photo_2026-02-02_18-34-43.jpg" alt="Misty Lavertu, thoughtful stance" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      topbar.querySelectorAll('.nav a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          topbar.classList.remove('menu-open');
-          btn.setAttribute('aria-expanded', 'false');
-          btn.innerHTML = '&#9776;';
-        });
-      });
-    })();
+<!-- Final CTA -->
+<section class="quote-band">
+  <div class="container reveal">
+    <div class="quote-band-shell">
+      <p class="quote-band-whisper">"See your pattern. Then move."</p>
+      <h2 class="quote-band-heading">
+        <span class="quote-band-line">Name the pattern&hellip;</span>
+        <span class="quote-band-line quote-band-line--gold">Then decide what changes.</span>
+      </h2>
+      <a href="the-decision-code.html" class="btn quote-band-btn">Take the Decision Code</a>
+    </div>
+  </div>
+</section>
 
-    var dd = document.getElementById('nav-dropdown');
-    if (dd) {
-      var toggle = dd.querySelector('.nav-dropdown-toggle');
-      toggle.addEventListener('click', function(e) { e.preventDefault(); dd.classList.toggle('open'); });
-      document.addEventListener('click', function(e) { if (!dd.contains(e.target)) dd.classList.remove('open'); });
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>&copy; 2026 Misty Lavertu. All Rights Reserved.</span>
+    <span>Decision-Led Leadership</span>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reduce.matches) {
+      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+      document.querySelectorAll('.home-flow').forEach(function(el) { el.classList.add('is-in-view'); });
+      return;
     }
-  </script>
+    var ioOpts = { threshold: 0.12, rootMargin: '0px 0px 12% 0px' };
+    document.querySelectorAll('.home-flow').forEach(function(section) {
+      new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('is-in-view'); obs.unobserve(e.target); }
+        });
+      }, ioOpts).observe(section);
+    });
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, ioOpts).observe(el);
+    });
+  })();
+
+  (function() {
+    var btn = document.getElementById('mobile-menu-btn');
+    var bar = document.getElementById('topbar');
+    if (!btn || !bar) return;
+    btn.addEventListener('click', function() {
+      var open = bar.classList.toggle('menu-open');
+      btn.setAttribute('aria-expanded', open);
+      btn.innerHTML = open ? '&#10005;' : '&#9776;';
+    });
+    bar.querySelectorAll('.nav a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        bar.classList.remove('menu-open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.innerHTML = '&#9776;';
+      });
+    });
+  })();
+
+  var dd = document.getElementById('nav-dropdown');
+  if (dd) {
+    var toggle = dd.querySelector('.nav-dropdown-toggle');
+    toggle.addEventListener('click', function(e) { e.preventDefault(); dd.classList.toggle('open'); });
+    document.addEventListener('click', function(e) { if (!dd.contains(e.target)) dd.classList.remove('open'); });
+  }
+</script>
 </body>
 </html>
