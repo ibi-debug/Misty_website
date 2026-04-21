@@ -4,811 +4,330 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The YES Room (Live Zoom) | Misty Lavertu</title>
-  <meta name="description" content="A live Zoom — step into Misty's world. Where she's been, where she's headed, and what's in it for you.">
+  <meta name="description" content="A live Zoom. Step into Misty's world. Where she's been, where she's headed, and what's in it for you.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="styles/site.css">
+  <link rel="stylesheet" href="styles/editorial.css">
   <style>
-    :root {
-      --bg: #faf8f5;
-      --paper: #f5f2ef;
-      --text: #1a1a1a;
-      --muted: #4a342e;
-      --line: rgba(26,26,26,0.12);
-      --black: #1a1a1a;
-      --burgundy: #691818;
-      --gold: #e4c14e;
-      --plum: #420620;
-      --button-text: #faf8f5;
-      --max-width: 1220px;
-      --section-space: 120px;
-      --shadow: 0 20px 60px rgba(0,0,0,0.08);
-    }
+    /* YES Room :: page-scoped tuning */
+    .yr-page .masthead { max-width: 760px; }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: "Manrope", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    img { display: block; width: 100%; height: auto; }
-    a { color: inherit; text-decoration: none; }
-    .page { overflow: hidden; }
-
-    .container {
-      width: min(calc(100% - 40px), var(--max-width));
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .display {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      margin: 0;
-    }
-
-    .heading {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      line-height: 1;
-      letter-spacing: -0.02em;
-      margin: 0 0 18px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 28px;
-      background: var(--burgundy);
-      color: var(--button-text);
-      border: 1px solid var(--burgundy);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: transparent;
-      color: var(--burgundy);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--burgundy);
-      border-color: rgba(105,24,24,0.35);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--burgundy);
-      background: var(--burgundy);
-      color: var(--button-text);
-    }
-
-    /* ── Topbar ── */
-    .topbar {
+    /* Centered hero band */
+    .yr-hero {
+      text-align: center;
+      padding: clamp(92px, 14vw, 180px) 0 clamp(64px, 9vw, 112px);
       border-bottom: 1px solid var(--line);
-      background: rgba(250,248,245,0.92);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 40;
-    }
-
-    .topbar-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 36px;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .brand-logo {
-      height: 52px;
-      width: auto;
-      display: block;
-    }
-
-    .nav {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .nav a {
-      color: var(--text);
-      transition: color 0.2s ease;
-    }
-
-    .nav a:hover { color: var(--burgundy); }
-    .nav-dropdown { position: relative; }
-    .nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; }
-    .nav-dropdown-toggle::after { content: "▾"; font-size: 9px; transition: transform 0.2s; }
-    .nav-dropdown.open .nav-dropdown-toggle::after { transform: rotate(180deg); }
-    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); min-width: 220px; background: rgba(250,248,245,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(26,26,26,0.12); padding: 12px 0; z-index: 50; }
-    .nav-dropdown.open .nav-dropdown-menu { display: block; }
-    .nav-dropdown-menu a { display: block; padding: 8px 22px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #4a342e; white-space: nowrap; transition: color 0.2s, background 0.2s; }
-    .nav-dropdown-menu a:hover { color: #1a1a1a; background: rgba(26,26,26,0.04); }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: var(--text);
-      cursor: pointer;
-      padding: 4px;
-      line-height: 1;
-    }
-
-    /* ── Hero / Statement band ── */
-    .hero-statement {
       background: linear-gradient(180deg, #f7f2ec 0%, #f2ebe4 100%);
-      text-align: center;
-      border-bottom: 1px solid var(--line);
-      padding: clamp(92px, 14vw, 180px) 0 clamp(72px, 10vw, 140px);
     }
-
-    .hero-statement-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .hero-statement .eyebrow { margin-bottom: 18px; }
-
-    .hero-statement .display {
-      font-size: clamp(48px, 8vw, 96px);
-      margin-bottom: 24px;
-    }
-
-    .hero-statement p {
-      max-width: 640px;
-      margin: 0 auto 36px;
+    .yr-hero .masthead { margin: 0 auto; }
+    .yr-hero .masthead-dek { margin-left: auto; margin-right: auto; max-width: 560px; }
+    .yr-hero-note {
+      margin-top: 14px;
+      font-size: 13px;
+      letter-spacing: 0.04em;
       color: var(--muted);
-      font-size: 17px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .yr-hero .btn { margin-top: clamp(24px, 4vw, 34px); }
+
+    /* Cap display-mark inside ed-split text columns so long headings fit on desktop */
+    .yr-page .ed-col-text .display-mark {
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
     }
 
-    /* ── Sections ── */
-    .section {
-      padding: var(--section-space) 0;
-      position: relative;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 52px;
-    }
-
-    .section-header .heading {
-      font-size: clamp(36px, 5vw, 62px);
-      margin-bottom: 14px;
-    }
-
-    .section-header p {
-      color: var(--muted);
-      max-width: 560px;
-      margin: 0 auto;
-      font-size: 16px;
-    }
-
-    /* ── Split layout ── */
-    .split {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .media-wrap { position: relative; }
-
-    .media-accent {
-      position: absolute;
-      width: 68%;
-      height: 68%;
-      background: var(--gold);
-      top: -28px;
-      left: -28px;
-      z-index: 0;
-    }
-
-    .media-card {
-      position: relative;
-      z-index: 1;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      background: var(--paper);
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .media-card img {
-      width: auto;
-      max-width: 100%;
-      height: auto;
-      max-height: min(78vh, 700px);
-      object-fit: contain;
-      object-position: center;
-    }
-
-    .content-block { max-width: 520px; }
-
-    .content-block .heading {
-      font-size: clamp(42px, 6vw, 72px);
-      margin-bottom: 22px;
-    }
-
-    .content-block p {
-      margin: 0 0 16px;
-      font-size: 16px;
-      color: var(--text);
-    }
-
-    .content-block .muted { color: var(--muted); }
-
-    .content-block .btn { margin-top: 18px; }
-
-    /* ── Two-panel (for-who) ── */
-    .for-who {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      align-items: start;
-    }
-
-    .for-who-panel {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 42px 36px;
-    }
-
-    .for-who-panel .eyebrow { margin-bottom: 14px; }
-
-    .for-who-panel .heading {
-      font-size: clamp(32px, 4vw, 52px);
-      margin-bottom: 18px;
-    }
-
-    .for-who-panel p {
-      color: var(--muted);
-      font-size: 16px;
-      margin: 0 0 14px;
-      line-height: 1.65;
-    }
-
-    .for-who-panel p:last-child { margin-bottom: 0; }
-
-    .for-who-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 16px;
-    }
-
-    .for-who-list li {
-      display: grid;
-      grid-template-columns: 18px 1fr;
-      gap: 14px;
-      align-items: start;
-      color: var(--text);
-      font-size: 16px;
-    }
-
-    .for-who-list li::before {
-      content: "\2014";
-      color: var(--gold);
-      font-weight: 700;
-      line-height: 1;
-      margin-top: 2px;
-    }
-
-    /* ── Experience card grid ── */
-    .experience-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-      margin-top: 46px;
-    }
-
-    .experience-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 34px 28px;
-      min-height: 250px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .experience-card .step {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .experience-card h3 {
-      margin: 0 0 14px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 34px;
-      font-weight: 500;
-      line-height: 1;
-    }
-
-    .experience-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* ── Who it's for — centered ── */
-    .who-centered {
-      text-align: center;
+    /* Registration panel :: editorial hairline card */
+    .yr-reg {
       max-width: 720px;
       margin: 0 auto;
-    }
-
-    .who-centered .heading {
-      font-size: clamp(36px, 5vw, 62px);
-      margin-bottom: 16px;
-    }
-
-    .who-centered p {
-      color: var(--muted);
-      font-size: 17px;
-      margin: 0 0 14px;
-      line-height: 1.7;
-    }
-
-    .who-centered p:last-child { margin-bottom: 0; }
-
-    /* ── Registration panel ── */
-    .reg-panel {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: clamp(42px, 6vw, 64px);
       text-align: center;
-      max-width: 780px;
-      margin: 0 auto;
     }
-
-    .reg-panel .eyebrow { margin-bottom: 14px; }
-
-    .reg-panel .heading {
-      font-size: clamp(36px, 5vw, 56px);
-      margin-bottom: 16px;
-    }
-
-    .reg-panel > p {
-      color: var(--muted);
-      font-size: 16px;
-      margin: 0 auto 28px;
-      max-width: 520px;
-    }
-
-    .reg-details {
-      text-align: left;
+    .yr-reg__inner {
+      padding: clamp(44px, 6vw, 72px) clamp(28px, 4vw, 56px);
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      padding: 28px 0;
-      margin: 0 0 36px;
+    }
+    .yr-reg h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(34px, 4.6vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin: 14px 0 12px;
+    }
+    .yr-reg__dek {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 460px;
+      margin: 0 auto clamp(28px, 4vw, 40px);
+    }
+    .yr-reg__details {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto clamp(28px, 4vw, 40px);
+      max-width: 440px;
       display: grid;
-      gap: 14px;
+      gap: 0;
+      text-align: left;
     }
-
-    .reg-details p {
-      margin: 0;
+    .yr-reg__details li {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
       font-size: 15px;
-      color: var(--text);
-    }
-
-    .reg-details strong {
-      display: inline-block;
-      min-width: 120px;
-      color: var(--muted);
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .reg-fallback {
-      margin-top: 18px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .reg-fallback a {
-      color: var(--burgundy);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.2s;
-    }
-
-    .reg-fallback a:hover { color: var(--text); }
-
-    /* ── Divider ── */
-    .section-divider {
-      width: 100%;
-      height: 1px;
-      background: var(--line);
-    }
-
-    /* ── Footer ── */
-    .site-footer {
-      background: var(--plum);
-      color: rgba(255,255,255,0.5);
-      padding: 28px 0;
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
     }
-
-    /* ── Scroll reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+    .yr-reg__details li:last-child { border-bottom: 1px solid var(--line); }
+    .yr-reg__term {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 700;
     }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .yr-reg__value { color: var(--text); }
+    .yr-reg__fallback {
+      margin-top: 22px;
+      font-size: 13px;
+      color: var(--muted);
     }
-
-    /* ── Responsive ── */
-    @media (max-width: 1080px) {
-      :root { --section-space: 92px; }
-
-      .split,
-      .for-who {
-        grid-template-columns: 1fr;
-        gap: 42px;
-      }
-
-      .content-block { max-width: none; }
-
-      .experience-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .media-card { min-height: 480px; }
-      .media-card img { max-height: min(72vh, 480px); }
+    .yr-reg__fallback a {
+      color: var(--burgundy);
+      border-bottom: 1px solid rgba(105, 24, 24, 0.35);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
     }
-
-    @media (max-width: 820px) {
-      .nav { display: none; }
-      .mobile-menu-btn { display: block; }
-
-      .topbar-inner { min-height: 68px; }
-      .brand { font-size: 30px; }
-
-      .hero-statement .display,
-      .content-block .heading,
-      .for-who-panel .heading,
-      .who-centered .heading,
-      .reg-panel .heading {
-        line-height: 0.96;
-      }
-
-      .media-accent {
-        width: 58%;
-        height: 58%;
-      }
-
-      .topbar.menu-open .nav {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(250,248,245,0.97);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        padding: 24px 20px;
-        border-bottom: 1px solid var(--line);
-        gap: 20px;
-      }
-      .nav-dropdown-menu { position: static; transform: none; min-width: 0; background: transparent; border: none; backdrop-filter: none; -webkit-backdrop-filter: none; padding: 4px 0 0 12px; }
-      .nav-dropdown.open .nav-dropdown-menu { display: flex; flex-direction: column; gap: 8px; }
-      .nav-dropdown-menu a { padding: 4px 0; font-size: 10px; }
-    }
+    .yr-reg__fallback a:hover { color: var(--text); border-bottom-color: var(--text); }
 
     @media (max-width: 560px) {
-      .container {
-        width: min(calc(100% - 24px), var(--max-width));
-      }
-
-      .btn { width: 100%; }
-      .section { padding: 72px 0; }
-
-      .experience-grid { grid-template-columns: 1fr; }
-      .experience-card { padding: 28px 22px; }
-
-      .media-card { min-height: 380px; }
-      .media-card img { max-height: min(68vh, 380px); }
-
-      .for-who-panel { padding: 34px 24px; }
-      .reg-panel { padding: 34px 24px; }
-
-      .reg-details strong {
-        display: block;
-        min-width: 0;
-        margin-bottom: 2px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        gap: 8px;
-      }
+      .yr-reg__details li { grid-template-columns: 90px 1fr; gap: 12px; }
     }
+
+    /* Centered display block */
+    .yr-center {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .yr-center .display-mark { font-size: clamp(34px, 5vw, 58px); }
+    .yr-center .ed-body { max-width: 540px; margin: 18px auto 0; }
+    .yr-center .ed-body p { margin-left: auto; margin-right: auto; }
   </style>
 </head>
-<body>
-  <div class="page">
-    <header class="topbar" id="topbar">
-      <div class="container topbar-inner">
-        <a href="index.html" class="brand" aria-label="Misty Lavertu &mdash; home"><img src="New photos/LOGO.png" alt="Misty Lavertu" class="brand-logo"></a>
+<body class="yr-page">
 
-        <nav class="nav" id="main-nav" aria-label="Primary navigation">
-          <a href="decision-led-leadership.html">Leadership</a>
-          <div class="nav-dropdown" id="nav-dropdown">
-            <a href="say-yes.html" class="nav-dropdown-toggle">Movement</a>
-            <div class="nav-dropdown-menu">
-              <a href="the-decision-code.html">The Decision Code</a>
-              <a href="the-yes-room.html">The YES Room</a>
-              <a href="say-yes-experience.html">Say YES Experience</a>
-              <a href="say-yes-activation.html">Say YES Activation</a>
-              <a href="the-standard.html">The Standard</a>
-            </div>
-          </div>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-
-        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+<header class="topbar" id="topbar">
+  <div class="container topbar-inner">
+    <a href="index.html" class="brand" aria-label="Misty Lavertu home"><img src="New photos/LOGO.png" alt="Misty Lavertu" class="brand-logo"></a>
+    <nav class="nav" id="main-nav" aria-label="Primary navigation">
+      <a href="decision-led-leadership.html">Leadership</a>
+      <div class="nav-dropdown" id="nav-dropdown">
+        <a href="say-yes.html" class="nav-dropdown-toggle">Movement</a>
+        <div class="nav-dropdown-menu">
+          <a href="the-decision-code.html">The Decision Code</a>
+          <a href="the-yes-room.html">The YES Room</a>
+          <a href="say-yes-experience.html">Say YES Experience</a>
+          <a href="say-yes-activation.html">Say YES Activation</a>
+          <a href="the-standard.html">The Standard</a>
+        </div>
       </div>
-    </header>
-
-    <main>
-      <!-- ── Hero statement band ── -->
-      <section class="hero-statement">
-        <div class="container hero-statement-inner">
-          <div class="eyebrow reveal">The YES Room</div>
-          <h1 class="display reveal">An invitation into<br>my world.</h1>
-          <p class="reveal">
-            A live Zoom to hear what I'm doing, how I got here, where I'm headed — and what's in it for you.
-          </p>
-          <p class="reveal" style="font-size: 14px; color: var(--muted); max-width: 36rem; margin-left: auto; margin-right: auto;">
-            This isn't an ongoing series. When the room opens, you'll know — and seats are limited.
-          </p>
-          <a href="mailto:hello@mistylavertu.com?subject=YES%20Room%20registration" class="btn reveal">Join The YES Room</a>
-        </div>
-      </section>
-
-      <!-- ── Two-panel intro ── -->
-      <section class="section">
-        <div class="container for-who">
-          <div class="for-who-panel reveal">
-            <div class="eyebrow">What this is</div>
-            <h2 class="heading">A live conversation — not a pitch deck.</h2>
-            <p>Show up on Zoom. I'll share the arc of this work — the standards behind it, the decisions that built it, and how women step from knowing into movement.</p>
-            <p>If you've been circling the next level in your life or business, this is where the story becomes concrete — and you see where you might fit.</p>
-          </div>
-
-          <div class="for-who-panel reveal">
-            <div class="eyebrow">Why come</div>
-            <h2 class="heading">Context before commitment.</h2>
-            <p>The YES Room is for women who don't want more noise — they want clarity on what this path actually requires (and what it gives back).</p>
-            <p>Bring your questions. Leave with a clearer read on whether you're ready to move — and what moving would look like for you.</p>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><div class="section-divider"></div></div>
-
-      <!-- ── What you'll walk away with ── -->
-      <section class="section">
-        <div class="container">
-          <div class="section-header reveal">
-            <div class="eyebrow">In the room</div>
-            <h2 class="heading">What you'll walk away with</h2>
-            <p>Four outcomes from one live session.</p>
-          </div>
-
-          <div class="experience-grid">
-            <article class="experience-card reveal">
-              <div>
-                <div class="step">01</div>
-                <h3>Clarity</h3>
-                <p>A clear understanding of what has been keeping you stuck — and what to do about it.</p>
-              </div>
-            </article>
-
-            <article class="experience-card reveal">
-              <div>
-                <div class="step">02</div>
-                <h3>Decision Drag</h3>
-                <p>A sharper lens on Decision Drag — how it operates and how to dismantle it.</p>
-              </div>
-            </article>
-
-            <article class="experience-card reveal">
-              <div>
-                <div class="step">03</div>
-                <h3>Commitment</h3>
-                <p>A new relationship to decision-making and commitment that changes how you lead.</p>
-              </div>
-            </article>
-
-            <article class="experience-card reveal">
-              <div>
-                <div class="step">04</div>
-                <h3>Leadership</h3>
-                <p>One clear shift that moves you out of hesitation and into leadership.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><div class="section-divider"></div></div>
-
-      <!-- ── Who it's for ── -->
-      <section class="section">
-        <div class="container">
-          <div class="who-centered reveal">
-            <div class="eyebrow">Who it's for</div>
-            <h2 class="heading">Leaders who already know enough.</h2>
-            <p>Ambitious, high-capacity leaders ready for a real shift — not more content.</p>
-            <p>Small business owners, entrepreneurs, corporate teams, network marketing leaders. Women who are done consuming and ready to decide.</p>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><div class="section-divider"></div></div>
-
-      <!-- ── About Misty — split layout ── -->
-      <section class="section">
-        <div class="container split">
-          <div class="media-wrap reveal">
-            <div class="media-accent"></div>
-            <div class="media-card">
-              <img
-                src="Aestetics/e2ae0389-e77c-4750-8a7b-ec16e46ee44d.png"
-                alt="Misty Lavertu — your host for The YES Room"
-                loading="lazy"
-              >
-            </div>
-          </div>
-
-          <div class="content-block reveal">
-            <div class="eyebrow">Your host</div>
-            <h2 class="heading">Misty Lavertu</h2>
-            <p>More than three decades leading, building, and teaching one truth in every room: life changes the moment you decide.</p>
-            <p class="muted">The YES Room is the first public invitation into that body of work — a lifetime of leadership, distilled into one live experience.</p>
-            <a href="about.html" class="btn-outline btn">About Misty</a>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><div class="section-divider"></div></div>
-
-      <!-- ── Registration ── -->
-      <section class="section">
-        <div class="container">
-          <div class="reg-panel reveal">
-            <div class="eyebrow">Registration</div>
-            <h2 class="heading">Live details</h2>
-            <p>Add your name to the list. When the room opens, you'll be the first to know.</p>
-
-            <div class="reg-details">
-              <p><strong>Date</strong> TBA</p>
-              <p><strong>Time</strong> TBA</p>
-              <p><strong>Format</strong> Live via Zoom</p>
-              <p><strong>Replay</strong> Details to follow once registration opens</p>
-            </div>
-
-            <a href="mailto:hello@mistylavertu.com?subject=YES%20Room%20registration" class="btn">Step Inside The YES Room</a>
-
-            <p class="reg-fallback">While you wait: <a href="the-decision-code.html">Take The Decision Code</a></p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <span>&copy; 2026 Misty Lavertu</span>
-        <span>Decision-Led Leadership</span>
-      </div>
-    </footer>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
   </div>
+</header>
 
-  <script>
-    var revealItems = document.querySelectorAll('.reveal');
-    var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
+<main>
+
+  <!-- Masthead -->
+  <section class="yr-hero home-flow">
+    <div class="container">
+      <div class="masthead">
+        <span class="issue-mark issue-mark--no-rule">The YES Room</span>
+        <h1 class="display-mark">An invitation into <em>my world.</em></h1>
+        <p class="masthead-dek">A live Zoom to hear what I'm doing, how I got here, where I'm headed, and what's in it for you.</p>
+        <p class="yr-hero-note">This isn't an ongoing series. When the room opens, you'll know. Seats are limited.</p>
+        <a href="mailto:hello@mistylavertu.com?subject=YES%20Room%20registration" class="btn">Join The YES Room</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What this is / Why come :: head to head -->
+  <section class="section section--ed section--cream home-flow" id="what">
+    <div class="container">
+      <div class="ed-contrast">
+        <div class="ed-contrast__side">
+          <span class="ed-contrast__label">What this is</span>
+          <h3>A live conversation. Not a pitch deck.</h3>
+          <ul class="ed-contrast__list">
+            <li>Show up on Zoom. I'll share the arc of this work: the standards behind it, the decisions that built it, and how women step from knowing into movement.</li>
+            <li>If you've been circling the next level in your life or business, this is where the story becomes concrete, and you see where you might fit.</li>
+          </ul>
+        </div>
+        <div class="ed-contrast__side">
+          <span class="ed-contrast__label">Why come</span>
+          <h3>Context before commitment.</h3>
+          <ul class="ed-contrast__list">
+            <li>The YES Room is for women who don't want more noise. They want clarity on what this path actually requires, and what it gives back.</li>
+            <li>Bring your questions. Leave with a clearer read on whether you're ready to move, and what moving would look like for you.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you walk away with :: numbered rail -->
+  <section class="section section--ed section--plum home-flow" id="outcomes">
+    <div class="container">
+      <div class="masthead" style="text-align: center; margin: 0 auto;">
+        <span class="issue-mark issue-mark--no-rule">In the room</span>
+        <h2 class="display-mark">What you walk away with.</h2>
+        <p class="masthead-dek">Four outcomes from one live session.</p>
+      </div>
+
+      <div class="ed-rail" style="margin-left: auto; margin-right: auto;">
+        <div class="ed-rail__item">
+          <div class="ed-rail__num">01</div>
+          <div class="ed-rail__body">
+            <h3>Clarity.</h3>
+            <p>A clear understanding of what has been keeping you stuck, and what to do about it.</p>
+          </div>
+        </div>
+        <div class="ed-rail__item">
+          <div class="ed-rail__num">02</div>
+          <div class="ed-rail__body">
+            <h3>Decision Drag.</h3>
+            <p>A sharper lens on Decision Drag: how it operates, and how to dismantle it.</p>
+          </div>
+        </div>
+        <div class="ed-rail__item">
+          <div class="ed-rail__num">03</div>
+          <div class="ed-rail__body">
+            <h3>Commitment.</h3>
+            <p>A new relationship to decision-making and commitment that changes how you lead.</p>
+          </div>
+        </div>
+        <div class="ed-rail__item">
+          <div class="ed-rail__num">04</div>
+          <div class="ed-rail__body">
+            <h3>Leadership.</h3>
+            <p>One clear shift that moves you out of hesitation and into leadership.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for :: centered -->
+  <section class="section section--ed section--cream home-flow" id="who">
+    <div class="container">
+      <div class="yr-center">
+        <span class="issue-mark issue-mark--no-rule">Who it's for</span>
+        <h2 class="display-mark">Leaders who already know enough.</h2>
+        <div class="ed-body">
+          <p>Ambitious, high-capacity leaders ready for a real shift. Not more content.</p>
+          <p>Small business owners, entrepreneurs, corporate teams, network marketing leaders. Women who are done consuming and ready to decide.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Host -->
+  <section class="section section--ed section--cream home-flow" id="host">
+    <div class="container">
+      <div class="ed-grid ed-split home-flow-inner">
+        <div class="ed-col-photo">
+          <figure class="ed-photo ed-photo--portrait">
+            <img src="Aestetics/e2ae0389-e77c-4750-8a7b-ec16e46ee44d.png" alt="Misty Lavertu, your host for The YES Room" loading="lazy" decoding="async">
+          </figure>
+        </div>
+        <div class="ed-col-text">
+          <span class="issue-mark issue-mark--no-rule">Your host</span>
+          <h2 class="display-mark">Misty Lavertu.</h2>
+          <div class="ed-body">
+            <p class="lede">More than three decades leading, building, and teaching one truth in every room: life changes the moment you decide.</p>
+            <p>The YES Room is the first public invitation into that body of work. A lifetime of leadership, distilled into one live experience.</p>
+          </div>
+          <a href="about.html" class="btn" style="margin-top: 22px;">About Misty</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration -->
+  <section class="section section--ed section--cream home-flow" id="register">
+    <div class="container">
+      <div class="yr-reg">
+        <div class="yr-reg__inner">
+          <span class="issue-mark issue-mark--no-rule">Registration</span>
+          <h2>Live details.</h2>
+          <p class="yr-reg__dek">Add your name to the list. When the room opens, you'll be the first to know.</p>
+
+          <ul class="yr-reg__details">
+            <li><span class="yr-reg__term">Date</span><span class="yr-reg__value">TBA</span></li>
+            <li><span class="yr-reg__term">Time</span><span class="yr-reg__value">TBA</span></li>
+            <li><span class="yr-reg__term">Format</span><span class="yr-reg__value">Live via Zoom</span></li>
+            <li><span class="yr-reg__term">Replay</span><span class="yr-reg__value">Details to follow once registration opens</span></li>
+          </ul>
+
+          <a href="mailto:hello@mistylavertu.com?subject=YES%20Room%20registration" class="btn">Step Inside The YES Room</a>
+
+          <p class="yr-reg__fallback">While you wait. <a href="the-decision-code.html">Take The Decision Code</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>&copy; 2026 Misty Lavertu. All Rights Reserved.</span>
+    <span>Decision-Led Leadership</span>
+  </div>
+</footer>
+
+<script>
+  var els = document.querySelectorAll('.home-flow, .reveal');
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-in-view'); e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { obs.observe(el); });
+
+  (function () {
+    var btn = document.getElementById('mobile-menu-btn'), bar = document.getElementById('topbar');
+    if (!btn || !bar) return;
+    btn.addEventListener('click', function () {
+      var open = bar.classList.toggle('menu-open');
+      btn.setAttribute('aria-expanded', open);
+      btn.innerHTML = open ? '&#10005;' : '&#9776;';
+    });
+    bar.querySelectorAll('.nav a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        bar.classList.remove('menu-open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.innerHTML = '&#9776;';
       });
-    }, { threshold: 0.12 });
-    revealItems.forEach(function (item) { revealObserver.observe(item); });
+    });
+  })();
 
-    (function () {
-      var btn = document.getElementById('mobile-menu-btn');
-      var topbar = document.getElementById('topbar');
-      if (!btn || !topbar) return;
-
-      btn.addEventListener('click', function () {
-        var open = topbar.classList.toggle('menu-open');
-        btn.setAttribute('aria-expanded', open);
-        btn.innerHTML = open ? '&#10005;' : '&#9776;';
-      });
-
-      topbar.querySelectorAll('.nav a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          topbar.classList.remove('menu-open');
-          btn.setAttribute('aria-expanded', 'false');
-          btn.innerHTML = '&#9776;';
-        });
-      });
-    })();
-
-    var dd = document.getElementById('nav-dropdown');
-    if (dd) {
-      var toggle = dd.querySelector('.nav-dropdown-toggle');
-      toggle.addEventListener('click', function(e) { e.preventDefault(); dd.classList.toggle('open'); });
-      document.addEventListener('click', function(e) { if (!dd.contains(e.target)) dd.classList.remove('open'); });
-    }
-  </script>
+  var dd = document.getElementById('nav-dropdown');
+  if (dd) {
+    var toggle = dd.querySelector('.nav-dropdown-toggle');
+    toggle.addEventListener('click', function (e) { e.preventDefault(); dd.classList.toggle('open'); });
+    document.addEventListener('click', function (e) { if (!dd.contains(e.target)) dd.classList.remove('open'); });
+  }
+</script>
 </body>
 </html>
