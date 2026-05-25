@@ -18,6 +18,108 @@
       object-fit: cover;
       object-position: center center;
     }
+
+    /* Through-line :: standalone plum manifesto band */
+    .ll-throughline {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(ellipse 90% 140% at 50% -20%, rgba(228, 193, 78, 0.11), transparent 58%),
+        linear-gradient(180deg, #4a0824 0%, var(--plum) 42%, #2e0416 100%);
+      padding: clamp(88px, 13vw, 148px) 0;
+    }
+    .ll-throughline::before {
+      content: "\201C";
+      position: absolute;
+      top: clamp(-20px, -2vw, 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(160px, 28vw, 320px);
+      line-height: 1;
+      color: rgba(228, 193, 78, 0.07);
+      pointer-events: none;
+      user-select: none;
+    }
+    .ll-throughline::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(228, 193, 78, 0.45), transparent);
+    }
+    .ll-throughline__shell {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: min(820px, 100%);
+      margin: 0 auto;
+    }
+    .ll-throughline__label {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      padding: 0 18px;
+      border-left: 1px solid rgba(228, 193, 78, 0.45);
+      border-right: 1px solid rgba(228, 193, 78, 0.45);
+    }
+    .ll-throughline__head {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 7vw, 84px);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      margin: clamp(22px, 4vw, 36px) 0 clamp(24px, 4vw, 40px);
+      color: #fff;
+    }
+    .ll-throughline__head em { color: var(--gold); font-style: italic; }
+    .ll-throughline__dek {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(24px, 3.4vw, 38px);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.28;
+      letter-spacing: -0.01em;
+      color: rgba(255, 255, 255, 0.92);
+      margin: 0 auto;
+      max-width: 22ch;
+    }
+    .ll-throughline__dek em { color: var(--gold); font-style: italic; }
+
+    /* Foundation chapter :: photo + header, then principles rail */
+    .ll-chapter-open {
+      align-items: center;
+      margin-bottom: clamp(40px, 6vw, 64px);
+    }
+    .ll-chapter-open .path-head-ed { margin: 0; text-align: left; }
+    .leadership-page .ll-chapter-open .ed-col-text .display-mark {
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .ll-chapter-rail { margin-top: 0; }
+
+    @media (max-width: 959px) {
+      .ll-chapter-open .path-head-ed { text-align: center; }
+      .ll-chapter-open .ed-col-photo .ed-photo {
+        max-width: min(320px, 88vw);
+        margin-inline: auto;
+      }
+    }
+
+    /* Where it applies :: give the dek room to breathe */
+    #where-it-applies .path-head-ed { max-width: min(920px, 100%); }
+    #where-it-applies .path-head-ed__dek {
+      max-width: min(640px, 100%);
+      margin-top: clamp(14px, 2.5vw, 22px);
+      font-size: clamp(18px, 2.1vw, 24px);
+      line-height: 1.62;
+      letter-spacing: 0.01em;
+    }
   </style>
 </head>
 <body class="leadership-page">
@@ -78,7 +180,7 @@
           <p class="lede">The decisions you keep. The standards you hold when no one is watching.</p>
           <p>The place where you stop negotiating with yourself and start moving.</p>
           <p class="strong">Decision-Led Leadership is internal clarity made visible.</p>
-          <p>Clean commitment. Movement before certainty. Momentum built on self-trust instead of busy urgency.</p>
+          <p>Decisive commitment. Movement before certainty. Momentum built on self-trust instead of urgency.</p>
         </div>
       </div>
     </div>
@@ -91,7 +193,7 @@
     <div class="ed-grid ed-split--reverse home-flow-inner">
       <div class="ed-col-text">
         <h2 class="pullquote" style="font-size: clamp(40px, 6vw, 88px);"><span class="mark-open">&ldquo;</span>The gap between <em>knowing</em> and <em>moving.</em><span class="mark-close">&rdquo;</span></h2>
-        <p class="pullquote-credit pullquote-credit--stacked">Decision Drag is the unnamed pattern. Overthinking. Open loops. Delayed follow-through. It looks like discernment. It feels like wisdom. But left unnamed, it leaks momentum, trust, and time.</p>
+        <p class="pullquote-credit pullquote-credit--stacked">Decision Drag is the unnamed pattern. Overthinking. Open loops. Delayed follow-through. It looks like discernment. It feels like wisdom. Left unnamed, it leaks momentum, trust, and time.</p>
       </div>
       <div class="ed-col-photo">
         <div class="ed-photo ed-photo--portrait">
@@ -102,27 +204,37 @@
   </div>
 </section>
 
-<!-- Principles -->
-<section id="principles" class="section section--ed section--paper home-flow">
+<!-- Foundation -->
+<section id="principles" class="section section--ed section--cream home-flow">
   <div class="container home-flow-inner">
-    <header class="path-head-ed">
-      <h2 class="display-mark path-head-ed__title">What this work is <em>built on.</em></h2>
-      <p class="path-head-ed__dek"><strong>Four principles.</strong> One leadership pattern.</p>
-    </header>
+    <div class="ed-grid ed-split ll-chapter-open">
+      <div class="ed-col-photo">
+        <figure class="ed-photo ed-photo--portrait">
+          <img src="New photos/photo_2026-04-17_02-19-12.jpg" alt="Misty Lavertu, grounded leadership presence" loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="ed-col-text">
+        <header class="path-head-ed">
+          <span class="issue-mark issue-mark--no-rule">The Foundation</span>
+          <h2 class="display-mark path-head-ed__title">Four principles. One <em>pattern.</em></h2>
+          <p class="path-head-ed__dek">What this work is built on. The standards behind every decision, every room, every move.</p>
+        </header>
+      </div>
+    </div>
 
-    <div class="ed-rail">
+    <div class="ed-rail ll-chapter-rail">
       <div class="ed-rail__item">
         <div class="ed-rail__num">01</div>
         <div class="ed-rail__body">
           <h3>Clarity follows commitment.</h3>
-          <p>You decide first, then the path sharpens. Waiting for clarity is how capable people stay still.</p>
+          <p>You decide first. Clarity follows. The decision changes you before the result does.</p>
         </div>
       </div>
       <div class="ed-rail__item">
         <div class="ed-rail__num">02</div>
         <div class="ed-rail__body">
-          <h3>Open loops are expensive.</h3>
-          <p>Unfinished decisions drain leadership bandwidth. Silently, steadily, and without permission.</p>
+          <h3>Unresolved decisions are expensive.</h3>
+          <p>They drain strategic focus silently, steadily, and without permission.</p>
         </div>
       </div>
       <div class="ed-rail__item">
@@ -140,43 +252,43 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="ed-coda">
-      <span class="ed-coda__label">The through-line</span>
-      <h3>Leadership starts within.</h3>
-      <p>How you lead yourself shapes every other room you lead.</p>
-    </div>
+<!-- Through-line -->
+<section id="through-line" class="ll-throughline section section--ed home-flow" aria-label="The through-line">
+  <div class="container ll-throughline__shell">
+    <span class="ll-throughline__label">The through-line</span>
+    <h3 class="ll-throughline__head">Leadership starts <em>within.</em></h3>
+    <p class="ll-throughline__dek">Your personal standards become your <em>leadership standard!</em></p>
   </div>
 </section>
 
 <!-- Where It Applies -->
-<section id="where-it-applies" class="section section--ed section--cream home-flow">
+<section id="where-it-applies" class="section section--ed section--paper home-flow">
   <div class="container home-flow-inner">
     <header class="path-head-ed">
-      <h2 class="display-mark path-head-ed__title">Across <em>arenas.</em></h2>
-      <p class="path-head-ed__dek">Decision-Led Leadership applies across arenas because the core issue is human, not industry-specific.</p>
+      <h2 class="display-mark path-head-ed__title">Different Rooms. Same <em>Standard.</em></h2>
+      <p class="path-head-ed__dek">Whether leading yourself, a business, a corporate team, or a community, the expectation remains the same: clarity, standards, communication, and decisive leadership.</p>
     </header>
 
     <div class="ed-index">
       <div class="ed-index__item">
-        <span class="ed-index__label">Arena 01</span>
-        <h3>Personal leadership.</h3>
-        <p>Identity, relationships, and the decisions no one else sees. The ones that shape everything else.</p>
+        <h3>Personal Leadership</h3>
+        <p>The private decisions, standards, and habits that shape every other area of life.</p>
+        <p>How you lead yourself when no one is watching. The quality of your self-trust and emotional regulation.</p>
       </div>
       <div class="ed-index__item">
-        <span class="ed-index__label">Arena 02</span>
-        <h3>Entrepreneurship.</h3>
-        <p>Building under pressure with clarity and standards. Not reaction. Not compromise.</p>
+        <h3>Entrepreneurship</h3>
+        <p>Building with strategy, discernment, and emotional discipline. Choosing standards over reactive leadership, chaos, and urgency.</p>
       </div>
       <div class="ed-index__item">
-        <span class="ed-index__label">Arena 03</span>
-        <h3>Corporate teams.</h3>
-        <p>Leading people, priorities, and pace without hesitation or internal negotiation.</p>
+        <h3>Corporate Leadership</h3>
+        <p>Creating stability, trust, and execution in high-performance environments. Strategic leadership rooted in clarity, standards, communication, and decisive action.</p>
       </div>
       <div class="ed-index__item">
-        <span class="ed-index__label">Arena 04</span>
-        <h3>Network marketing.</h3>
-        <p>Mentorship, values, effort-based leadership, and duplication without compromise.</p>
+        <h3>Network Marketing Leadership</h3>
+        <p>Leadership that prioritizes people, culture, community, and long-term credibility. Transformation over transaction. A leadership-first approach to mentorship, duplication, and growth.</p>
       </div>
     </div>
   </div>
@@ -189,10 +301,10 @@
       <div class="ed-col-text">
         <h2 class="display-mark">Hesitation gets <em>expensive.</em></h2>
         <div class="ed-body">
-          <p class="lede">At higher levels of responsibility, Decision Drag looks like discernment. But it quietly caps your leadership.</p>
-          <p>The longer you circle, the more you pay. In lost momentum. In diluted trust. In compound delay.</p>
-          <p class="strong">This work changes that pattern.</p>
-          <p>Not with more information. With a framework that makes clean, committed movement the default.</p>
+          <p class="lede">At higher levels of leadership, Decision Drag hides behind intelligence, caution, and overthinking.</p>
+          <p>The longer you remain indecisive, the greater the cost.</p>
+          <p class="strong">In clarity. In execution. In self-trust.</p>
+          <p>My work changes that pattern. Not with more information, but with a framework that transforms clarity into decisive execution.</p>
         </div>
       </div>
       <div class="ed-col-photo">
@@ -234,13 +346,27 @@
       document.querySelectorAll('.home-flow').forEach(function(el) { el.classList.add('is-in-view'); });
       return;
     }
-    var ioOpts = { threshold: 0.12, rootMargin: '0px 0px 12% 0px' };
+    function revealInViewSections() {
+      document.querySelectorAll('.home-flow').forEach(function (section) {
+        var rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+          section.classList.add('is-in-view');
+        }
+      });
+    }
+
+    var ioOpts = { threshold: 0.08, rootMargin: '0px 0px 8% 0px' };
     document.querySelectorAll('.home-flow').forEach(function(section) {
       new IntersectionObserver(function(entries, obs) {
         entries.forEach(function(e) {
           if (e.isIntersecting) { e.target.classList.add('is-in-view'); obs.unobserve(e.target); }
         });
       }, ioOpts).observe(section);
+    });
+    revealInViewSections();
+    window.addEventListener('load', revealInViewSections);
+    window.addEventListener('hashchange', function () {
+      window.requestAnimationFrame(revealInViewSections);
     });
     document.querySelectorAll('.reveal').forEach(function(el) {
       new IntersectionObserver(function(entries, obs) {
