@@ -10,6 +10,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/site.css">
   <link rel="stylesheet" href="styles/editorial.css">
+  <style>
+    /* About :: split hero with portrait + credential strip */
+    .ab-hero {
+      padding: clamp(72px, 11vw, 132px) 0 clamp(56px, 8vw, 96px);
+    }
+    .ab-hero .ed-split { align-items: center; }
+    .ab-hero .masthead-dek { margin-top: 18px; }
+    .ab-hero-credits {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(18px, 3vw, 28px);
+      margin-top: clamp(28px, 4vw, 40px);
+      padding-top: clamp(22px, 3vw, 30px);
+      border-top: 1px solid var(--line);
+      max-width: 28rem;
+    }
+    .ab-hero-credit__num {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(28px, 3.2vw, 38px);
+      font-weight: 500;
+      line-height: 1;
+      color: var(--burgundy);
+    }
+    .ab-hero-credit__label {
+      display: block;
+      margin-top: 6px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    @media (max-width: 959px) {
+      .ab-hero .ed-col-photo { max-width: min(420px, 100%); }
+    }
+  </style>
 </head>
 <body class="about-page">
 
@@ -37,13 +74,28 @@
 </header>
 
 <!-- Masthead -->
-<section class="section section--ed section--cream home-flow">
+<section class="section section--ed section--cream home-flow ab-hero">
   <div class="container">
-    <div class="masthead home-flow-inner">
-      <div>
+    <div class="ed-grid ed-split--reverse home-flow-inner">
+      <div class="ed-col-text">
         <span class="issue-mark issue-mark--no-rule">About Misty Lavertu</span>
         <h1 class="display-mark" style="margin-top: 22px;">You already <em>know.</em></h1>
         <p class="masthead-dek">You're here because you're done sitting in the space between knowing and moving.</p>
+        <div class="ab-hero-credits">
+          <div class="ab-hero-credit">
+            <span class="ab-hero-credit__num">30+</span>
+            <span class="ab-hero-credit__label">Years leadership</span>
+          </div>
+          <div class="ab-hero-credit">
+            <span class="ab-hero-credit__num">Founder</span>
+            <span class="ab-hero-credit__label">Say YES Movement</span>
+          </div>
+        </div>
+      </div>
+      <div class="ed-col-photo">
+        <div class="ed-photo ed-photo--portrait">
+          <img src="Aestetics/misty-standard-portrait.png" alt="Misty Lavertu, founder of the Say YES Movement" fetchpriority="high" decoding="async">
+        </div>
       </div>
     </div>
   </div>
@@ -63,7 +115,7 @@
         <div class="ed-body">
           <p class="lede">They're undecided.</p>
           <p>Not broken. Not behind. Not missing something.</p>
-          <p class="strong">Undecided. And there's a difference.</p>
+          <p class="strong">Undecided. There's a difference.</p>
           <p>Stuck says something is wrong with you. Undecided says you haven't chosen yet. And the moment you do, everything begins to move.</p>
         </div>
       </div>
@@ -79,9 +131,8 @@
         <h2 class="display-mark">Thirty years of <em>leadership.</em></h2>
         <div class="ed-body">
           <p class="lede">Eighteen years building businesses.</p>
-          <p>Thousands of women coached through indecision, overwhelm, and hesitation. And I've watched what happens when they finally decide.</p>
-          <p>I've led teams. Built a seven-figure business. Developed women into leaders who follow through. Not just start, but finish what they said they would do.</p>
-          <p class="strong">I know what it takes to move when it matters.</p>
+          <p>Thousands of women coached through indecision, overwhelm, and hesitation. I've watched what happens when they finally decide.</p>
+          <p>I've led teams. Built a seven-figure business. Developed women into leaders whose actions match their ambitions.</p>
         </div>
       </div>
       <div class="ed-col-photo">
@@ -100,9 +151,16 @@
       <div>
         <h2 class="display-mark">What it's <em>built on.</em></h2>
         <div class="ed-body" style="max-width: 36rem;">
-          <p>This isn't theory. It's what the last three decades have made me.</p>
-          <p class="strong">Proof over promise.</p>
-          <p>A business built. Teams led. Women moved from the middle of their own indecision into the lives they'd been circling for years.</p>
+          <p>This isn't theory.</p>
+          <p>It's what the last three decades have taught me.</p>
+          <p class="strong">Proof over promise. Patterns over words.</p>
+          <p>I've had thousands of conversations with women. Successful, capable women who knew what they wanted, but kept talking themselves out of it. So they settled.</p>
+          <p>I've also had the privilege of watching what happens when they finally make the decision.</p>
+          <p>Businesses grow.</p>
+          <p>Confidence grows.</p>
+          <p>Lives change.</p>
+          <p class="strong">One decision changes everything.</p>
+          <p>That's what everything I teach is built on.</p>
         </div>
       </div>
       <div>
@@ -140,9 +198,13 @@
       <div class="ed-col-text">
         <h2 class="display-mark"><span style="white-space: nowrap;">Decision-Led</span> <em>Leadership.</em></h2>
         <div class="ed-body">
-          <p class="lede">I don't teach motivation. I don't teach hype.</p>
-          <p>I teach Decision-Led Leadership. Because the women who build powerful businesses and lives aren't the ones who think the longest.</p>
-          <p class="strong">They're the ones who decide. And follow through.</p>
+          <p class="lede">People often ask me what I teach.</p>
+          <p>It isn't motivation.</p>
+          <p>It isn't hype.</p>
+          <p class="strong">It's Decision-Led Leadership.</p>
+          <p>After all these years, I've noticed something.</p>
+          <p>The women who create the biggest impact aren't necessarily the smartest or the most talented.</p>
+          <p class="strong">They're the ones who stop waiting, make the decision, and keep going long after the excitement wears off.</p>
         </div>
         <a href="decision-led-leadership.html" class="btn" style="margin-top: 32px;">Read the Manifesto</a>
       </div>
@@ -186,7 +248,16 @@
       return;
     }
 
-    var ioOpts = { threshold: 0.12, rootMargin: '0px 0px 12% 0px' };
+    var ioOpts = { threshold: 0.08, rootMargin: '0px 0px 8% 0px' };
+
+    function revealInViewSections() {
+      document.querySelectorAll('.home-flow').forEach(function(section) {
+        var rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+          section.classList.add('is-in-view');
+        }
+      });
+    }
 
     document.querySelectorAll('.home-flow').forEach(function(section) {
       new IntersectionObserver(function(entries, obs) {
@@ -194,6 +265,11 @@
           if (e.isIntersecting) { e.target.classList.add('is-in-view'); obs.unobserve(e.target); }
         });
       }, ioOpts).observe(section);
+    });
+    revealInViewSections();
+    window.addEventListener('load', revealInViewSections);
+    window.addEventListener('hashchange', function() {
+      window.requestAnimationFrame(revealInViewSections);
     });
 
     document.querySelectorAll('.reveal').forEach(function(el) {

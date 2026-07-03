@@ -164,6 +164,101 @@
       letter-spacing: normal;
       color: rgba(255, 255, 255, 0.8);
     }
+
+    /* ── Say YES Movement editorial block ── */
+    #say-yes-movement .path-head-ed { max-width: 46rem; }
+    #say-yes-movement .path-head-ed .display-mark {
+      font-size: clamp(42px, 7vw, 92px);
+    }
+    .sy-open {
+      margin-top: clamp(48px, 8vw, 80px);
+      align-items: center;
+    }
+    .sy-whisper {
+      margin: clamp(20px, 3vw, 28px) 0;
+      padding-left: clamp(16px, 2vw, 22px);
+      border-left: 2px solid rgba(105, 24, 24, 0.45);
+      display: grid;
+      gap: 8px;
+    }
+    .sy-whisper p {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(19px, 2.2vw, 24px);
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+    .sy-lesson .ed-body { max-width: 40rem; }
+    .sy-legacy {
+      text-align: center;
+      padding: clamp(72px, 11vw, 120px) 0;
+    }
+    .sy-legacy__shell { max-width: 36rem; margin: 0 auto; }
+    .sy-legacy__label {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .sy-legacy__lines {
+      margin-top: clamp(22px, 3vw, 32px);
+      display: grid;
+      gap: clamp(10px, 1.6vw, 16px);
+    }
+    .sy-legacy__lines p {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(24px, 3.4vw, 38px);
+      font-weight: 500;
+      line-height: 1.28;
+      letter-spacing: -0.015em;
+      color: rgba(255, 255, 255, 0.92);
+    }
+    .sy-legacy__lines p strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .sy-yes-rail { max-width: 42rem; }
+    .sy-yes-rail .ed-rail__num {
+      font-family: "Manrope", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      padding-top: 10px;
+    }
+    .sy-yes-rail .ed-rail__body h3 {
+      font-size: clamp(24px, 3vw, 34px);
+      margin: 0;
+    }
+    .sy-yes-rail .ed-rail__body h3 em {
+      font-style: italic;
+      color: var(--burgundy);
+    }
+    .sy-close { max-width: 40rem; margin-top: clamp(48px, 7vw, 72px); }
+    .sy-welcome {
+      margin-top: clamp(56px, 8vw, 88px);
+      padding-top: clamp(40px, 6vw, 56px);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      max-width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .sy-welcome .display-mark {
+      font-size: clamp(36px, 5.5vw, 64px);
+      margin-bottom: 16px;
+    }
+    .sy-welcome .ed-body p:last-child {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(20px, 2.4vw, 28px);
+      font-style: italic;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
@@ -199,7 +294,6 @@
   <div class="hero-overlay"></div>
   <div class="container">
     <div class="hero-content reveal">
-      <span class="hero-issue">Decision-Led Leadership</span>
       <h1 class="hero-title">You're not <em>stuck.</em><br>You're <em>undecided.</em></h1>
       <p class="hero-desc">And the moment you decide&hellip; everything begins to change.<br />The next version of you starts here.</p>
       <a href="the-decision-code.html" class="btn btn-light">Take the Decision Code</a>
@@ -222,13 +316,145 @@
   </div>
 </div>
 
-<!-- Masthead -->
-<section class="section section--ed section--cream home-flow">
+<!-- Say YES Movement -->
+<section id="say-yes-movement" class="section section--ed section--cream home-flow">
   <div class="container">
-    <div class="masthead home-flow-inner">
-      <div>
-        <h2 class="display-mark">For the woman who <em>knows</em>, and is ready to move.</h2>
+    <div class="home-flow-inner">
+      <header class="path-head-ed">
+        <span class="issue-mark issue-mark--no-rule">The Say YES Movement</span>
+        <h2 class="display-mark path-head-ed__title" style="margin-top: 22px;">For the woman who <em>knows</em>, and is ready to move.</h2>
         <p class="masthead-dek">Say YES to the version of you who already decided!</p>
+      </header>
+
+      <div class="ed-grid ed-split sy-open">
+        <div class="ed-col-photo">
+          <div class="ed-photo ed-photo--plate">
+            <img src="Aestetics/misty-yes-pointing.png" alt="Misty Lavertu inviting you into the Say YES Movement" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="ed-col-text">
+          <div class="ed-body">
+            <p class="lede">I'm so glad you're here.</p>
+            <p>If you've landed here, I don't think it's by accident.</p>
+            <p>I believe there's something inside you that's been whispering for a while now.</p>
+          </div>
+          <div class="sy-whisper">
+            <p>That you're capable of more.</p>
+            <p>You've outgrown where you are.</p>
+            <p>That you're ready for your next chapter.</p>
+          </div>
+          <div class="ed-body">
+            <p>Maybe you've been waiting for the right time, to feel more confident or for someone to tell you you're ready.</p>
+            <p class="strong">Let me save you the wait.</p>
+            <p class="strong">You are.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="say-yes-lesson" class="section section--ed section--paper home-flow">
+  <div class="container">
+    <div class="home-flow-inner sy-lesson">
+      <div class="ed-body">
+        <p>Here's what I've learned after more than three decades of studying leadership, building businesses, and having thousands of conversations with people just like you.</p>
+        <p class="strong">Your life doesn't change when you know more. It changes the moment you decide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="say-yes-legacy" class="section section--ed section--plum home-flow sy-legacy">
+  <div class="container">
+    <div class="home-flow-inner sy-legacy__shell">
+      <span class="sy-legacy__label">One decision</span>
+      <div class="sy-legacy__lines">
+        <p>One decision can change the direction of your life.</p>
+        <p>Your family. Your health. Your business. Your relationships. Your future.</p>
+        <p><strong>One decision can become your legacy.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="say-yes-yes" class="section section--ed section--cream home-flow">
+  <div class="container">
+    <div class="home-flow-inner">
+      <div class="ed-body" style="max-width: 42rem;">
+        <p class="lede">That's why I created The Say YES Movement.</p>
+        <p>Not because I believe you should say yes to everything.</p>
+        <p class="strong">But because I believe it's time you started saying YES to what matters most.</p>
+      </div>
+
+      <div class="ed-rail sy-yes-rail">
+        <div class="ed-rail__item">
+          <div class="ed-rail__num">Yes</div>
+          <div class="ed-rail__body"><h3>to your <em>voice.</em></h3></div>
+        </div>
+        <div class="ed-rail__item">
+          <div class="ed-rail__num">Yes</div>
+          <div class="ed-rail__body"><h3>to your <em>dreams.</em></h3></div>
+        </div>
+        <div class="ed-rail__item">
+          <div class="ed-rail__num">Yes</div>
+          <div class="ed-rail__body"><h3>to your <em>health.</em></h3></div>
+        </div>
+        <div class="ed-rail__item">
+          <div class="ed-rail__num">Yes</div>
+          <div class="ed-rail__body"><h3>to your <em>purpose.</em></h3></div>
+        </div>
+        <div class="ed-rail__item">
+          <div class="ed-rail__num">Yes</div>
+          <div class="ed-rail__body"><h3>to your <em>family.</em></h3></div>
+        </div>
+        <div class="ed-rail__item">
+          <div class="ed-rail__num">Yes</div>
+          <div class="ed-rail__body"><h3>to the life you've known, deep down, was always meant for <em>you.</em></h3></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="say-yes-community" class="section section--ed section--paper home-flow">
+  <div class="container">
+    <div class="home-flow-inner">
+      <div class="ed-contrast">
+        <div class="ed-contrast__side">
+          <span class="ed-contrast__label">Who we are</span>
+          <h3>A community for women who are done talking themselves out of what they already know.</h3>
+          <ul class="ed-contrast__list">
+            <li>Women who build and lead.</li>
+            <li>Women who choose courage over comfort.</li>
+            <li>Women who stop waiting and start deciding.</li>
+          </ul>
+        </div>
+        <div class="ed-contrast__side">
+          <span class="ed-contrast__label">How we move</span>
+          <h3>Around here, we don't wait until everything is figured out.</h3>
+          <ul class="ed-contrast__list">
+            <li>We create clarity by moving.</li>
+            <li>We build confidence by following through.</li>
+            <li>We raise our standards.</li>
+            <li>We keep our promises to ourselves.</li>
+            <li>We lead our lives with intention.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ed-body sy-close">
+        <p class="strong">Extraordinary lives aren't built by people who wait. They're built by women who decide.</p>
+        <p>If something inside you is saying, "This is where I'm meant to be..." Don't ignore it. Trust yourself.</p>
+        <p class="strong">Say YES!</p>
+      </div>
+
+      <div class="sy-welcome">
+        <h2 class="display-mark">Welcome to The Say YES <em>Movement.</em></h2>
+        <div class="ed-body">
+          <p>Everything changes the moment you decide.</p>
+        </div>
+        <a href="say-yes.html" class="btn" style="margin-top: 32px;">Explore the Movement</a>
       </div>
     </div>
   </div>
@@ -440,9 +666,18 @@ Decision creates clarity. Builds confidence. Moves your life forward.</p>
     }
 
     var ioOpts = {
-      threshold: 0.12,
-      rootMargin: '0px 0px 12% 0px'
+      threshold: 0.08,
+      rootMargin: '0px 0px 8% 0px'
     };
+
+    function revealInViewSections() {
+      document.querySelectorAll('.home-flow').forEach(function(section) {
+        var rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+          section.classList.add('is-in-view');
+        }
+      });
+    }
 
     document.querySelectorAll('.home-flow').forEach(function(section) {
       new IntersectionObserver(function(entries, obs) {
@@ -453,6 +688,11 @@ Decision creates clarity. Builds confidence. Moves your life forward.</p>
           }
         });
       }, ioOpts).observe(section);
+    });
+    revealInViewSections();
+    window.addEventListener('load', revealInViewSections);
+    window.addEventListener('hashchange', function() {
+      window.requestAnimationFrame(revealInViewSections);
     });
 
     document.querySelectorAll('.reveal').forEach(function(el) {
