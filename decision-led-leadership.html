@@ -11,15 +11,222 @@
   <link rel="stylesheet" href="styles/site.css">
   <link rel="stylesheet" href="styles/editorial.css">
   <style>
-    /* Leadership page: cinematic cover band */
-    .leadership-page .photo-band-full { background: #0b1320; }
-    .leadership-page .photo-band-full img {
-      height: clamp(380px, 62vw, 720px);
+    /* ══════════ Shared editorial pieces (matches The YES Moment) ══════════ */
+    .ll-frame {
+      position: relative;
+      line-height: 0;
+    }
+    .ll-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translate(clamp(12px, 2vw, 22px), clamp(12px, 2vw, 22px));
+      border: 1px solid rgba(228, 193, 78, 0.65);
+      pointer-events: none;
+    }
+    .ll-frame--burgundy::before { border-color: rgba(105, 24, 24, 0.4); }
+    .ll-frame img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      object-position: center center;
+    }
+    .ll-frame--portrait { aspect-ratio: 4 / 5; }
+
+    .ll-label {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--burgundy);
+      padding: 0 16px;
+      border-left: 1px solid rgba(105, 24, 24, 0.45);
+      border-right: 1px solid rgba(105, 24, 24, 0.45);
+    }
+    .section--plum .ll-label,
+    .ll-hero .ll-label,
+    .ll-throughline .ll-label {
+      color: var(--gold);
+      border-left-color: rgba(228, 193, 78, 0.45);
+      border-right-color: rgba(228, 193, 78, 0.45);
     }
 
-    /* Through-line :: standalone plum manifesto band */
+    /* ══════════ Hero — typographic plum cover ══════════ */
+    .ll-hero {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(ellipse 100% 70% at 88% -10%, rgba(228, 193, 78, 0.16) 0%, transparent 52%),
+        radial-gradient(ellipse 70% 50% at 0% 100%, rgba(105, 24, 24, 0.4) 0%, transparent 52%),
+        linear-gradient(160deg, #2a0517 0%, var(--plum) 50%, #16020c 100%);
+      padding: clamp(88px, 12vw, 150px) 0 clamp(80px, 11vw, 130px);
+    }
+    .ll-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(228, 193, 78, 0.45), transparent);
+    }
+    .ll-hero__ghost {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(220px, 34vw, 480px);
+      line-height: 1;
+      color: rgba(228, 193, 78, 0.05);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .ll-hero__shell {
+      position: relative;
+      z-index: 1;
+      max-width: min(60rem, 100%);
+    }
+    .ll-hero__title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(52px, 8.6vw, 122px);
+      font-weight: 500;
+      line-height: 0.92;
+      letter-spacing: -0.045em;
+      color: #fff;
+      margin: clamp(22px, 3.5vw, 36px) 0 clamp(24px, 4vw, 38px);
+    }
+    .ll-hero__title em { font-style: italic; color: var(--gold); }
+    .ll-hero__dek {
+      max-width: 38rem;
+      margin: 0 0 clamp(28px, 4vw, 42px);
+      padding-left: clamp(16px, 2vw, 22px);
+      border-left: 2px solid rgba(228, 193, 78, 0.5);
+    }
+    .ll-hero__dek p {
+      margin: 0 0 0.7em;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(20px, 2.4vw, 27px);
+      font-style: italic;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.78);
+    }
+    .ll-hero__dek p:last-child { margin-bottom: 0; }
+    .ll-hero__dek p strong {
+      color: #fff;
+      font-weight: 600;
+      font-style: italic;
+    }
+    .ll-hero .btn {
+      background: #fff;
+      color: var(--black);
+      border-color: #fff;
+      min-width: min(100%, 280px);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.4);
+    }
+    .ll-hero .btn:hover { background: transparent; color: #fff; }
+
+    /* ══════════ Wide interlude band ══════════ */
+    .ll-interlude {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .ll-interlude img {
+      display: block;
+      width: 100%;
+      height: clamp(420px, 60vw, 660px);
+      object-fit: cover;
+      object-position: center 40%;
+    }
+    .ll-interlude::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(22, 2, 12, 0.92) 0%, rgba(22, 2, 12, 0.62) 32%, rgba(22, 2, 12, 0.12) 65%, transparent 100%);
+      z-index: 1;
+    }
+    .ll-interlude__quote {
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      bottom: clamp(36px, 6vw, 60px);
+      text-align: center;
+      padding: 0 20px;
+    }
+    .ll-interlude__quote p {
+      margin: 0 auto;
+      max-width: 26ch;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(26px, 4.2vw, 52px);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #fff;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.45);
+    }
+    .ll-interlude__quote p em { color: var(--gold); }
+
+    /* ══════════ Foundation — oversized numeral list ══════════ */
+    .ll-principle {
+      display: grid;
+      grid-template-columns: clamp(64px, 9vw, 120px) 1fr;
+      gap: clamp(18px, 3vw, 36px);
+      align-items: baseline;
+      padding: clamp(28px, 4vw, 44px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .ll-principle:first-child { border-top: 1px solid var(--line); }
+    .ll-principle__num {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 0.9;
+      color: rgba(105, 24, 24, 0.28);
+      letter-spacing: -0.03em;
+      transition: color 0.3s ease;
+    }
+    .ll-principle:hover .ll-principle__num { color: var(--burgundy); }
+    .ll-principle__body h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(28px, 3.4vw, 44px);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin: 0 0 8px;
+    }
+    .ll-principle__body p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0;
+      max-width: 52ch;
+    }
+    .ll-foundation__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(40px, 6vw, 56px);
+      align-items: start;
+    }
+    @media (min-width: 960px) {
+      .ll-foundation__grid { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: clamp(48px, 6vw, 88px); }
+      .ll-foundation__side { position: sticky; top: 108px; }
+    }
+    .ll-foundation__photo { max-width: 400px; margin-top: clamp(24px, 3.5vw, 36px); }
+    @media (max-width: 959px) {
+      .ll-foundation__photo { margin-left: auto; margin-right: auto; }
+    }
+
+    /* ══════════ Through-line :: plum manifesto band ══════════ */
     .ll-throughline {
       position: relative;
       overflow: hidden;
@@ -56,17 +263,6 @@
       max-width: min(820px, 100%);
       margin: 0 auto;
     }
-    .ll-throughline__label {
-      display: inline-block;
-      font-size: 10px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 700;
-      padding: 0 18px;
-      border-left: 1px solid rgba(228, 193, 78, 0.45);
-      border-right: 1px solid rgba(228, 193, 78, 0.45);
-    }
     .ll-throughline__head {
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(42px, 7vw, 84px);
@@ -90,28 +286,7 @@
     }
     .ll-throughline__dek em { color: var(--gold); font-style: italic; }
 
-    /* Foundation chapter :: photo + header, then principles rail */
-    .ll-chapter-open {
-      align-items: center;
-      margin-bottom: clamp(40px, 6vw, 64px);
-    }
-    .ll-chapter-open .path-head-ed { margin: 0; text-align: left; }
-    .leadership-page .ll-chapter-open .ed-col-text .display-mark {
-      font-size: clamp(32px, 4.2vw, 52px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-    }
-    .ll-chapter-rail { margin-top: 0; }
-
-    @media (max-width: 959px) {
-      .ll-chapter-open .path-head-ed { text-align: center; }
-      .ll-chapter-open .ed-col-photo .ed-photo {
-        max-width: min(320px, 88vw);
-        margin-inline: auto;
-      }
-    }
-
-    /* Where it applies :: give the dek room to breathe */
+    /* ══════════ Where it applies ══════════ */
     #where-it-applies .path-head-ed { max-width: min(920px, 100%); }
     #where-it-applies .path-head-ed__dek {
       max-width: min(640px, 100%);
@@ -129,6 +304,7 @@
   <div class="container topbar-inner">
     <a href="index.html" class="brand" aria-label="Misty Lavertu home"><img src="New photos/LOGO.png" alt="Misty Lavertu" class="brand-logo"></a>
     <nav class="nav" id="main-nav">
+      <a href="the-yes-moment.html">The YES Moment</a>
       <a href="decision-led-leadership.html" class="active">Leadership</a>
       <div class="nav-dropdown" id="nav-dropdown">
         <a href="say-yes.html" class="nav-dropdown-toggle">Movement</a>
@@ -147,35 +323,42 @@
   </div>
 </header>
 
-<!-- Masthead -->
-<section class="section section--ed section--cream home-flow">
+<!-- ═══ Hero ═══ -->
+<section class="ll-hero home-flow">
+  <span class="ll-hero__ghost" aria-hidden="true">Lead</span>
   <div class="container">
-    <div class="masthead home-flow-inner">
-      <div>
-        <span class="issue-mark issue-mark--no-rule">Decision-Led Leadership</span>
-        <h1 class="display-mark" style="margin-top: 22px;">A way of leading that starts with how you <em>decide.</em></h1>
-        <p class="masthead-dek">Clean decisions, protected standards, momentum built from commitment. Not more noise. Not more waiting.</p>
+    <div class="ll-hero__shell home-flow-inner">
+      <span class="ll-label">Decision-Led Leadership</span>
+      <h1 class="ll-hero__title">A way of leading that starts with how you <em>decide.</em></h1>
+      <div class="ll-hero__dek">
+        <p>Clean decisions. Protected standards. Momentum built from commitment.</p>
+        <p><strong>Not more noise. Not more waiting.</strong></p>
       </div>
+      <a href="the-decision-code.html" class="btn">Take the Decision Code</a>
     </div>
   </div>
 </section>
 
-<!-- Cover band -->
-<section class="photo-band-full home-flow">
-  <img src="Aestetics/event-photos/misty-stage-cityscape.png" alt="Misty Lavertu speaking on stage" loading="lazy" decoding="async">
+<!-- ═══ Wide interlude ═══ -->
+<section class="ll-interlude home-flow">
+  <img src="Aestetics/yes-moment/misty-team-table.jpg" alt="Misty Lavertu leading a working session with her team around the table" loading="lazy" decoding="async">
+  <div class="ll-interlude__quote">
+    <p>&ldquo;Leadership isn't a title. It's a <em>decision.</em>&rdquo;</p>
+  </div>
 </section>
 
-<!-- What It Means -->
+<!-- ═══ What It Means ═══ -->
 <section id="what-it-means" class="section section--ed section--cream home-flow">
   <div class="container">
-    <div class="ed-grid ed-split home-flow-inner">
+    <div class="ed-grid ed-split home-flow-inner" style="align-items: center;">
       <div class="ed-col-photo">
-        <div class="ed-photo ed-photo--portrait">
-          <img src="New photos/photo_2026-04-17_02-19-13.jpg" alt="Misty Lavertu working in a quiet moment" loading="lazy" decoding="async">
+        <div class="ll-frame ll-frame--burgundy ll-frame--portrait">
+          <img src="New photos/photo_2026-04-17_02-19-13.jpg" alt="Misty Lavertu working in a quiet moment" loading="lazy" decoding="async" style="object-position: center 22%;">
         </div>
       </div>
       <div class="ed-col-text">
-        <h2 class="display-mark">Leadership shows in the <em>quiet moments.</em></h2>
+        <span class="ll-label">What It Means</span>
+        <h2 class="display-mark" style="margin-top: 20px; font-size: clamp(40px, 5.2vw, 68px);">Leadership shows in the <em>quiet moments.</em></h2>
         <div class="ed-body">
           <p class="lede">The decisions you keep. The standards you hold when no one is watching.</p>
           <p>The place where you stop negotiating with yourself and start moving.</p>
@@ -187,88 +370,87 @@
   </div>
 </section>
 
-<!-- Decision Drag (pullquote on plum) -->
+<!-- ═══ Decision Drag (pullquote on plum) ═══ -->
 <section id="decision-drag" class="section section--ed section--plum home-flow">
   <div class="container">
-    <div class="ed-grid ed-split--reverse home-flow-inner">
+    <div class="ed-grid ed-split--reverse home-flow-inner" style="align-items: center;">
       <div class="ed-col-text">
-        <h2 class="pullquote" style="font-size: clamp(40px, 6vw, 88px);"><span class="mark-open">&ldquo;</span>The gap between <em>knowing</em> and <em>moving.</em><span class="mark-close">&rdquo;</span></h2>
+        <span class="ll-label" style="margin-bottom: 22px;">Decision Drag&trade;</span>
+        <h2 class="pullquote" style="font-size: clamp(40px, 6vw, 88px); margin-top: 20px;"><span class="mark-open">&ldquo;</span>The gap between <em>knowing</em> and <em>moving.</em><span class="mark-close">&rdquo;</span></h2>
         <p class="pullquote-credit pullquote-credit--stacked">Decision Drag is the unnamed pattern. Overthinking. Open loops. Delayed follow-through. It looks like discernment. It feels like wisdom. Left unnamed, it leaks momentum, trust, and time.</p>
       </div>
       <div class="ed-col-photo">
-        <div class="ed-photo ed-photo--portrait">
-          <img src="Aestetics/misty-street-leadership.png" alt="Misty Lavertu on a city sidewalk, phone in hand, decisive and in motion" loading="lazy" decoding="async">
+        <div class="ll-frame ll-frame--portrait">
+          <img src="Aestetics/misty-street-leadership.png" alt="Misty Lavertu on a city sidewalk, phone in hand, decisive and in motion" loading="lazy" decoding="async" style="object-position: center 20%;">
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Foundation -->
+<!-- ═══ Foundation ═══ -->
 <section id="principles" class="section section--ed section--cream home-flow">
-  <div class="container home-flow-inner">
-    <div class="ed-grid ed-split ll-chapter-open">
-      <div class="ed-col-photo">
-        <figure class="ed-photo ed-photo--portrait">
-          <img src="Aestetics/misty-grounded-leadership.png" alt="Misty Lavertu seated on a stone ledge in a black blazer, white trousers, and straw hat, grounded leadership presence" loading="lazy" decoding="async">
-        </figure>
-      </div>
-      <div class="ed-col-text">
-        <header class="path-head-ed">
-          <span class="issue-mark issue-mark--no-rule">The Foundation</span>
-          <h2 class="display-mark path-head-ed__title">Four principles. One <em>pattern.</em></h2>
-          <p class="path-head-ed__dek">What this work is built on. The standards behind every decision, every room, every move.</p>
-        </header>
-      </div>
-    </div>
-
-    <div class="ed-rail ll-chapter-rail">
-      <div class="ed-rail__item">
-        <div class="ed-rail__num">01</div>
-        <div class="ed-rail__body">
-          <h3>Clarity follows commitment.</h3>
-          <p>You decide first. Clarity follows. The decision changes you before the result does.</p>
+  <div class="container">
+    <div class="ll-foundation__grid home-flow-inner">
+      <div class="ll-foundation__side">
+        <span class="ll-label">The Foundation</span>
+        <h2 class="display-mark" style="margin-top: 20px; font-size: clamp(40px, 5.2vw, 64px);">Four principles. One <em>pattern.</em></h2>
+        <p class="path-head-ed__dek">What this work is built on. The standards behind every decision, every room, every move.</p>
+        <div class="ll-foundation__photo">
+          <div class="ll-frame ll-frame--burgundy ll-frame--portrait">
+            <img src="Aestetics/misty-grounded-leadership.png" alt="Misty Lavertu seated on a stone ledge in a black blazer, white trousers, and straw hat, grounded leadership presence" loading="lazy" decoding="async" style="object-position: center 25%;">
+          </div>
         </div>
       </div>
-      <div class="ed-rail__item">
-        <div class="ed-rail__num">02</div>
-        <div class="ed-rail__body">
-          <h3>Unresolved decisions are expensive.</h3>
-          <p>They drain strategic focus silently, steadily, and without permission.</p>
+      <div>
+        <div class="ll-principle">
+          <div class="ll-principle__num">01</div>
+          <div class="ll-principle__body">
+            <h3>Clarity follows commitment.</h3>
+            <p>You decide first. Clarity follows. The decision changes you before the result does.</p>
+          </div>
         </div>
-      </div>
-      <div class="ed-rail__item">
-        <div class="ed-rail__num">03</div>
-        <div class="ed-rail__body">
-          <h3>Standards protect momentum.</h3>
-          <p>What you protect is what compounds. Lower the standard once, and the cost multiplies.</p>
+        <div class="ll-principle">
+          <div class="ll-principle__num">02</div>
+          <div class="ll-principle__body">
+            <h3>Unresolved decisions are expensive.</h3>
+            <p>They drain strategic focus silently, steadily, and without permission.</p>
+          </div>
         </div>
-      </div>
-      <div class="ed-rail__item">
-        <div class="ed-rail__num">04</div>
-        <div class="ed-rail__body">
-          <h3>Self-trust is built through action.</h3>
-          <p>Not more information. Not more reflection. Not more time. Through action.</p>
+        <div class="ll-principle">
+          <div class="ll-principle__num">03</div>
+          <div class="ll-principle__body">
+            <h3>Standards protect momentum.</h3>
+            <p>What you protect is what compounds. Lower the standard once, and the cost multiplies.</p>
+          </div>
+        </div>
+        <div class="ll-principle">
+          <div class="ll-principle__num">04</div>
+          <div class="ll-principle__body">
+            <h3>Self-trust is built through action.</h3>
+            <p>Not more information. Not more reflection. Not more time. Through action.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Through-line -->
-<section id="through-line" class="ll-throughline section section--ed home-flow" aria-label="The through-line">
+<!-- ═══ Through-line ═══ -->
+<section id="through-line" class="ll-throughline home-flow" aria-label="The through-line">
   <div class="container ll-throughline__shell">
-    <span class="ll-throughline__label">The through-line</span>
+    <span class="ll-label">The through-line</span>
     <h3 class="ll-throughline__head">Leadership starts <em>within.</em></h3>
     <p class="ll-throughline__dek">Your personal standards become your <em>leadership standard!</em></p>
   </div>
 </section>
 
-<!-- Where It Applies -->
+<!-- ═══ Where It Applies ═══ -->
 <section id="where-it-applies" class="section section--ed section--paper home-flow">
   <div class="container home-flow-inner">
     <header class="path-head-ed">
-      <h2 class="display-mark path-head-ed__title">Different Rooms. Same <em>Standard.</em></h2>
+      <span class="ll-label">Where It Applies</span>
+      <h2 class="display-mark path-head-ed__title" style="margin-top: 20px;">Different Rooms. Same <em>Standard.</em></h2>
       <p class="path-head-ed__dek">Whether leading yourself, a business, a corporate team, or a community, the expectation remains the same: clarity, standards, communication, and decisive leadership.</p>
     </header>
 
@@ -294,12 +476,13 @@
   </div>
 </section>
 
-<!-- Why It Matters Now -->
-<section id="why-it-matters" class="section section--ed section--paper home-flow">
+<!-- ═══ Why It Matters Now ═══ -->
+<section id="why-it-matters" class="section section--ed section--cream home-flow">
   <div class="container">
-    <div class="ed-grid ed-split--reverse home-flow-inner">
+    <div class="ed-grid ed-split--reverse home-flow-inner" style="align-items: center;">
       <div class="ed-col-text">
-        <h2 class="display-mark">Hesitation gets <em>expensive.</em></h2>
+        <span class="ll-label">Why It Matters Now</span>
+        <h2 class="display-mark" style="margin-top: 20px; font-size: clamp(40px, 5.2vw, 68px);">Hesitation gets <em>expensive.</em></h2>
         <div class="ed-body">
           <p class="lede">At higher levels of leadership, Decision Drag hides behind intelligence, caution, and overthinking.</p>
           <p>The longer you remain indecisive, the greater the cost.</p>
@@ -308,15 +491,15 @@
         </div>
       </div>
       <div class="ed-col-photo">
-        <div class="ed-photo ed-photo--portrait">
-          <img src="Aestetics/photo_2026-02-02_18-34-43.jpg" alt="Misty Lavertu, thoughtful stance" loading="lazy" decoding="async">
+        <div class="ll-frame ll-frame--burgundy ll-frame--portrait">
+          <img src="Aestetics/photo_2026-02-02_18-34-43.jpg" alt="Misty Lavertu, thoughtful stance" loading="lazy" decoding="async" style="object-position: center 20%;">
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Final CTA -->
+<!-- ═══ Final CTA ═══ -->
 <section class="quote-band">
   <div class="container reveal">
     <div class="quote-band-shell">
